@@ -27,16 +27,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-
-    op.create_table('organizations',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=50), nullable=False),
-    sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('name')
-    )
     # ### end Alembic commands ###qqqqqqqqq
 
 
