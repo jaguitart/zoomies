@@ -5,9 +5,14 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [account_type_id, setAccount_type_id] = useState('');
   const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
   const [password, setPassword] = useState('');
+  const [profile_pic, setProfile_pic] = useState('');
+  const [logo, setLogo] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -15,28 +20,23 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(account_type_id, username, name, email, bio, password, profile_pic, logo));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
+  const updateAccountTypeId = (e) => {setAccount_type_id(e.target.value)};
+  const updateUsername = (e) => {setUsername(e.target.value)};
+  const updateName = (e) => {setName(e.target.value)};
+  const updateEmail = (e) => {setEmail(e.target.value)};
+  const updateBio = (e) => {setBio(e.target.value)};
+  const updatePassword = (e) => {setPassword(e.target.value)};
+  const updateRepeatPassword = (e) => {setRepeatPassword(e.target.value)};
+  const updateProfile_pic = (e) => {setProfile_pic(e.target.value)};
+  const updateLogo = (e) => {setLogo(e.target.value)};
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
 
   if (user) {
     return <Redirect to='/' />;
@@ -50,6 +50,18 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
+        <label>Account Type</label>
+        <input
+          type='number'
+          max='2'
+          min='1'
+          name='account_type_id'
+          onChange={updateAccountTypeId}
+          value={account_type_id}
+        ></input>
+      </div>
+
+      <div>
         <label>User Name</label>
         <input
           type='text'
@@ -58,6 +70,17 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
+
+      <div>
+        <label>Name</label>
+        <input
+          type='text'
+          name='name'
+          onChange={updateName}
+          value={name}
+        ></input>
+      </div>
+
       <div>
         <label>Email</label>
         <input
@@ -67,6 +90,17 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
+
+      <div>
+        <label>Bio</label>
+        <input
+          type='text'
+          name='bio'
+          onChange={updateBio}
+          value={bio}
+        ></input>
+      </div>
+
       <div>
         <label>Password</label>
         <input
@@ -76,6 +110,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
+
       <div>
         <label>Repeat Password</label>
         <input
@@ -86,6 +121,27 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
+
+      <div>
+        <label>Profile Pic</label>
+        <input
+          type='profile_pic'
+          name='profile_pic'
+          onChange={updateProfile_pic}
+          value={profile_pic}
+        ></input>
+      </div>
+
+      <div>
+        <label>Logo</label>
+        <input
+          type='logo'
+          name='logo'
+          onChange={updateLogo}
+          value={logo}
+        ></input>
+      </div>
+
       <button type='submit'>Sign Up</button>
     </form>
   );
