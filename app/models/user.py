@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
 
     #revisar relacion
     # account_types = db.relationship("Account_type", back_populates="users")
-    posts = db.relationship('Pet_Post', back_populates='users')
+    pet_posts = db.relationship('Pet_Post', back_populates='users')
 
     @property
     def password(self):

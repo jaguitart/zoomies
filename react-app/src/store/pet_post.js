@@ -83,13 +83,13 @@ export const deleteOnePost = id => async dispatch => {
 
 const initialState = {};
 
-export default function (state = initialState, action) {
+export default function reducer (state = initialState, action) {
     let newState;
     switch (action.type) {
 
         case GET_POSTS:
             newState = { ...state }
-            action.payload.posts.map((post) => { newState[post.id] = post })
+            action.payload.posts.map((post) => newState[post.id] = post)
             return newState
 
         case ADD_POST:
