@@ -89,7 +89,7 @@ export default function reducer (state = initialState, action) {
 
         case GET_POSTS:
             newState = { ...state }
-            action.payload.posts.map((post) => newState[post.id] = post)
+            action.payload.posts.map(post => newState[post.id] = post)
             return newState
 
         case ADD_POST:
