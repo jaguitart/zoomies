@@ -12,16 +12,16 @@ class Pet_Post(db.Model):
     sex = db.Column(db.String(50), nullable=False)
     age = db.Column(db.String(50), nullable=False)
     color = db.Column(db.String(50), nullable=False)
-    breed = db.Column(db.String(50), nullable=False)
-    pic_url1 = db.Column(db.String(2000), nullable=False)
-    pic_url2 = db.Column(db.String(2000), nullable=False)
-    pic_url3 = db.Column(db.String(2000), nullable=False)
-    characteristics = db.Column(db.String(300), nullable=False)
-    vaccionation_status = db.Column(db.String(50), nullable=False)
+    breed = db.Column(db.String(50))
+    pic_url1 = db.Column(db.String(2000))
+    pic_url2 = db.Column(db.String(2000))
+    pic_url3 = db.Column(db.String(2000))
+    characteristics = db.Column(db.String(300))
+    vaccination_status = db.Column(db.String(50), nullable=False)
     bio = db.Column(db.String(2000))
-    question1 = db.Column(db.String(500), nullable=False)
-    question2 = db.Column(db.String(500), nullable=False)
-    question3 = db.Column(db.String(500), nullable=False)
+    question1 = db.Column(db.String(500))
+    question2 = db.Column(db.String(500))
+    question3 = db.Column(db.String(500))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
     users = db.relationship("User", back_populates="pet_posts")
@@ -41,7 +41,7 @@ class Pet_Post(db.Model):
             'pic_url2': self.pic_url2,
             'pic_url3': self.pic_url3,
             'characteristics': self.characteristics,
-            'vaccionation_status': self.vaccionation_status,
+            'vaccination_status': self.vaccination_status,
             'bio': self.bio,
             'question1': self.question1,
             'question2': self.question2,

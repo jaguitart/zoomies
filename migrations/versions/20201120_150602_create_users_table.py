@@ -45,7 +45,7 @@ def upgrade():
     )
 
 
-    op.create_table('posts',
+    op.create_table('pet_posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String(length=50), nullable=False),
@@ -58,7 +58,7 @@ def upgrade():
     sa.Column('pic_url2', sa.String(length=2000), nullable=True),
     sa.Column('pic_url3', sa.String(length=2000), nullable=True),
     sa.Column('characteristics', sa.String(length=300), nullable=True),
-    sa.Column('vaccionation_status', sa.String(length=50), nullable=False),
+    sa.Column('vaccination_status', sa.String(length=50), nullable=False),
     sa.Column('bio', sa.String(length=2000), nullable=True),
     sa.Column('question1', sa.String(length=500), nullable=True),
     sa.Column('question2', sa.String(length=500), nullable=True),
