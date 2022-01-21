@@ -25,37 +25,37 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
-    # BREED
-    op.create_table('account_types',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('breed', sa.String(100), nullable=False),
+    # # BREED
+    # op.create_table('account_types',
+    # sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('breed', sa.String(100), nullable=False),
 
-    sa.PrimaryKeyConstraint('id'),
-    )
+    # sa.PrimaryKeyConstraint('id'),
+    # )
 
-    # AGE
-    op.create_table('account_types',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('age', sa.String(50), nullable=False),
+    # # AGE
+    # op.create_table('account_types',
+    # sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('age', sa.String(50), nullable=False),
 
-    sa.PrimaryKeyConstraint('id'),
-    )
+    # sa.PrimaryKeyConstraint('id'),
+    # )
 
-    # VACCINATION STATUS MANY to MANYsudo s
-    op.create_table('account_types',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('vaccination_status', sa.String(50), nullable=False),
+    # # VACCINATION STATUS MANY to MANYsudo s
+    # op.create_table('account_types',
+    # sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('vaccination_status', sa.String(50), nullable=False),
 
-    sa.PrimaryKeyConstraint('id'),
-    )
+    # sa.PrimaryKeyConstraint('id'),
+    # )
 
-    # COLOR MANY to MANY
-    op.create_table('account_types',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('color', sa.String(50), nullable=False),
+    # # COLOR MANY to MANY
+    # op.create_table('account_types',
+    # sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('color', sa.String(50), nullable=False),
 
-    sa.PrimaryKeyConstraint('id'),
-    )
+    # sa.PrimaryKeyConstraint('id'),
+    # )
 
 
     op.create_table('users',
