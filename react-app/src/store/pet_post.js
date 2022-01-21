@@ -95,7 +95,7 @@ export default function reducer (state = initialState, action) {
         case ADD_POST:
             newState = {
                 ...state,
-                [action.payload.id]: action.payload
+                [action.payload.post.id]: action.payload.post
             }
             return newState
 

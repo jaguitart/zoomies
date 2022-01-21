@@ -41,7 +41,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
-    # VACCINATION STATUS MANY to MANY
+    # VACCINATION STATUS MANY to MANYsudo s
     op.create_table('account_types',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('vaccination_status', sa.String(50), nullable=False),
