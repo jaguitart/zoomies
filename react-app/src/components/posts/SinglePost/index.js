@@ -13,7 +13,9 @@ const SinglePost = ({ post }) => {
   return (
     <div>
       <div>
-        <img src={post?.pic_url1} width="150px" max-height="150px" alt={post.name} />
+        <NavLink to={`pet-post/${post.id}`}>
+          <img src={post?.pic_url1} width="150px" max-height="150px" alt={post.name} />
+        </NavLink>
       </div>
       <div>
         <div>{post?.type}</div>

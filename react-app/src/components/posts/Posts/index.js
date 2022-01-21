@@ -3,14 +3,14 @@ import SinglePost from "../SinglePost";
 
 
 const Posts = ({ posts }) => {
-  
+
 
   return (
     <div>
       {posts.map(post =>
-          <div key={post.id}>
-            <SinglePost post={post}/>
-          </div>
+        <div key={post.id}>
+            <SinglePost post={post} />
+        </div>
       )}
     </div>
   )

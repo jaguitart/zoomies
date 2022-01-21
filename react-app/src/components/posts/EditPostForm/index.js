@@ -41,7 +41,6 @@ const EditPostForm = () => {
       question2,
       question3
     }
-    console.log(editPost);
     let submited = await dispatch(updateOnePost(editPost))
     if (submited) {
       history.push(`/pet-post`)

@@ -54,7 +54,6 @@ export const addOnePost = post => async dispatch => {
 }
 
 export const updateOnePost = post => async dispatch => {
-    console.log(post);
     const response = await fetch(`/api/posts/${post.id}`, {
         method: 'PUT',
         headers: {

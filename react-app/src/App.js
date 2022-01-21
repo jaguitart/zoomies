@@ -10,6 +10,7 @@ import User from './components/User';
 import NewPostForm from './components/posts/NewPostForm';
 import EditPostForm from './components/posts/EditPostForm';
 import Posts from './components/posts/Posts'
+import PetPost from './components/posts/PetPost';
 import { getAllPosts } from './store/pet_post';
 import { authenticate } from './store/session';
 
@@ -47,6 +48,9 @@ function App() {
         </Route>
         <Route path='/pet-post/:id/edit' exact={true}>
           <EditPostForm posts={posts} />
+        </Route>
+        <Route path='/pet-post/:id' exact={true}>
+          <PetPost posts={posts} />
         </Route>
         <Route path='/pet-post' exact={true}>
           <Posts posts={posts} />
