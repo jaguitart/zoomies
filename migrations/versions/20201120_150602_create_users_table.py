@@ -33,13 +33,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
-    # SIZE
-    op.create_table('animal_sizes',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('size', sa.String(50), nullable=False),
+    # # SIZE
+    # op.create_table('animal_sizes',
+    # sa.Column('id', sa.Integer(), nullable=False),
+    # sa.Column('size', sa.String(50), nullable=False),
 
-    sa.PrimaryKeyConstraint('id'),
-    )
+    # sa.PrimaryKeyConstraint('id'),
+    # )
 
     # SEX
     op.create_table('animal_sexs',
@@ -123,7 +123,7 @@ def upgrade():
 
     sa.PrimaryKeyConstraint('id'),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
-    sa.ForeignKeyConstraint(['type_id'], ['users.id']),
+    sa.ForeignKeyConstraint(['type_id'], ['animal_types.id']),
     sa.ForeignKeyConstraint(['sex_id'], ['animal_sexs.id']),
     sa.ForeignKeyConstraint(['age_id'], ['animal_ages.id']),
     sa.ForeignKeyConstraint(['color_id'], ['animal_colors.id']),

@@ -8,6 +8,7 @@ def seed_animal_colors():
     Cream = Animal_color(color="Cream")
     Grey = Animal_color(color="Grey")
     White = Animal_color(color="White")
+    Red = Animal_color(color="Red(Ginger")
 
 
     db.session.add(Black)
@@ -16,6 +17,7 @@ def seed_animal_colors():
     db.session.add(Cream)
     db.session.add(Grey)
     db.session.add(White)
+    db.session.add(Red)
 
 
     db.session.commit()

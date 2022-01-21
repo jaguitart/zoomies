@@ -2,12 +2,12 @@ from app.models import db, Animal_age
 
 
 def seed_animal_ages():
-    Puppy = Animal_age(age="Baby")
+    Baby = Animal_age(age="Baby")
     Young = Animal_age(age="Young")
     Mature = Animal_age(age="Mature")
     Senior = Animal_age(age="Senior")
 
-    db.session.add(Puppy)
+    db.session.add(Baby)
     db.session.add(Young)
     db.session.add(Mature)
     db.session.add(Senior)

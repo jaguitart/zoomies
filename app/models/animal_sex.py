@@ -8,7 +8,7 @@ class Animal_sex(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   sex = db.Column(db.String(100))
   
-  pet_posts = db.relationship('Pet_Post', back_populates='animal_sexs')
+  pet_posts = db.relationship('Pet_Post', back_populates='sexs')
   
   
   def to_dict(self):

@@ -31,17 +31,17 @@ def new_post():
     if form.validate_on_submit():
         post = Pet_Post(
             user_id=data['user_id'],
-            type=form.data['type'],
+            type_id=form.data['type'],
             name=form.data['name'],
-            sex=form.data['sex'],
-            age=form.data['age'],
-            color=form.data['color'],
-            breed=form.data['breed'],
+            sex_id=form.data['sex'],
+            age_id=form.data['age'],
+            color_id=form.data['color'],
+            breed_id=form.data['breed'],
             pic_url1=form.data['pic_url1'],
             pic_url2=form.data['pic_url2'],
             pic_url3=form.data['pic_url3'],
             characteristics=form.data['characteristics'],
-            vaccination_status=form.data['vaccination_status'],
+            vaccination_status_id=form.data['vaccination_status'],
             bio=form.data['bio'],
             question1=form.data['question1'],
             question2=form.data['question2'],
@@ -62,12 +62,12 @@ def update_post(id):
 
     if form.validate_on_submit():
         post = Pet_Post.query.get(id)
-        post.age = form.data['age'],
+        post.age_id = form.data['age'],
         post.pic_url1 = form.data['pic_url1'],
         post.pic_url2 = form.data['pic_url2'],
         post.pic_url3 = form.data['pic_url3'],
         post.characteristics = form.data['characteristics'],
-        post.vaccination_status = form.data['vaccination_status'],
+        post.vaccination_status_id = form.data['vaccination_status'],
         post.bio = form.data['bio'],
         post.question1 = form.data['question1'],
         post.question2 = form.data['question2'],
