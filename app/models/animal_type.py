@@ -2,13 +2,13 @@ from .db import db
 
 
 class Animal_type(db.Model):
-  __tablename__ = 'types'
+  __tablename__ = 'animal_types'
   
   
   id = db.Column(db.Integer, primary_key=True)
   type = db.Column(db.String(100))
   
-  pet_posts = db.relationship('Pet_Post', back_populates='types')
+  pet_posts = db.relationship('Pet_Post', back_populates='animal_types')
   
   
   def to_dict(self):
