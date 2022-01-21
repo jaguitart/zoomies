@@ -55,7 +55,7 @@ const NewPostForm = () => {
         }
         let submited = await dispatch(addOnePost(newPost))
         if (submited) {
-            history.push(`/`)
+            history.push(`/pet-post`)
         }
     }
 

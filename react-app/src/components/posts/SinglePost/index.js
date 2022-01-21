@@ -1,17 +1,11 @@
 import React from "react";
-import {  useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteOnePost } from "../../../store/pet_post";
 
 const SinglePost = ({ post }) => {
   const dispatch = useDispatch()
-  const history = useHistory()
-  const user = useSelector(state => state.session.user ? state.session.user : undefined )
 
-  const handleDelete = id => {
-    dispatch(deleteOnePost(id))
-    // history.push(`/`)
-  }
+  const handleDelete = id => dispatch(deleteOnePost(id))
 
 
   return (
