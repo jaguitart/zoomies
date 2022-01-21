@@ -9,7 +9,7 @@ const Posts = ({ posts }) => {
     <div>
       {posts.map(post =>
           <div key={post.id}>
-            <SinglePost  post={post}/>
+            <SinglePost post={post}/>
           </div>
       )}
     </div>

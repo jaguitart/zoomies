@@ -54,6 +54,7 @@ export const addOnePost = post => async dispatch => {
 }
 
 export const updateOnePost = post => async dispatch => {
+    console.log(post);
     const response = await fetch(`/api/posts/${post.id}`, {
         method: 'PUT',
         headers: {
@@ -100,7 +101,7 @@ export default function reducer (state = initialState, action) {
             return newState
 
         case UPDATE_POST:
-            state[action.payload.id] = action.payload;
+            state[action.payload.post.id] = action.payload.post;
             newState = { ...state };
             return newState
 
@@ -108,8 +109,6 @@ export default function reducer (state = initialState, action) {
             newState = { ...state }
             delete newState[action.payload]
             return newState
-
-
 
 
         default:

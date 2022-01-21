@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { updateOnePost } from "../../../store/posts";
-import "./EditPostForm.css"
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { updateOnePost } from "../../../store/pet_post";
 
-const EditPostForm = ({ post }) => {
+const EditPostForm = () => {
   const history = useHistory();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [age, setAge] = useState('');
@@ -19,12 +19,17 @@ const EditPostForm = ({ post }) => {
   const [question2, setQuestion2] = useState('');
   const [question3, setQuestion3] = useState('');
 
+  const validate = () => {
+    // const errors = [];
+  }
+
   const onEdit = async (e) => {
     e.preventDefault();
     const errors = validate();
 
     if (errors) return setErrors(errors);
     const editPost = {
+      id,
       age,
       pic_url1,
       pic_url2,
@@ -36,40 +41,37 @@ const EditPostForm = ({ post }) => {
       question2,
       question3
     }
-    let submited = await dispatch(addOnePost(editPost))
+    console.log(editPost);
+    let submited = await dispatch(updateOnePost(editPost))
     if (submited) {
       history.push(`/pet-post`)
     }
   }
 
 
-  const updateCaption = e => {
-    setCaption(e.target.value)
-  }
-
-  const updateAge = e => { setAge(e.target.value) }
-  const updatePic_url1 = e => { setPic_url1(e.target.value) }
-  const updatePic_url2 = e => { setPic_url2(e.target.value) }
-  const updatePic_url3 = e => { setPic_url3(e.target.value) }
-  const updateCharacteristics = e => { setCharacteristics(e.target.value) }
-  const updateVaccination_status = e => { setVaccination_status(e.target.value) }
-  const updateBio = e => { setBio(e.target.value) }
-  const updateQuestion1 = e => { setQuestion1(e.target.value) }
-  const updateQuestion2 = e => { setQuestion2(e.target.value) }
-  const updateQuestion3 = e => { setQuestion3(e.target.value) }
+  const updateAge = e => setAge(e.target.value)
+  const updatePic_url1 = e => setPic_url1(e.target.value)
+  const updatePic_url2 = e => setPic_url2(e.target.value)
+  const updatePic_url3 = e => setPic_url3(e.target.value)
+  const updateCharacteristics = e => setCharacteristics(e.target.value)
+  const updateVaccination_status = e => setVaccination_status(e.target.value)
+  const updateBio = e => setBio(e.target.value)
+  const updateQuestion1 = e => setQuestion1(e.target.value)
+  const updateQuestion2 = e => setQuestion2(e.target.value)
+  const updateQuestion3 = e => setQuestion3(e.target.value)
 
 
   return (
     <form onSubmit={onEdit}>
-      
+
       <div className="errors">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      
+
       <div>
-        <p>Edit {post.name} profile</p>
+        <p>Edit</p>
       </div>
 
       <div>
@@ -132,7 +134,7 @@ const EditPostForm = ({ post }) => {
           onChange={updateQuestion3} />
       </div>
 
-      <button type='submit'>Re-Post</button>      
+      <button type='submit'>Re-Post</button>
     </form>
   )
 }

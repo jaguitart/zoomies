@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import NewPostForm from './components/posts/NewPostForm';
+import EditPostForm from './components/posts/EditPostForm';
 import Posts from './components/posts/Posts'
 import { getAllPosts } from './store/pet_post';
 import { authenticate } from './store/session';
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path='/new-pet-post' exact={true}>
           <NewPostForm />
+        </Route>
+        <Route path='/pet-post/:id/edit' exact={true}>
+          <EditPostForm posts={posts} />
         </Route>
         <Route path='/pet-post' exact={true}>
           <Posts posts={posts} />

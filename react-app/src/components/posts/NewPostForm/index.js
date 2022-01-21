@@ -59,21 +59,21 @@ const NewPostForm = () => {
         }
     }
 
-    const updateType = e => { setType(e.target.value) }
-    const updateName = e => { setName(e.target.value) }
-    const updateSex = e => { setSex(e.target.value) }
-    const updateAge = e => { setAge(e.target.value) }
-    const updateColor = e => { setColor(e.target.value) }
-    const updateBreed = e => { setBreed(e.target.value) }
-    const updatePic_url1 = e => { setPic_url1(e.target.value) }
-    const updatePic_url2 = e => { setPic_url2(e.target.value) }
-    const updatePic_url3 = e => { setPic_url3(e.target.value) }
-    const updateCharacteristics = e => { setCharacteristics(e.target.value) }
-    const updateVaccination_status = e => { setVaccination_status(e.target.value) }
-    const updateBio = e => { setBio(e.target.value) }
-    const updateQuestion1 = e => { setQuestion1(e.target.value) }
-    const updateQuestion2 = e => { setQuestion2(e.target.value) }
-    const updateQuestion3 = e => { setQuestion3(e.target.value) }
+    const updateType = e => setType(e.target.value)
+    const updateName = e => setName(e.target.value)
+    const updateSex = e => setSex(e.target.value)
+    const updateAge = e => setAge(e.target.value)
+    const updateColor = e => setColor(e.target.value)
+    const updateBreed = e => setBreed(e.target.value)
+    const updatePic_url1 = e => setPic_url1(e.target.value)
+    const updatePic_url2 = e => setPic_url2(e.target.value)
+    const updatePic_url3 = e => setPic_url3(e.target.value)
+    const updateCharacteristics = e => setCharacteristics(e.target.value)
+    const updateVaccination_status = e => setVaccination_status(e.target.value)
+    const updateBio = e => setBio(e.target.value)
+    const updateQuestion1 = e => setQuestion1(e.target.value)
+    const updateQuestion2 = e => setQuestion2(e.target.value)
+    const updateQuestion3 = e => setQuestion3(e.target.value)
 
     return (
         <div>

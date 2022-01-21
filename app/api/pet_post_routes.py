@@ -20,6 +20,7 @@ def get_all_posts():
     posts = Pet_Post.query.all()
     return {'posts': [post.to_dict() for post in posts]}
 
+
 # POST /api/posts
 @post_routes.route('/', methods=["POST"])
 @login_required
@@ -48,11 +49,11 @@ def new_post():
         )
         db.session.add(post)
         db.session.commit()
-        return post.to_dict()
+        return {'post': post.to_dict()}
     return (form.errors)
 
 
-# PUT /api/posts/:id
+# PUT /api/pet-posts/:id
 @post_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def update_post(id):
@@ -61,21 +62,21 @@ def update_post(id):
 
     if form.validate_on_submit():
         post = Pet_Post.query.get(id)
-        post.age=form.data['age'],
-        post.pic_url1=form.data['pic_url1'],
-        post.pic_url2=form.data['pic_url2'],
-        post.pic_url3=form.data['pic_url3'],
-        post.characteristics=form.data['characteristics'],
-        post.vaccination_status=form.data['vaccination_status'],
-        post.bio=form.data['bio'],
-        post.question1=form.data['question1'],
-        post.question2=form.data['question2'],
-        post.question3=form.data['question3']
+        post.age = form.data['age'],
+        post.pic_url1 = form.data['pic_url1'],
+        post.pic_url2 = form.data['pic_url2'],
+        post.pic_url3 = form.data['pic_url3'],
+        post.characteristics = form.data['characteristics'],
+        post.vaccination_status = form.data['vaccination_status'],
+        post.bio = form.data['bio'],
+        post.question1 = form.data['question1'],
+        post.question2 = form.data['question2'],
+        post.question3 = form.data['question3']
         db.session.commit()
         return {'post': post.to_dict()}
     return (form.errors)
 
-# DELETE /api/posts/:id
+# DELETE /api/pet-posts/:id
 @post_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_post(id):
@@ -83,6 +84,3 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
     return "Post deleted"
-
-
-
