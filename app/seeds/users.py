@@ -11,7 +11,7 @@ def seed_users():
         bio="I'm a Demo User",
         password='password',
         profile_pic='https://dineoncampus.com/img/staff-placeholder.jpg',
-        logo='',
+        # logo='',
         # lat='',
         # lng=''
     )

@@ -8,8 +8,7 @@ class Account_type(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   type = db.Column(db.String(255))
   
-  #revisar relacion
-  # users = db.relationship("User", back_populates="account_types")
+  users = db.relationship("User", back_populates="account_types")
   
   
   def to_dict(self):

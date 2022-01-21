@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    account_type_id = db.Column(db.Integer, nullable=False)
+    account_type_id = db.Column(db.Integer, db.ForeignKey("account_types.id"), nullable=False)
     username = db.Column(db.String(50), nullable=False, unique=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
@@ -21,8 +21,7 @@ class User(db.Model, UserMixin):
     lng = db.Column(db.Float)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
-    #revisar relacion
-    # account_types = db.relationship("Account_type", back_populates="users")
+    account_types = db.relationship("Account_type", back_populates="users")
     pet_posts = db.relationship('Pet_Post', back_populates='users')
 
     @property
