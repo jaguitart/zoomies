@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const FormSelect = ({ field, updateValue }) => {
+const FormSelect = ({ field, updateValue, preselection }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -11,6 +11,9 @@ const FormSelect = ({ field, updateValue }) => {
     }
     fetchData(field)
   }, [field]);
+
+  //NO FUNCIONA EL CHECKED NO PERMITE CAMBIAR REVISAR ALGUNA ALTERNATIVA 
+  // checked={preselection === singleData[field]}
 
 
   return (

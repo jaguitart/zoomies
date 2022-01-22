@@ -31,10 +31,6 @@ const NewPostForm = () => {
         // const errors = [];
     }
 
-    // fetchData('sex');
-    // fetchData('breed');
-
-
 
     const submit = async (e) => {
         e.preventDefault();
@@ -90,39 +86,15 @@ const NewPostForm = () => {
                     ))}
                 </div>
                 <p>Create new Pet post</p>
-                <FormSelect field='type' />
-                <FormSelect field='sex' />
-                <FormSelect field='age' />
-                <FormDropdown field='color' />
-                <FormSelect field='vaccination_status' />
-                <div>
-                    <label htmlFor='type' />
-                    <input name='type' type='text' placeholder="Type" value={type}
-                        onChange={updateType} />
-                </div>
-
+                <FormSelect field='type' updateValue={updateType} />
+                <FormSelect field='sex' updateValue={updateSex} />
+                <FormSelect field='age' updateValue={updateAge} />
+                <FormDropdown field='color' updateValue={updateColor} />
+                <FormSelect field='vaccination_status' updateValue={updateVaccination_status} />
                 <div>
                     <label htmlFor='name' />
                     <input name='name' type='text' placeholder="Name" value={name}
                         onChange={updateName} />
-                </div>
-
-                <div>
-                    <label htmlFor='sex' />
-                    <input name='sex' type='text' placeholder="Sex" value={sex}
-                        onChange={updateSex} />
-                </div>
-
-                <div>
-                    <label htmlFor='age' />
-                    <input name='age' type='text' placeholder="Age" value={age}
-                        onChange={updateAge} />
-                </div>
-
-                <div>
-                    <label htmlFor='color' />
-                    <input name='color' type='text' placeholder="Color" value={color}
-                        onChange={updateColor} />
                 </div>
 
                 <div>
@@ -153,12 +125,6 @@ const NewPostForm = () => {
                     <label htmlFor='characteristics' />
                     <input name='characteristics' type='text' placeholder="Characteristics" value={characteristics}
                         onChange={updateCharacteristics} />
-                </div>
-
-                <div>
-                    <label htmlFor='vaccination_status' />
-                    <input name='vaccination_status' type='text' placeholder="Vaccination Status" value={vaccination_status}
-                        onChange={updateVaccination_status} />
                 </div>
 
                 <div>

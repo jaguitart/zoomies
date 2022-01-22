@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const FormDropdown = ({ field }) => {
+const FormDropdown = ({ field, updateValue }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const FormDropdown = ({ field }) => {
   return (
     <div>
       {data &&
-        < select >
+        < select onChange={updateValue}>
           {data.map(singleData => <option key={singleData.id} value={singleData.id}>{singleData[field]}</option>)}
         </select>
       }

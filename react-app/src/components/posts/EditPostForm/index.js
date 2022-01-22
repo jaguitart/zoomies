@@ -1,23 +1,38 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateOnePost } from "../../../store/pet_post";
+import FormSelect from "../FormSelect";
+
 
 const EditPostForm = () => {
   const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
-  const [age, setAge] = useState('');
-  const [pic_url1, setPic_url1] = useState('');
-  const [pic_url2, setPic_url2] = useState('');
-  const [pic_url3, setPic_url3] = useState('');
-  const [characteristics, setCharacteristics] = useState('');
-  const [vaccination_status, setVaccination_status] = useState('');
-  const [bio, setBio] = useState('');
-  const [question1, setQuestion1] = useState('');
-  const [question2, setQuestion2] = useState('');
-  const [question3, setQuestion3] = useState('');
+
+  const oldData = useSelector(state => state?.posts[id])
+  const oldAge = oldData.age?oldData.age:''
+  const oldPic1 = oldData.pic_url1?oldData.pic_url1:''
+  const oldPic2 = oldData.pic_url2?oldData.pic_url2:''
+  const oldPic3 = oldData.pic_url3?oldData.pic_url3:''
+  const oldCharacteristics = oldData.characteristics?oldData.characteristics:''
+  const oldVaccination_status = oldData.vaccination_status?oldData.vaccination_status:''
+  const oldBio = oldData.bio?oldData.bio:''
+  const oldQ1 = oldData.question1?oldData.question1:''
+  const oldQ2 = oldData.question2?oldData.question2:''
+  const oldQ3 = oldData.question3?oldData.question3:''
+
+  const [age, setAge] = useState(oldAge);
+  const [pic_url1, setPic_url1] = useState(oldPic1);
+  const [pic_url2, setPic_url2] = useState(oldPic2);
+  const [pic_url3, setPic_url3] = useState(oldPic3);
+  const [characteristics, setCharacteristics] = useState(oldCharacteristics);
+  const [vaccination_status, setVaccination_status] = useState(oldVaccination_status);
+  const [bio, setBio] = useState(oldBio);
+  const [question1, setQuestion1] = useState(oldQ1);
+  const [question2, setQuestion2] = useState(oldQ2);
+  const [question3, setQuestion3] = useState(oldQ3);
 
   const validate = () => {
     // const errors = [];
@@ -73,12 +88,8 @@ const EditPostForm = () => {
         <p>Edit</p>
       </div>
 
-      <div>
-        <label htmlFor='age' />
-        <input name='age' type='text' placeholder="Age" value={age}
-          onChange={updateAge} />
-      </div>
-
+      <FormSelect field='age' updateValue={updateAge} preselection={oldAge}/>
+      <FormSelect field='vaccination_status' updateValue={updateVaccination_status} preselection={oldVaccination_status} />
       <div>
         <label htmlFor='pic_url1' />
         <input name='pic_url1' type='text' placeholder="Picture" value={pic_url1}
@@ -101,12 +112,6 @@ const EditPostForm = () => {
         <label htmlFor='characteristics' />
         <input name='characteristics' type='text' placeholder="Characteristics" value={characteristics}
           onChange={updateCharacteristics} />
-      </div>
-
-      <div>
-        <label htmlFor='vaccination_status' />
-        <input name='vaccination_status' type='text' placeholder="Vaccination Status" value={vaccination_status}
-          onChange={updateVaccination_status} />
       </div>
 
       <div>
