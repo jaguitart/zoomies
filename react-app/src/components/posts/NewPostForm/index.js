@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { addOnePost } from "../../../store/pet_post";
-import FormDropdown from "../FormDropdown";
-import FormSelect from "../FormSelect";
+import FormDropdown from "../../FormsComponents/FormDropdown";
+import FormSelect from "../../FormsComponents/FormSelect";
+import FormInput from "../../FormsComponents/FormInput";
+
 
 const NewPostForm = () => {
     const history = useHistory();
@@ -91,65 +93,27 @@ const NewPostForm = () => {
                 <FormSelect field='age' updateValue={updateAge} />
                 <FormDropdown field='color' updateValue={updateColor} />
                 <FormSelect field='vaccination_status' updateValue={updateVaccination_status} />
-                <div>
-                    <label htmlFor='name' />
-                    <input name='name' type='text' placeholder="Name" value={name}
-                        onChange={updateName} />
-                </div>
 
-                <div>
-                    <label htmlFor='breed' />
-                    <input name='breed' type='text' placeholder="Breed" value={breed}
-                        onChange={updateBreed} />
-                </div>
+                <FormInput field='name' updateValue={updateName} placeholder='Name' />
+                
+                <FormInput field='breed' updateValue={updateBreed} placeholder='Breed' />
+                
+                <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' />
 
-                <div>
-                    <label htmlFor='pic_url1' />
-                    <input name='pic_url1' type='text' placeholder="Picture" value={pic_url1}
-                        onChange={updatePic_url1} />
-                </div>
+                <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' />
 
-                <div>
-                    <label htmlFor='pic_url2' />
-                    <input name='pic_url2' type='text' placeholder="Picture" value={pic_url2}
-                        onChange={updatePic_url2} />
-                </div>
+                <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' />
 
-                <div>
-                    <label htmlFor='pic_url3' />
-                    <input name='pic_url3' type='text' placeholder="Picture" value={pic_url3}
-                        onChange={updatePic_url3} />
-                </div>
+                <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
 
-                <div>
-                    <label htmlFor='characteristics' />
-                    <input name='characteristics' type='text' placeholder="Characteristics" value={characteristics}
-                        onChange={updateCharacteristics} />
-                </div>
+                <FormInput field='bio' updateValue={updateBio} placeholder='Bio' />
 
-                <div>
-                    <label htmlFor='bio' />
-                    <input name='bio' type='text' placeholder="Bio" value={bio}
-                        onChange={updateBio} />
-                </div>
+                <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' />
 
-                <div>
-                    <label htmlFor='question1' />
-                    <input name='question1' type='text' placeholder="Question" value={question1}
-                        onChange={updateQuestion1} />
-                </div>
+                <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' />
 
-                <div>
-                    <label htmlFor='question2' />
-                    <input name='question2' type='text' placeholder="Question" value={question2}
-                        onChange={updateQuestion2} />
-                </div>
+                <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' />
 
-                <div>
-                    <label htmlFor='question3' />
-                    <input name='question3' type='text' placeholder="Question" value={question3}
-                        onChange={updateQuestion3} />
-                </div>
 
                 <button type='submit'>Post</button>
             </form>

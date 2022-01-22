@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import FormSelect from '../posts/FormSelect';
+import FormSelect from '../FormsComponents/FormSelect';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [account_type_id, setAccount_type_id] = useState('');

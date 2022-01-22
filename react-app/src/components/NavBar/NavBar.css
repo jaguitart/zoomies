@@ -1,0 +1,6 @@
+.navBarDiv {
+  border: red solid 1px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}

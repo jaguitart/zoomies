@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateOnePost } from "../../../store/pet_post";
-import FormSelect from "../FormSelect";
-
+import FormSelect from "../../FormsComponents/FormSelect";
+import FormInput from "../../FormsComponents/FormInput";
 
 const EditPostForm = () => {
   const history = useHistory();
@@ -12,16 +12,16 @@ const EditPostForm = () => {
   const [errors, setErrors] = useState([]);
 
   const oldData = useSelector(state => state?.posts[id])
-  const oldAge = oldData.age?oldData.age:''
-  const oldPic1 = oldData.pic_url1?oldData.pic_url1:''
-  const oldPic2 = oldData.pic_url2?oldData.pic_url2:''
-  const oldPic3 = oldData.pic_url3?oldData.pic_url3:''
-  const oldCharacteristics = oldData.characteristics?oldData.characteristics:''
-  const oldVaccination_status = oldData.vaccination_status?oldData.vaccination_status:''
-  const oldBio = oldData.bio?oldData.bio:''
-  const oldQ1 = oldData.question1?oldData.question1:''
-  const oldQ2 = oldData.question2?oldData.question2:''
-  const oldQ3 = oldData.question3?oldData.question3:''
+  const oldAge = oldData.age ? oldData.age : ''
+  const oldPic1 = oldData.pic_url1 ? oldData.pic_url1 : ''
+  const oldPic2 = oldData.pic_url2 ? oldData.pic_url2 : ''
+  const oldPic3 = oldData.pic_url3 ? oldData.pic_url3 : ''
+  const oldCharacteristics = oldData.characteristics ? oldData.characteristics : ''
+  const oldVaccination_status = oldData.vaccination_status ? oldData.vaccination_status : ''
+  const oldBio = oldData.bio ? oldData.bio : ''
+  const oldQ1 = oldData.question1 ? oldData.question1 : ''
+  const oldQ2 = oldData.question2 ? oldData.question2 : ''
+  const oldQ3 = oldData.question3 ? oldData.question3 : ''
 
   const [age, setAge] = useState(oldAge);
   const [pic_url1, setPic_url1] = useState(oldPic1);
@@ -88,55 +88,24 @@ const EditPostForm = () => {
         <p>Edit</p>
       </div>
 
-      <FormSelect field='age' updateValue={updateAge} preselection={oldAge}/>
+      <FormSelect field='age' updateValue={updateAge} preselection={oldAge} />
       <FormSelect field='vaccination_status' updateValue={updateVaccination_status} preselection={oldVaccination_status} />
-      <div>
-        <label htmlFor='pic_url1' />
-        <input name='pic_url1' type='text' placeholder="Picture" value={pic_url1}
-          onChange={updatePic_url1} />
-      </div>
 
-      <div>
-        <label htmlFor='pic_url2' />
-        <input name='pic_url2' type='text' placeholder="Picture" value={pic_url2}
-          onChange={updatePic_url2} />
-      </div>
-
-      <div>
-        <label htmlFor='pic_url3' />
-        <input name='pic_url3' type='text' placeholder="Picture" value={pic_url3}
-          onChange={updatePic_url3} />
-      </div>
-
-      <div>
-        <label htmlFor='characteristics' />
-        <input name='characteristics' type='text' placeholder="Characteristics" value={characteristics}
-          onChange={updateCharacteristics} />
-      </div>
-
-      <div>
-        <label htmlFor='bio' />
-        <input name='bio' type='text' placeholder="Bio" value={bio}
-          onChange={updateBio} />
-      </div>
-
-      <div>
-        <label htmlFor='question1' />
-        <input name='question1' type='text' placeholder="Question" value={question1}
-          onChange={updateQuestion1} />
-      </div>
-
-      <div>
-        <label htmlFor='question2' />
-        <input name='question2' type='text' placeholder="Question" value={question2}
-          onChange={updateQuestion2} />
-      </div>
-
-      <div>
-        <label htmlFor='question3' />
-        <input name='question3' type='text' placeholder="Question" value={question3}
-          onChange={updateQuestion3} />
-      </div>
+      <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' preselection={oldPic1} />
+      
+      <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' preselection={oldPic2} />
+      
+      <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' preselection={oldPic3} />
+    
+      <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' preselection={characteristics} />
+      
+      <FormInput field='bio' updateValue={updateBio} placeholder='Bio' preselection={oldBio} />
+      
+      <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' preselection={question1} />
+      
+      <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' preselection={question2} />
+      
+      <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' preselection={question3} />
 
       <button type='submit'>Re-Post</button>
     </form>
