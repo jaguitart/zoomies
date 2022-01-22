@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-
+import FormSelect from '../posts/FormSelect';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [account_type_id, setAccount_type_id] = useState('');
@@ -20,22 +20,22 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(account_type_id, username, name, email, bio, password, profile_pic, logo));
+    const data = await dispatch(signUp(account_type_id, username, name, email, bio, password, profile_pic, logo));
       if (data) {
         setErrors(data)
       }
     }
   };
 
-  const updateAccountTypeId = (e) => {setAccount_type_id(e.target.value)};
-  const updateUsername = (e) => {setUsername(e.target.value)};
-  const updateName = (e) => {setName(e.target.value)};
-  const updateEmail = (e) => {setEmail(e.target.value)};
-  const updateBio = (e) => {setBio(e.target.value)};
-  const updatePassword = (e) => {setPassword(e.target.value)};
-  const updateRepeatPassword = (e) => {setRepeatPassword(e.target.value)};
-  const updateProfile_pic = (e) => {setProfile_pic(e.target.value)};
-  const updateLogo = (e) => {setLogo(e.target.value)};
+  const updateAccountTypeId = (e) => { setAccount_type_id(e.target.value) };
+  const updateUsername = (e) => { setUsername(e.target.value) };
+  const updateName = (e) => { setName(e.target.value) };
+  const updateEmail = (e) => { setEmail(e.target.value) };
+  const updateBio = (e) => { setBio(e.target.value) };
+  const updatePassword = (e) => { setPassword(e.target.value) };
+  const updateRepeatPassword = (e) => { setRepeatPassword(e.target.value) };
+  const updateProfile_pic = (e) => { setProfile_pic(e.target.value) };
+  const updateLogo = (e) => { setLogo(e.target.value) };
 
 
   if (user) {
@@ -49,17 +49,8 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>Account Type</label>
-        <input
-          type='number'
-          max='2'
-          min='1'
-          name='account_type_id'
-          onChange={updateAccountTypeId}
-          value={account_type_id}
-        ></input>
-      </div>
+
+      <FormSelect field='account_type' updateValue={updateAccountTypeId} />
 
       <div>
         <label>User Name</label>

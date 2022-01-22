@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { addOnePost } from "../../../store/pet_post";
+import FormDropdown from "../FormDropdown";
+import FormSelect from "../FormSelect";
 
 const NewPostForm = () => {
     const history = useHistory();
@@ -28,6 +30,10 @@ const NewPostForm = () => {
     const validate = () => {
         // const errors = [];
     }
+
+    // fetchData('sex');
+    // fetchData('breed');
+
 
 
     const submit = async (e) => {
@@ -84,6 +90,11 @@ const NewPostForm = () => {
                     ))}
                 </div>
                 <p>Create new Pet post</p>
+                <FormSelect field='type' />
+                <FormSelect field='sex' />
+                <FormSelect field='age' />
+                <FormDropdown field='color' />
+                <FormSelect field='vaccination_status' />
                 <div>
                     <label htmlFor='type' />
                     <input name='type' type='text' placeholder="Type" value={type}
