@@ -31,6 +31,7 @@ class Pet_Post(db.Model):
     colors = db.relationship("Animal_color", back_populates="pet_posts")
     breeds = db.relationship("Animal_breed", back_populates="pet_posts")
     vaccination_status = db.relationship("Animal_vaccination_status", back_populates="pet_posts")
+    applications = db.relationship('Application', back_populates='pet_posts')
 
     def to_dict(self):
 

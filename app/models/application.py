@@ -17,7 +17,7 @@ class Application(db.Model):
 
 
     users = db.relationship('User', back_populates='applications')
-    posts = db.relationship('Pet_Post', back_populates='applications')
+    pet_posts = db.relationship('Pet_Post', back_populates='applications')
 
 
     def to_dict(self):
