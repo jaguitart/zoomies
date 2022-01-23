@@ -2,7 +2,7 @@ from .db import db
 
 
 class Animal_type(db.Model):
-  __tablename__ = 'types'
+  __tablename__ = 'animal_types'
   
   
   id = db.Column(db.Integer, primary_key=True)

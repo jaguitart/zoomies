@@ -22,11 +22,11 @@ const PetPost = ({ posts }) => {
         <div>Type:{post?.type}</div>
         <div>Sex:{post?.sex}</div>
         <div>Color:{post?.color}</div>
-        <div>Age:{post?.age}</div>
+        <div>Age:{post?.age.age}</div>
         <div>Name:{post?.name}</div>
         <div>Description:{post?.bio}</div>
         <div>Characteristics:{post?.characteristics}</div>
-        <div>Vaccination Status:{post?.vaccination_status}</div>
+        <div>Vaccination Status:{post?.vaccination_status.vaccination_status}</div>
         <div>Organization:{post?.username}</div>
         <div>Q1:{post?.question1}</div>
         <div>Q2:{post?.question2}</div>

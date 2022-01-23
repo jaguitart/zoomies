@@ -8,7 +8,7 @@ class Animal_age(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   age = db.Column(db.String(50))
   
-  pet_posts = db.relationship('Pet_Post', back_populates='animal_ages')
+  pet_posts = db.relationship('Pet_Post', back_populates='ages')
   
   
   def to_dict(self):

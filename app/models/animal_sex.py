@@ -2,7 +2,7 @@ from .db import db
 
 
 class Animal_sex(db.Model):
-  __tablename__ = 'sexs'
+  __tablename__ = 'animal_sexs'
   
   
   id = db.Column(db.Integer, primary_key=True)
