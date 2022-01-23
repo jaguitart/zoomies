@@ -19,7 +19,7 @@ const SinglePost = ({ post }) => {
       </div>
       <div>
         <div>{post?.type}</div>
-        <div>{post?.age}</div>
+        <div>{post?.age.age}</div>
         <div>{post?.name}</div>
       </div>
       <NavLink to={`/pet-post/${post.id}/edit`}>
