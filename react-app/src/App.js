@@ -25,9 +25,9 @@ function App() {
       await dispatch(authenticate());
       await dispatch(getAllApplications());
       await dispatch(getAllPosts());
-      const response = await fetch(`/api/users`);
-      const users = await response.json();
-      setUsers(users.users);
+      // const response = await fetch(`/api/users`);
+      // const users = await response.json();
+      // setUsers(users.users);
       setLoaded(true);
     })();
   }, [dispatch]);
