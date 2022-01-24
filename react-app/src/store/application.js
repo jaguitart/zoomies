@@ -23,7 +23,7 @@ const deleteApplication = application => ({
     payload: application
 })
 
-//EVALUAR SI VALE LA PENA HACERLO EN FUNCION DE LA ORGANIZACION
+//EVALUAR SI VALE LA PENA HACERLO EN FUNCION DE LA ORGANIZACION Y NO DEL POST ESPECIFICO
 export const getAllApplications = postId => async dispatch => {
     const res = await fetch(`/api/pet-posts/${postId}/applications`)
     if (res.ok) {
@@ -84,7 +84,7 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_APPLICATIONS:
             newState = {}
-            action.payload.applications.map((application) => { newState[application.id] = application })
+            action.payload.applications.map((application) => newState[application.id] = application )
             return newState
         case ADD_APPLICATION:
             newState = {

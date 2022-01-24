@@ -11,6 +11,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.pet_post_routes import post_routes
 from .api.dropdown_routes import dropdown_routes
+from .api.application_routes import application_routes
 
 from .seeds import seed_commands
 
@@ -36,6 +37,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(dropdown_routes, url_prefix='/api/dropdown')
+app.register_blueprint(application_routes, url_prefix='/api/applications')
 db.init_app(app)
 Migrate(app, db)
 

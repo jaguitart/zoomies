@@ -89,9 +89,13 @@ const NewPostForm = () => {
                 </div>
                 <p>Create new Pet post</p>
                 <FormSelect field='type' updateValue={updateType} />
+                
                 <FormSelect field='sex' updateValue={updateSex} />
+                
                 <FormSelect field='age' updateValue={updateAge} />
+                
                 <FormDropdown field='color' updateValue={updateColor} />
+                
                 <FormSelect field='vaccination_status' updateValue={updateVaccination_status} />
 
                 <FormInput field='name' updateValue={updateName} placeholder='Name' />
