@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import posts from './pet_post'
 import applications from './application'
+import users from './user'
 
 const rootReducer = combineReducers({
   session,
   posts,
-  applications
+  applications,
+  users
 });
 
 

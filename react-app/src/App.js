@@ -14,27 +14,24 @@ import PetPost from './components/posts/PetPost';
 import { getAllPosts } from './store/pet_post';
 import { authenticate } from './store/session';
 import { getAllApplications } from './store/application';
-
+import { getUsers } from './store/user';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [users, setUsers] = useState({});
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
       await dispatch(getAllApplications());
       await dispatch(getAllPosts());
-      // const response = await fetch(`/api/users`);
-      // const users = await response.json();
-      // setUsers(users.users);
+      await dispatch(getUsers());
       setLoaded(true);
     })();
   }, [dispatch]);
 
 
   const posts = Object.values(useSelector(state => state.posts))
-
+  const users = Object.values(useSelector(state => state.users))
 
   if (!loaded) {
     return null;
