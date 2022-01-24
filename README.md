@@ -97,7 +97,7 @@ hurt to run it again.
       heroku container:release web -a aa-zoomies
       ```
 
-10. set up your database
+10. set up your database   
 
       ```bash
       heroku run -a aa-zoomies flask db upgrade
