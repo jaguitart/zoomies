@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Pet_Post
+from app.models import db, Pet_Post, Application
 from flask_login import login_required, current_user
-from app.forms import NewPetPostForm
+from app.forms import NewPetPostForm, NewApplicationForm
 
 
 post_routes = Blueprint('posts', __name__)
@@ -84,3 +84,31 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
     return "Post deleted"
+
+# GET /api/pet-posts/:id/applications
+@post_routes.route('/<int:id>/applications')
+def get_posts_applications(id):
+    applications = Application.query.filter(Application.post_id==id).all()
+    return {'applications': [application.to_dict() for application in applications]}
+
+
+# POST /api/pet-posts/:id/applications
+@post_routes.route('/<int:id>/applications', methods=["POST"])
+@login_required
+def new_application(id):
+    data = request.json
+    form = NewApplicationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        application = Application(
+            user_id=data['user_id'],
+            post_id=data['post_id'],
+            answer1 = form.data['answer1'],
+            answer2 = form.data['answer2'],
+            answer3 = form.data['answer3']
+        )
+        db.session.add(application)
+        db.session.commit()
+        return application.to_dict()
+    return (form.errors)
+

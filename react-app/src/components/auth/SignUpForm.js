@@ -50,7 +50,7 @@ const SignUpForm = () => {
         ))}
       </div>
 
-      <FormSelect field='account_type' updateValue={updateAccountTypeId} />
+      <FormSelect field='account_type' updateValue={updateAccountTypeId} preselection={account_type_id} />
 
       <div>
         <label>User Name</label>

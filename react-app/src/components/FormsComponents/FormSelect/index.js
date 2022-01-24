@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 const FormSelect = ({ field, updateValue, preselection }) => {
   const [data, setData] = useState([]);
 
-
   useEffect(() => {
     async function fetchData(dropdown) {
       const res = await fetch(`/api/dropdown/${dropdown}`);

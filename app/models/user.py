@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
 
     account_types = db.relationship("Account_type", back_populates="users")
     pet_posts = db.relationship('Pet_Post', back_populates='users')
+    applications = db.relationship('Application', back_populates='users')
 
     @property
     def password(self):
@@ -38,6 +39,10 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'account_type': {'id':self.account_types.id, 'type':self.account_types.type},
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'bio': self.bio,
+            'profile_pic': self.profile_pic,
+            'logo': self.logo,
         }

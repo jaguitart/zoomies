@@ -23,13 +23,14 @@ const NavBar = () => {
             <NavLink to='/sign-up' exact={true} activeClassName='active'>
               Sign Up
             </NavLink>
-
-            <LogoutButton />
           </div>
         )}
-        {/* <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink> */}
+        {user?.id && (
+          <LogoutButton />
+        )}
+        <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+          Profile
+        </NavLink>
 
         <NavLink to='/new-pet-post' exact={true} activeClassName='active'>
           New-Post

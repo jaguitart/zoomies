@@ -12,12 +12,12 @@ const EditPostForm = () => {
   const [errors, setErrors] = useState([]);
 
   const oldData = useSelector(state => state?.posts[id])
-  let oldAge = oldData.age ? oldData.age : ''
+  const oldAge = oldData.age ? oldData.age : ''
   const oldPic1 = oldData.pic_url1 ? oldData.pic_url1 : ''
   const oldPic2 = oldData.pic_url2 ? oldData.pic_url2 : ''
   const oldPic3 = oldData.pic_url3 ? oldData.pic_url3 : ''
   const oldCharacteristics = oldData.characteristics ? oldData.characteristics : ''
-  let oldVaccination_status = oldData.vaccination_status ? oldData.vaccination_status : ''
+  const oldVaccination_status = oldData.vaccination_status ? oldData.vaccination_status : ''
   const oldBio = oldData.bio ? oldData.bio : ''
   const oldQ1 = oldData.question1 ? oldData.question1 : ''
   const oldQ2 = oldData.question2 ? oldData.question2 : ''
@@ -64,10 +64,7 @@ const EditPostForm = () => {
   }
 
 
-  const updateAge = e => {
-    setAge(e.target.value)
-    console.log(age);
-  }
+  const updateAge = e => setAge(e.target.value)
   const updatePic_url1 = e => setPic_url1(e.target.value)
   const updatePic_url2 = e => setPic_url2(e.target.value)
   const updatePic_url3 = e => setPic_url3(e.target.value)

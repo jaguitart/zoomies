@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { deleteOnePost } from "../../../store/pet_post";
-
+import { Modal } from "../../../context/Modal";
+import NewApplicationForm from "../../applications/NewApplication";
 
 const PetPost = ({ posts }) => {
   const { id } = useParams();
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch()
   const post = posts.find(post => +post.id === +id)
   const handleDelete = id => dispatch(deleteOnePost(id))
@@ -28,14 +30,19 @@ const PetPost = ({ posts }) => {
         <div>Characteristics:{post?.characteristics}</div>
         <div>Vaccination Status:{post?.vaccination_status.vaccination_status}</div>
         <div>Organization:{post?.username}</div>
-        <div>Q1:{post?.question1}</div>
-        <div>Q2:{post?.question2}</div>
-        <div>Q3:{post?.question3}</div>
       </div>
       <NavLink to={`/pet-post/${post.id}/edit`}>
         <button>Edit</button>
       </NavLink>
+
       <button onClick={() => handleDelete(post.id)}>Delete</button>
+
+      <button onClick={() => setShowModal(true)}>Apply</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(!showModal)}>
+          <NewApplicationForm post={post}/>
+        </Modal>
+      )}
     </div>
   )
 }
