@@ -27,9 +27,9 @@ const deletePost = post => ({
 
 
 export const getAllPosts = () => async dispatch => {
-    const response = await fetch('/api/posts/')
-    if (response.ok) {
-        const data = await response.json();
+    const res = await fetch('/api/posts/')
+    if (res.ok) {
+        const data = await res.json();
         if (data.errors) {
             return;
         }
@@ -39,40 +39,40 @@ export const getAllPosts = () => async dispatch => {
 }
 
 export const addOnePost = post => async dispatch => {
-    const response = await fetch('/api/posts/', {
+    const res = await fetch('/api/posts/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(post)
     })
-    if (response.ok) {
-        const data = await response.json();
+    if (res.ok) {
+        const data = await res.json();
         dispatch(addPost(data))
         return data
     }
 }
 
 export const updateOnePost = post => async dispatch => {
-    const response = await fetch(`/api/posts/${post.id}`, {
+    const res = await fetch(`/api/posts/${post.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(post)
     })
-    if (response.ok) {
-        const data = await response.json();
+    if (res.ok) {
+        const data = await res.json();
         dispatch(updatePost(data))
         return data
     }
 }
 
 export const deleteOnePost = id => async dispatch => {
-    const response = await fetch(`/api/posts/${id}`, {
+    const res = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
     })
-    if (response.ok) {
+    if (res.ok) {
         dispatch(deletePost(id))
         return 'Successfully deleted.'
     }
@@ -83,7 +83,7 @@ export const deleteOnePost = id => async dispatch => {
 
 const initialState = {};
 
-export default function reducer (state = initialState, action) {
+export default function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
 

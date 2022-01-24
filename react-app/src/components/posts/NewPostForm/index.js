@@ -88,20 +88,20 @@ const NewPostForm = () => {
                     ))}
                 </div>
                 <p>Create new Pet post</p>
-                <FormSelect field='type' updateValue={updateType} />
-                
-                <FormSelect field='sex' updateValue={updateSex} />
-                
-                <FormSelect field='age' updateValue={updateAge} />
-                
+                <FormSelect field='type' updateValue={updateType} preselection={type} />
+
+                <FormSelect field='sex' updateValue={updateSex} preselection={sex} />
+
+                <FormSelect field='age' updateValue={updateAge} preselection={age}/>
+
                 <FormDropdown field='color' updateValue={updateColor} />
-                
-                <FormSelect field='vaccination_status' updateValue={updateVaccination_status} />
+
+                <FormSelect field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status}/>
 
                 <FormInput field='name' updateValue={updateName} placeholder='Name' />
-                
+
                 <FormInput field='breed' updateValue={updateBreed} placeholder='Breed' />
-                
+
                 <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' />
 
                 <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' />

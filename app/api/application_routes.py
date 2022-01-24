@@ -6,11 +6,11 @@ from app.forms.application_form import NewApplicationForm
 
 application_routes = Blueprint('applications', __name__)
 
-# GET /api/applications/:applicationId
-@application_routes.route('/<int:id>')
-def get_single_application(id):
-    application = Application.query.get(id)
-    return application.to_dict()
+# GET /api/applications/
+@application_routes.route('/')
+def get_all_application():
+    applications = Application.query.all()
+    return {'applications': [application.to_dict() for application in applications]}
 
 # DELETE /api/applications/:applicationId
 @application_routes.route('/<int:id>', methods=["DELETE"])

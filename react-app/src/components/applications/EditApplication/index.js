@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateOneApplication } from '../../../store/application'
 import FormInput from "../../FormsComponents/FormInput";
 
 
-const EditApplicationForm = () => {
-  const history = useHistory();
-  const { id } = useParams();
+const EditApplicationForm = ({ application, setShowModal }) => {
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
 
-  //DATA DEBE COINCIDIR CON LA APLICACION, LA FORMA DE BUSCARLO PUEDE VENIR DEL SELECTOR
-  //U OTRA FORMA PERO REVISAR!!!
-  const userId = useSelector(state => state.session.user ? state.session.user.id : undefined)
-  const oldData = useSelector(state => state?.applications[id])
-  const oldA1 = oldData.answer1 ? oldData.answer1 : ''
-  const oldA2 = oldData.answer2 ? oldData.answer2 : ''
-  const oldA3 = oldData.answer3 ? oldData.answer3 : ''
+  const oldA1 = application.answer1 ? application.answer1 : ''
+  const oldA2 = application.answer2 ? application.answer2 : ''
+  const oldA3 = application.answer3 ? application.answer3 : ''
 
 
   const [answer1, setAnswer1] = useState(oldA1);
@@ -28,24 +22,23 @@ const EditApplicationForm = () => {
     // const errors = [];
   }
 
-  //USEEFFECT NECESARIO PARA ACTUALIZAR EN EL MISMO MODAL. SI REDIRECCIONO NO ES NECESARIO SOLO NECESITO USEHISTORY
-
   const onEdit = async e => {
     e.preventDefault()
     const errors = validate();
 
     if (errors) return setErrors(errors);
     const editApplication = {
-      user_id: userId,
-      post_id: postId,
+      id: application.id,
+      user_id: application.user_id,
+      post_id: application.post_id,
       answer1,
       answer2,
       answer3
     }
-
+    console.log(editApplication);
     let submited = await dispatch(updateOneApplication(editApplication))
     if (submited) {
-      //CERRAR MODAL Y ENVIAR INFO A DB
+      setShowModal(false)
     }
   }
 
@@ -55,7 +48,6 @@ const EditApplicationForm = () => {
 
   return (
     <>
-      {editPopUp && (
         <form onSubmit={onEdit}>
           <div>
             <div>
@@ -73,7 +65,6 @@ const EditApplicationForm = () => {
             <button type='submit'>Update Application</button>
           </div>
         </form>
-      )}
     </>
   )
 }

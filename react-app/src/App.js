@@ -13,18 +13,25 @@ import Posts from './components/posts/Posts'
 import PetPost from './components/posts/PetPost';
 import { getAllPosts } from './store/pet_post';
 import { authenticate } from './store/session';
+import { getAllApplications } from './store/application';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [users, setUsers] = useState({});
   const dispatch = useDispatch();
-
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getAllApplications());
       await dispatch(getAllPosts());
+      const response = await fetch(`/api/users`);
+      const users = await response.json();
+      setUsers(users.users);
       setLoaded(true);
     })();
   }, [dispatch]);
+
 
   const posts = Object.values(useSelector(state => state.posts))
 
@@ -55,12 +62,12 @@ function App() {
         <Route path='/pet-post' exact={true}>
           <Posts posts={posts} />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        <Route path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
+        </Route>
+        <Route path='/users/:userId' exact={true} >
+          <User users={users} posts={posts} />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>

@@ -17,7 +17,7 @@ const NewApplicationForm = ({ post }) => {
   const updateAnswer1 = e => setAnswer1(e.target.value)
   const updateAnswer2 = e => setAnswer2(e.target.value)
   const updateAnswer3 = e => setAnswer3(e.target.value)
-  console.log(post);
+
   const validate = () => {
     // const errors = [];
   }
