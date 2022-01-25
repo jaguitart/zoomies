@@ -27,7 +27,8 @@ function User({ users, posts }) {
       }
     }
   }
-  console.log(applications);
+
+  
   return (
     <div>
       <div>

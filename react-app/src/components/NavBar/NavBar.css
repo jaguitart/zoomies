@@ -1,6 +1,96 @@
-.navBarDiv {
-  border: red solid 1px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-around;
+html,body{
+  margin:0;
+  /* padding: 0; */
+  /* height: 100%; */
 }
+
+a{
+text-decoration: none;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.navBarDiv {
+  /* border: red solid 1px; */
+  display: flex;
+  background-color: #0587c323;
+  border-bottom: #0586C3 solid 2px;
+  justify-content: space-between;
+  min-height: 55px;
+}
+
+#logo {
+  max-width: 60%;
+  min-width: 250px;
+  min-height: 55px;
+  margin-left: 15px;
+}
+
+.navLogo{
+  /* border: red solid 1px; */
+  /* margin-left: 10px; */
+}
+
+.navBarOptions{
+  /* border:red solid 1px; */
+  display: flex;
+  /* width: 100%; */
+  /* justify-content: space-between; */
+}
+
+.optionclass {
+  display: flex;
+  /* border:green solid 1px; */
+  min-width: 65px;
+  height: 100%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.icon{
+  font-size: 25px;
+  color: black;
+}
+
+/* .icon:hover {
+  animation: shake 1.5s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  /* perspective: 1000px; */
+/* } */
+/* 
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(0, -1px, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(0, 2px, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(0, 2px, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(0, 5px, 0);
+  }
+} */
+
+.arrow-up {
+  position:fixed;
+  margin-left: 17px;
+  margin-top: 65px;
+  width: 10; 
+  height: 10; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #0586C3;
+}
+
+/* 
+.button {
+  background: linear-gradient(180deg, #51ACFF 0%, #1772C6 100%), #1890FF;
+  border-radius: 16px;
+} */
