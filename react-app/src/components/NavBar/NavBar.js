@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
@@ -11,18 +11,19 @@ import './NavBar.css';
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user ? state.session.user : false)
+  const [arrow, setArrow] = useState('')
+
 
   return (
     <nav>
       <div className='navBarDiv'>
         <div className='navLogo'>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img id='logo' src='https://i.imgur.com/0P5V3rc.png' alt='logo' />
+            <img id='logo' onClick={() => setArrow('')} src='https://i.imgur.com/cZARJ4R.png' alt='logo' />
           </NavLink>
         </div>
         <div className='navBarOptions'>
-        <div class="arrow-up"></div>
-          
+          <div className="arrow-up" id={arrow}></div>
 
           {/* <div id='home' className='optionclass'>
             <NavLink to='/' exact={true} activeClassName='active'>
@@ -32,34 +33,21 @@ const NavBar = () => {
 
           <div id='petposts' className='optionclass'>
             <NavLink to='/pet-post' exact={true} activeClassName='active'>
-              <IoPaw className='icon' />
+              <IoPaw className='icon' onClick={() => setArrow('arrow1')} />
             </NavLink>
           </div>
-
-          <div id='newpost' className='optionclass'>
-            <NavLink to='/new-pet-post' exact={true} activeClassName='active'>
-              <BsPlusSquare className='icon' />
-            </NavLink>
-          </div>
-
-
-          {!user?.id && (
-            <div>
-              <NavLink to='/login' exact={true} activeClassName='active'>
-                Login
-              </NavLink>
-
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                Sign Up
+          {user?.id && (
+            <div id='newpost' className='optionclass'>
+              <NavLink to='/new-pet-post' exact={true} activeClassName='active'>
+                <BsPlusSquare className='icon' onClick={() => setArrow('arrow2')} />
               </NavLink>
             </div>
           )}
 
-
           {user?.id && (
             <div id='profile' className='optionclass'>
               <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
-                {user.account_type.id === 1 ? <BsFillPersonFill className='icon' /> : <GrOrganization className='icon' />}
+                {user.account_type.id === 1 ? <BsFillPersonFill className='icon' onClick={() => setArrow('arrow3')} /> : <GrOrganization className='icon' onClick={() => setArrow('arrow3')} />}
               </NavLink>
             </div>
           )}
@@ -77,3 +65,16 @@ const NavBar = () => {
 }
 
 export default NavBar;
+
+
+// {!user?.id && (
+//   <div>
+//     <NavLink to='/login' exact={true} activeClassName='active'>
+//       Login
+//     </NavLink>
+
+//     <NavLink to='/sign-up' exact={true} activeClassName='active'>
+//       Sign Up
+//     </NavLink>
+//   </div>
+// )}
