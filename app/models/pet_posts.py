@@ -38,6 +38,7 @@ class Pet_Post(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'logo': self.users.logo,
             'type': self.types.type,
             'name': self.name,
             'sex': self.sexs.sex,

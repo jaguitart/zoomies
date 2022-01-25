@@ -3,6 +3,7 @@ const ADD_APPLICATION = 'applications/ADD_APPLICATION';
 const UPDATE_APPLICATION = 'applications/UPDATE_APPLICATION';
 const DELETE_APPLICATION = 'applications/DELETE_APPLICATION';
 
+
 const getApplications = applications => ({
     type: GET_APPLICATIONS,
     payload: applications
@@ -75,6 +76,7 @@ export const deleteOneApplication = id => async dispatch => {
         return 'Successfully deleted.'
     }
 }
+
 
 const initialState = {};
 
