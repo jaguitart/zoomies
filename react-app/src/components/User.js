@@ -15,7 +15,7 @@ function User({ users, posts }) {
   if (accountType === 1) {
     visibleApplications = applications.filter(application => application.user_id === user.id)
   } else {
-    const orgPosts = posts.filter(post => post.user_id === user.id).map(post => post.id)
+    const orgPosts = posts.filter(post => post?.user_id === user?.id).map(post => post.id)
     visibleApplications = []
     for (let i = 0; i < orgPosts.length; i++) {
       const orgPost = orgPosts[i];
@@ -27,11 +27,11 @@ function User({ users, posts }) {
       }
     }
   }
-  
+  console.log(applications);
   return (
     <div>
       <div>
-        <img src={profile_owner.profile_pic} alt={profile_owner.profile_ownername} width="75px" max-height='75px' />
+        <img src={profile_owner?.profile_pic} alt={profile_owner.profile_ownername} width="75px" max-height='75px' />
       </div>
       <div>
         <strong>Username</strong> <i>{profile_owner.username}</i>

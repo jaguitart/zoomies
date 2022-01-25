@@ -4,32 +4,49 @@ import { useDispatch } from 'react-redux';
 import { deleteOneApplication } from "../../../store/application";
 import { Modal } from "../../../context/Modal"
 import EditApplicationForm from "../EditApplication/index"
+import Application from "../Application/index"
+
 
 const SingleApplication = ({ application }) => {
   const dispatch = useDispatch()
-  const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
   const handleDelete = id => dispatch(deleteOneApplication(id))
+
+  let status = application.status === null ? 'Pending' : application.status
+  let ans1 = application.answer1 !== null ? 'OK' : 'Pending'
+  let ans2 = application.answer2 !== null ? 'OK' : 'Pending'
+  let ans3 = application.answer3 !== null ? 'OK' : 'Pending'
 
 
   return (
     <div>
-      <div>
-        <p>USER ID: {application.user_id}</p>
-        <p>POST ID: {application.post_id}</p>
-        <p>A1: {application.answer1}</p>
-        <p>A2: {application.answer2}</p>
-        <p>A3: {application.answer3}</p>
-        <p>STATUS{application.status}</p>
+      <div onClick={() => setShowApplicationModal(!showApplicationModal)}>
+        <i>USER ID: {application.user_id}</i>
+        <i>POST ID: {application.post_id}</i>
+        <i>A1: {ans1}</i>
+        <i>A2: {ans2}</i>
+        <i>A3: {ans3}</i>
+        <i>STATUS: {status?"APPROVED":"REJECTED"}</i>
       </div>
+      {
+        showApplicationModal && (
+          <Modal onClose={() => setShowApplicationModal(!showApplicationModal)}>
+            <Application application={application} setShowModal={setShowApplicationModal} />
+          </Modal>
+        )
+      }
 
-      <button onClick={() => setShowModal(!showModal)}>Edit</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(!showModal)}>
-          <EditApplicationForm application={application} setShowModal={setShowModal} />
-        </Modal>
-      )}
+      <button onClick={() => setShowEditModal(!showEditModal)}>Edit</button>
+      {
+        showEditModal && (
+          <Modal onClose={() => setShowEditModal(!showEditModal)}>
+            <EditApplicationForm application={application} setShowModal={setShowEditModal} />
+          </Modal>
+        )
+      }
       <button onClick={() => handleDelete(application.id)}>Delete</button>
-    </div>
+    </div >
   )
 }
 

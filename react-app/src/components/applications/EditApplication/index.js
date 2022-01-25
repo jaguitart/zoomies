@@ -35,7 +35,6 @@ const EditApplicationForm = ({ application, setShowModal }) => {
       answer2,
       answer3
     }
-    console.log(editApplication);
     let submited = await dispatch(updateOneApplication(editApplication))
     if (submited) {
       setShowModal(false)
@@ -48,23 +47,23 @@ const EditApplicationForm = ({ application, setShowModal }) => {
 
   return (
     <>
-        <form onSubmit={onEdit}>
+      <form onSubmit={onEdit}>
+        <div>
           <div>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div>
-            <div>
-              <FormInput field='answer1' updateValue={updateAnswer1} placeholder='Answer' preselection={answer1} />
-
-              <FormInput field='answer2' updateValue={updateAnswer2} placeholder='Answer' preselection={answer2} />
-
-              <FormInput field='answer3' updateValue={updateAnswer3} placeholder='Answer' preselection={answer3} />
-            </div>
-            <button type='submit'>Update Application</button>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
           </div>
-        </form>
+          <div>
+            <FormInput field='answer1' updateValue={updateAnswer1} placeholder='Answer' preselection={answer1} />
+
+            <FormInput field='answer2' updateValue={updateAnswer2} placeholder='Answer' preselection={answer2} />
+
+            <FormInput field='answer3' updateValue={updateAnswer3} placeholder='Answer' preselection={answer3} />
+          </div>
+          <button type='submit'>Update Application</button>
+        </div>
+      </form>
     </>
   )
 }

@@ -32,6 +32,8 @@ def update_application(id):
         application.answer1 = form.data['answer1']
         application.answer2 = form.data['answer2']
         application.answer3 = form.data['answer3']
+        if form.data['status']!= '':
+            application.status = form.data['status']
         db.session.commit()
         return {'application': application.to_dict()}
     return "Application updated"
