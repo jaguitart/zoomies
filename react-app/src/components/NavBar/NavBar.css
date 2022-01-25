@@ -20,22 +20,13 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 }
 
 #logo {
-  /* max-width: 60%; */
   min-width: 200px;
   height: 60px;
   margin-left: 15px;
 }
 
-.navLogo{
-  /* border: red solid 1px; */
-  /* margin-left: 10px; */
-}
-
 .navBarOptions{
-  /* border:red solid 1px; */
   display: flex;
-  /* width: 100%; */
-  /* justify-content: space-between; */
 }
 
 .optionclass {

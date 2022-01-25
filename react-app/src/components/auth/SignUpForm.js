@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import Footer from '../NavBar/footer';
 import FormSelect from '../FormsComponents/FormSelect';
+import FormInput from '../FormsComponents/FormInput';
+import './form.css';
+
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [account_type_id, setAccount_type_id] = useState('');
@@ -20,7 +24,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-    const data = await dispatch(signUp(account_type_id, username, name, email, bio, password, profile_pic, logo));
+      const data = await dispatch(signUp(account_type_id, username, name, email, bio, password, profile_pic, logo));
       if (data) {
         setErrors(data)
       }
@@ -43,98 +47,68 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div id='allsignup'>
+      <div className="mainsignup">
+        <div className="signup">
+          {/* <img className="loginImage" src=""></img> */}
+          <br />
+          <form onSubmit={onSignUp}>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+
+            </div>
+            <FormSelect field='account_type' updateValue={updateAccountTypeId} preselection={account_type_id} />
+
+            <div>
+              <FormInput field='username' updateValue={updateUsername} placeholder='Username' preselection={username} />
+            </div>
+
+            <div>
+              <FormInput field='name' updateValue={updateName} placeholder='Name' preselection={name} />
+            </div>
+
+            <div>
+              <FormInput field='email' updateValue={updateEmail} placeholder='Email' preselection={email} />
+            </div>
+
+            <div>
+              <FormInput field='bio' updateValue={updateBio} placeholder='Bio' preselection={bio} />
+            </div>
+
+            <div>
+              <FormInput field='password' updateValue={updatePassword} placeholder='Password' preselection={password} />
+            </div>
+
+            <div>
+              <FormInput field='password' updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
+            </div>
+
+            <div>
+              <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder='Profile Picture URL' preselection={profile_pic} />
+            </div>
+
+            <div>
+              <FormInput field='logo' updateValue={updateLogo} placeholder='Logo' preselection={logo} />
+            </div>
+
+            <button type='submit'>Sign Up</button>
+
+          </form>
+          <div>
+            <p id='account'>Have an account?
+              <NavLink to='/login'>
+                <b id='signUp'>   Log in</b>
+              </NavLink>
+            </p>
+          </div>
+        </div>
       </div>
-
-      <FormSelect field='account_type' updateValue={updateAccountTypeId} preselection={account_type_id} />
-
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
+      <div id='footer'>
+        <Footer />
       </div>
-
-      <div>
-        <label>Name</label>
-        <input
-          type='text'
-          name='name'
-          onChange={updateName}
-          value={name}
-        ></input>
-      </div>
-
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-
-      <div>
-        <label>Bio</label>
-        <input
-          type='text'
-          name='bio'
-          onChange={updateBio}
-          value={bio}
-        ></input>
-      </div>
-
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-
-      <div>
-        <label>Profile Pic</label>
-        <input
-          type='profile_pic'
-          name='profile_pic'
-          onChange={updateProfile_pic}
-          value={profile_pic}
-        ></input>
-      </div>
-
-      <div>
-        <label>Logo</label>
-        <input
-          type='logo'
-          name='logo'
-          onChange={updateLogo}
-          value={logo}
-        ></input>
-      </div>
-
-      <button type='submit'>Sign Up</button>
-    </form>
+    </div >
   );
 };
 
