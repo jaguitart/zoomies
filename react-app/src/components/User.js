@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import SingleApplication from './applications/SingleApplication';
+import NavBar from './NavBar/NavBar';
 
 
 function User({ users, posts }) {
@@ -28,27 +29,36 @@ function User({ users, posts }) {
     }
   }
 
-  
+
+  if (!user) {
+    return <Redirect to='/' />;
+  }
+
+
+
   return (
-    <div>
+    <>
+      <NavBar />
       <div>
-        <img src={profile_owner?.profile_pic} alt={profile_owner.profile_ownername} width="75px" max-height='75px' />
-      </div>
-      <div>
-        <strong>Username</strong> <i>{profile_owner.username}</i>
-      </div>
-      <div>
-        <strong>Email</strong> <i>{profile_owner.email}</i>
-      </div>
-      <div>
-        <strong>Bio</strong> <i>{profile_owner.bio}</i>
-      </div>
-      {visibleApplications.map(application => (
-        <div key={application.id}>
-          <SingleApplication application={application} />
+        <div>
+          <img src={profile_owner?.profile_pic} alt={profile_owner.profile_ownername} width="75px" max-height='75px' />
         </div>
-      ))}
-    </div>
+        <div>
+          <strong>Username</strong> <i>{profile_owner.username}</i>
+        </div>
+        <div>
+          <strong>Email</strong> <i>{profile_owner.email}</i>
+        </div>
+        <div>
+          <strong>Bio</strong> <i>{profile_owner.bio}</i>
+        </div>
+        {visibleApplications.map(application => (
+          <div key={application.id}>
+            <SingleApplication application={application} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 export default User;

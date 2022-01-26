@@ -1,0 +1,50 @@
+.individualImage {
+  padding-inline-end: 4px;
+  object-fit: cover;
+  width: 220px;
+  height: 280px;
+}
+
+.individualImage:hover {
+  opacity: 0.8;
+}
+
+.individualImage {
+  background: #ffffff;
+  display: inline-block;
+  margin-left: 5%;
+  margin-top: 25px;
+  padding: 15px 15px 60px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  position: relative;
+}
+.posttextdiv {
+  color: rgb(92, 92, 92);
+  font-size: 15px;
+  font-weight: bolder;
+  position: relative;
+  top: -55px;
+  left: 8px;
+  text-align: center;
+}
+
+#cardcomplete {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#animalname {
+  font-size: 20px;
+  color: black;
+}
+
+#animalnamedot {
+  color: black;
+  font-weight: bolder;
+}

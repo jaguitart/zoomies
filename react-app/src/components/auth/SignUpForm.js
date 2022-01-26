@@ -58,84 +58,87 @@ const SignUpForm = () => {
 
 
   return (
-    <div id='allsignup'>
-      <div className="mainsignup">
-        <div className='sideimagesdiv'>
-          <img className="signupImage" src="https://i.imgur.com/bjRM2Ev.png" />
-        </div>
-        <div className="signup" >
-          <br />
-          <p>First select your type of account:</p>
-          <FormTypeOfAccount clicked={clicked} field='account_type' updateValue={updateAccountTypeId} />
-          <br />
-          <form onSubmit={onSignUp}>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
+    <>
+      <div id='allsignup'>
+        <div className="mainsignup">
+          <div id='movingimgdiv'>
+            <div className='fadein'>
+              <img className="f1" alt='sideimg1' src="https://i.imgur.com/EcHmywZ.png" />
+              <img className="f2" alt='sideimg2' src="https://i.imgur.com/bjRM2Ev.png" />
+            </div>
+          </div>
+          <div className="signup" >
+            <br />
+            <p>First select your type of account:</p>
+            <FormTypeOfAccount clicked={clicked} field='account_type' updateValue={updateAccountTypeId} />
+
+            <form onSubmit={onSignUp}>
+              <div>
+                {errors.map((error, ind) => (
+                  <div key={ind}>{error}</div>
                 ))}
 
-            </div>
-                {account_type_id && (
-                <p>{`Creating a ${+account_type_id === 1?"User":"Organization"}`}</p>
-                )}
-            <div>
-              <FormInput requiered='true' field='username' updateValue={updateUsername} placeholder='Username' preselection={username} />
-            </div>
-            {!organizationFields && (
-              <div>
-                <FormInput field='name' updateValue={updateName} placeholder='Name' preselection={name} />
               </div>
-            )}
-
-            <div>
-              <FormInput field='email' updateValue={updateEmail} placeholder='Email' preselection={email} />
-            </div>
-
-            <div>
-            </div>
-
-            <div>
-              <FormInput field='password' updateValue={updatePassword} placeholder='Password' preselection={password} />
-            </div>
-
-            <div>
-              <FormInput field='password' updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
-            </div>
-            {!organizationFields && (
+              {account_type_id && (
+                <p>{`Creating an ${+account_type_id === 1 ? "User" : "Organization"} account`}</p>
+              )}
               <div>
-                <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder='Profile Picture URL' preselection={profile_pic} />
+                <FormInput requiered='true' field='username' updateValue={updateUsername} placeholder='Username' preselection={username} />
               </div>
-            )}
+              {!organizationFields && (
+                <div>
+                  <FormInput field='name' updateValue={updateName} placeholder='Name' preselection={name} />
+                </div>
+              )}
 
-            {organizationFields && (
               <div>
-                <FormInput field='logo' updateValue={updateLogo} placeholder='Logo' preselection={logo} />
+                <FormInput field='email' updateValue={updateEmail} placeholder='Email' preselection={email} />
               </div>
-            )}
-            {/* <FormInput field='bio' updateValue={updateBio} placeholder='Bio' preselection={bio} /> */}
+
+              <div>
+              </div>
+
+              <div>
+                <FormInput field='password' updateValue={updatePassword} placeholder='Password' preselection={password} />
+              </div>
+
+              <div>
+                <FormInput field='password' updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
+              </div>
+              {!organizationFields && (
+                <div>
+                  <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder='Profile Picture URL' preselection={profile_pic} />
+                </div>
+              )}
+
+              {organizationFields && (
+                <div>
+                  <FormInput field='logo' updateValue={updateLogo} placeholder='Logo' preselection={logo} />
+                </div>
+              )}
+
+              <div>
+                <textarea placeholder='Tell us about you...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+              </div>
+
+              <button type='submit'>Sign Up</button>
+
+            </form>
             <div>
-              <textarea placeholder='Bio' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+              <p id='account'>Have an account?
+                <NavLink to='/login'>
+                  <b id='signUp'>   Log in</b>
+                </NavLink>
+              </p>
             </div>
-
-            <button type='submit'>Sign Up</button>
-
-          </form>
-          <div>
-            <p id='account'>Have an account?
-              <NavLink to='/login'>
-                <b id='signUp'>   Log in</b>
-              </NavLink>
-            </p>
           </div>
+          <img id='logozoomiesvertical' alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
         </div>
-        <div className='sideimagesdiv'>
-          <img className="signupImage" src="https://i.imgur.com/EcHmywZ.png" />
+        <div id='footer'>
+          <Footer />
         </div>
-      </div>
-      <div id='footer'>
-        <Footer />
-      </div>
-    </div >
+      </div >
+    </>
   );
 };
 
