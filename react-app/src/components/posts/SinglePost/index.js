@@ -1,13 +1,13 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
-import { deleteOnePost } from "../../../store/pet_post";
+// import { deleteOnePost } from "../../../store/pet_post";
 import './style.css'
 
 const SinglePost = ({ post }) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const handleDelete = id => dispatch(deleteOnePost(id))
+  // const handleDelete = id => dispatch(deleteOnePost(id))
 
 
   return (

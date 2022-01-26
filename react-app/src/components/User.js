@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import SingleApplication from './applications/SingleApplication';
 import NavBar from './NavBar/NavBar';
+
 
 function User({ users, posts }) {
   const { userId } = useParams();
@@ -27,6 +28,12 @@ function User({ users, posts }) {
       }
     }
   }
+
+
+  if (!user) {
+    return <Redirect to='/' />;
+  }
+
 
 
   return (

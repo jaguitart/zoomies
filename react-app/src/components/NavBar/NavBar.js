@@ -5,6 +5,7 @@ import LogoutButton from '../auth/LogoutButton';
 import { IoPaw } from "react-icons/io5";
 import { BsPlusSquare, BsFillPersonFill } from "react-icons/bs";
 import { GrOrganization } from "react-icons/gr";
+import { GiDogHouse } from "react-icons/gi";
 import './NavBar.css';
 
 
@@ -25,11 +26,11 @@ const NavBar = () => {
         <div className='navBarOptions'>
           <div className="arrow-up" id={arrow}></div>
 
-          {/* <div id='home' className='optionclass'>
+          <div id='home' className='optionclass'>
             <NavLink to='/' exact={true} activeClassName='active'>
-              Home
+              <GiDogHouse className='icon' />
             </NavLink>
-          </div> */}
+          </div>
 
           <div id='petposts' className='optionclass'>
             <NavLink to='/pet-post' exact={true} activeClassName='active'>

@@ -59,14 +59,12 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div className='sideimagesdiv'>
-      </div>
       <div id='allsignup'>
         <div className="mainsignup">
           <div id='movingimgdiv'>
             <div className='fadein'>
-              <img className="f1" src="https://i.imgur.com/EcHmywZ.png" />
-              <img className="f2" src="https://i.imgur.com/bjRM2Ev.png" />
+              <img className="f1" alt='sideimg1' src="https://i.imgur.com/EcHmywZ.png" />
+              <img className="f2" alt='sideimg2' src="https://i.imgur.com/bjRM2Ev.png" />
             </div>
           </div>
           <div className="signup" >
