@@ -7,12 +7,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items:flex-start;
   margin-top: 40px;
   margin-inline-start: 20%;
   margin-inline-end: 20%;
   min-width: 600px;
-
 }
 
 .mainsignup div {
@@ -91,7 +90,7 @@ input {
   border: 1px;
   margin:auto;
   color: white;
-  background: linear-gradient(180deg, #51ACFF 0%, #1772C6 100%), #1890FF;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
   border-radius: 16px;
   background-color: #205cff;
   width: 250px;
@@ -142,7 +141,7 @@ input {
   color: #004383;
 }
 
-#radio {
+/* #radio {
   all: unset;
   outline: none;
   border:none;
@@ -151,4 +150,39 @@ input {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;  
+} */
+
+.signup .org {
+  background: linear-gradient(180deg, #FFC799 0%, #FFA199 100%), #FFFF99;
+}
+
+.signup .user {
+  background: linear-gradient(180deg, #FFC799 0%, #FFA199 100%), #FFFF99;
+
+}
+
+#biotextarea{
+  border: 1px solid #004383;
+  background-color: rgb(245, 245, 245);
+  white-space: 5px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-bottom:5px;
+  float: inline-end;
+  min-width:251.25px;
+}
+
+.bigbio {
+  width:400px;
+  height: 300px;
+}
+
+.signupImage{
+  position:relative;
+  width: 84%;
+  margin: 0px 30px;
+  /* border: 2.5px solid #004383; */
 }

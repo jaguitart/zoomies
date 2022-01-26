@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import Footer from '../NavBar/footer';
-import FormSelect from '../FormsComponents/FormSelect';
 import FormInput from '../FormsComponents/FormInput';
+import FormTypeOfAccount from '../FormsComponents/FormTypeOfAccount';
 import './form.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
-  const [account_type_id, setAccount_type_id] = useState('');
+  const [account_type_id, setAccount_type_id] = useState(1);
+  const [biosize, setSBioSize] = useState(false);
+  const [clicked, setClicked] = useState('');
+  const [organizationFields, setOrganizationFields] = useState(false);
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,7 +34,6 @@ const SignUpForm = () => {
     }
   };
 
-  const updateAccountTypeId = (e) => { setAccount_type_id(e.target.value) };
   const updateUsername = (e) => { setUsername(e.target.value) };
   const updateName = (e) => { setName(e.target.value) };
   const updateEmail = (e) => { setEmail(e.target.value) };
@@ -41,40 +43,55 @@ const SignUpForm = () => {
   const updateProfile_pic = (e) => { setProfile_pic(e.target.value) };
   const updateLogo = (e) => { setLogo(e.target.value) };
 
+  const updateAccountTypeId = (e) => {
+    setAccount_type_id(e.target.value)
+    setOrganizationFields(+e.target.value !== 1 ? true : false)
+    setClicked(+e.target.value !== 1 ? true : false)
+  };
+  const bioSizeChanger = () => { setSBioSize(!biosize) };
+
 
   if (user) {
     return <Redirect to='/' />;
   }
 
+
+
   return (
     <div id='allsignup'>
       <div className="mainsignup">
-        <div className="signup">
-          {/* <img className="loginImage" src=""></img> */}
+        <div className='sideimagesdiv'>
+          <img className="signupImage" src="https://i.imgur.com/bjRM2Ev.png" />
+        </div>
+        <div className="signup" >
+          <br />
+          <p>First select your type of account:</p>
+          <FormTypeOfAccount clicked={clicked} field='account_type' updateValue={updateAccountTypeId} />
           <br />
           <form onSubmit={onSignUp}>
             <div>
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
-              ))}
+                ))}
 
             </div>
-            <FormSelect field='account_type' updateValue={updateAccountTypeId} preselection={account_type_id} />
-
+                {account_type_id && (
+                <p>{`Creating a ${+account_type_id === 1?"User":"Organization"}`}</p>
+                )}
             <div>
-              <FormInput field='username' updateValue={updateUsername} placeholder='Username' preselection={username} />
+              <FormInput requiered='true' field='username' updateValue={updateUsername} placeholder='Username' preselection={username} />
             </div>
-
-            <div>
-              <FormInput field='name' updateValue={updateName} placeholder='Name' preselection={name} />
-            </div>
+            {!organizationFields && (
+              <div>
+                <FormInput field='name' updateValue={updateName} placeholder='Name' preselection={name} />
+              </div>
+            )}
 
             <div>
               <FormInput field='email' updateValue={updateEmail} placeholder='Email' preselection={email} />
             </div>
 
             <div>
-              <FormInput field='bio' updateValue={updateBio} placeholder='Bio' preselection={bio} />
             </div>
 
             <div>
@@ -84,13 +101,20 @@ const SignUpForm = () => {
             <div>
               <FormInput field='password' updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
             </div>
+            {!organizationFields && (
+              <div>
+                <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder='Profile Picture URL' preselection={profile_pic} />
+              </div>
+            )}
 
+            {organizationFields && (
+              <div>
+                <FormInput field='logo' updateValue={updateLogo} placeholder='Logo' preselection={logo} />
+              </div>
+            )}
+            {/* <FormInput field='bio' updateValue={updateBio} placeholder='Bio' preselection={bio} /> */}
             <div>
-              <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder='Profile Picture URL' preselection={profile_pic} />
-            </div>
-
-            <div>
-              <FormInput field='logo' updateValue={updateLogo} placeholder='Logo' preselection={logo} />
+              <textarea placeholder='Bio' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
             </div>
 
             <button type='submit'>Sign Up</button>
@@ -103,6 +127,9 @@ const SignUpForm = () => {
               </NavLink>
             </p>
           </div>
+        </div>
+        <div className='sideimagesdiv'>
+          <img className="signupImage" src="https://i.imgur.com/EcHmywZ.png" />
         </div>
       </div>
       <div id='footer'>
