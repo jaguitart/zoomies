@@ -11,21 +11,21 @@ const SinglePost = ({ post }) => {
 
 
   return (
-    <div id="cardcomplete" >
-      <div >
-        <NavLink to={`pet-post/${post.id}`}>
-          <img className="individualImage" src={post?.pic_url1} alt={post.name} />
-        </NavLink>
-      </div>
-      <div className="posttextdiv">
-        <div id="animalname">{post?.name}</div>
-        <div>{post?.age.age} <span id='animalnamedot'>•</span> size</div>
-      </div>
-  {/* <NavLink to={`/pet-post/${post.id}/edit`}> */ }
-  {/* <button>Edit</button> */ }
-  {/* </NavLink> */ }
-  {/* <button onClick={() => handleDelete(post.id)}>Delete</button> */ }
-    </div >
+      <div id="cardcomplete" >
+        <div >
+          <NavLink to={`pet-post/${post.id}`}>
+            <img className="individualImage" src={post?.pic_url1} alt={post.name} />
+          </NavLink>
+        </div>
+        <div className="posttextdiv">
+          <div id="animalname">{post?.name}</div>
+          <div>{post?.age.age} <span id='animalnamedot'>•</span> size</div>
+        </div>
+        {/* <NavLink to={`/pet-post/${post.id}/edit`}> */}
+        {/* <button>Edit</button> */}
+        {/* </NavLink> */}
+        {/* <button onClick={() => handleDelete(post.id)}>Delete</button> */}
+      </div >
   )
 }
 

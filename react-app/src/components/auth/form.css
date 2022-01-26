@@ -11,7 +11,7 @@
   margin-top: 40px;
   margin-inline-start: 20%;
   margin-inline-end: 20%;
-  min-width: 600px;
+  min-width: 500px;
 }
 
 .mainsignup div {
@@ -32,7 +32,8 @@
 }
 
 .signup img {
-  max-width: 500px;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 .signup p {
@@ -46,7 +47,7 @@
 
 .loginImage {
   margin-top: 20px;
-  height: 500px;
+  height: 400px;
 }
 
 form {
@@ -93,7 +94,7 @@ input {
   background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
   border-radius: 16px;
   background-color: #205cff;
-  width: 250px;
+  width: 260px;
   height: auto;
   padding: 10px;
   font-size: 14px;
@@ -177,12 +178,59 @@ input {
 
 .bigbio {
   width:400px;
-  height: 300px;
+  height: 250px;
 }
 
-.signupImage{
-  position:relative;
-  width: 84%;
-  margin: 0px 30px;
-  /* border: 2.5px solid #004383; */
+.passwordinput {
+  -webkit-text-security: disc;
+}
+
+#logozoomiesvertical{
+  /* margin-right: 200px; */
+  height: 500px;
+}
+
+
+
+
+.fadein img {
+  position:absolute;
+  top:630px;
+  left: 50px;
+  -webkit-animation-name: fade;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 4s;
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-duration: 12s;
+}
+
+@-webkit-keyframes fade {
+  0% {opacity: 0;}
+  20% {opacity: 0.8;}
+  33% {opacity: 1;}
+  53% {opacity: 0.7;}
+  100% {opacity: 0.5;}
+}
+@keyframes fade {
+  0% {opacity: 0;}
+  20% {opacity: 0.8;}
+  33% {opacity: 1;}
+  66% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+.f1 {
+  background-color: lightblue;
+}
+
+.f2 {
+  -webkit-animation-delay: -6s;
+  background-color: yellow;
+}
+
+#movingimgdiv {
+  position: relative;
+  left: -250px;
+  bottom: 600px;
 }

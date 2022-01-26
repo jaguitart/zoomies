@@ -55,7 +55,7 @@ const LoginForm = () => {
                 placeholder='Email'
                 value={email}
                 onChange={updateEmail}
-                />
+              />
             </div>
             <div>
               <input
@@ -83,6 +83,7 @@ const LoginForm = () => {
             </p>
           </div>
         </div>
+        <img id='logozoomiesvertical' alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
       </div>
       <div id='footer'>
         <Footer />

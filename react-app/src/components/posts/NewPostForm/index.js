@@ -5,7 +5,7 @@ import { addOnePost } from "../../../store/pet_post";
 import FormDropdown from "../../FormsComponents/FormDropdown";
 import FormSelect from "../../FormsComponents/FormSelect";
 import FormInput from "../../FormsComponents/FormInput";
-
+import NavBar from "../../NavBar/NavBar";
 
 const NewPostForm = () => {
     const history = useHistory();
@@ -80,48 +80,51 @@ const NewPostForm = () => {
     const updateQuestion3 = e => setQuestion3(e.target.value)
 
     return (
-        <div>
-            <form onSubmit={submit}>
-                <div>
-                    {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))}
-                </div>
-                <p>Create new Pet post</p>
-                <FormSelect field='type' updateValue={updateType} preselection={type} />
+        <>
+            <NavBar />
+            <div>
+                <form onSubmit={submit}>
+                    <div>
+                        {errors.map((error, ind) => (
+                            <div key={ind}>{error}</div>
+                        ))}
+                    </div>
+                    <p>Create new Pet post</p>
+                    <FormSelect field='type' updateValue={updateType} preselection={type} />
 
-                <FormSelect field='sex' updateValue={updateSex} preselection={sex} />
+                    <FormSelect field='sex' updateValue={updateSex} preselection={sex} />
 
-                <FormSelect field='age' updateValue={updateAge} preselection={age}/>
+                    <FormSelect field='age' updateValue={updateAge} preselection={age} />
 
-                <FormDropdown field='color' updateValue={updateColor} />
+                    <FormDropdown field='color' updateValue={updateColor} />
 
-                <FormSelect field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status}/>
+                    <FormSelect field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
 
-                <FormInput field='name' updateValue={updateName} placeholder='Name' />
+                    <FormInput field='name' updateValue={updateName} placeholder='Name' />
 
-                <FormInput field='breed' updateValue={updateBreed} placeholder='Breed' />
+                    <FormInput field='breed' updateValue={updateBreed} placeholder='Breed' />
 
-                <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' />
+                    <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' />
 
-                <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' />
+                    <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' />
 
-                <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' />
+                    <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' />
 
-                <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
+                    <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
 
-                <FormInput field='bio' updateValue={updateBio} placeholder='Bio' />
+                    <FormInput field='bio' updateValue={updateBio} placeholder='Bio' />
 
-                <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' />
+                    <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' />
 
-                <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' />
+                    <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' />
 
-                <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' />
+                    <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' />
 
 
-                <button type='submit'>Post</button>
-            </form>
-        </div>
+                    <button type='submit'>Post</button>
+                </form>
+            </div>
+        </>
     )
 };
 

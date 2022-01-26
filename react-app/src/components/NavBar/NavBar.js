@@ -19,7 +19,7 @@ const NavBar = () => {
       <div className='navBarDiv'>
         <div className='navLogo'>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img id='logo' onClick={() => setArrow('')} src='https://i.imgur.com/BnkST8j.png' alt='logo' />
+            <img id='logo' onClick={() => setArrow('')} src='https://i.imgur.com/VU7sSY7.png' alt='logo' />
           </NavLink>
         </div>
         <div className='navBarOptions'>
