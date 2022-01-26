@@ -16,3 +16,5 @@ class Animal_color(db.Model):
             'id': self.id,
             'color': self.color,
         }
+
+  

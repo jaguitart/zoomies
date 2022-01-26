@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-dropdown-select";
 
 const FormDropdown = ({ field, updateValue }) => {
   const [data, setData] = useState([]);
@@ -14,12 +15,8 @@ const FormDropdown = ({ field, updateValue }) => {
 
 
   return (
-    <div>
-      {data &&
-        < select onChange={updateValue}>
-          {data.map(singleData => <option key={singleData.id} value={singleData.id}>{singleData[field]}</option>)}
-        </select>
-      }
+    <div id="selectdiv">
+      <Select className="colorselector" labelField='color' color='#004383' dropdownHandle={false} placeholder='Select a color' searchable={false} valueField='id' options={data} onChange={updateValue} />
     </div >
   )
 }
