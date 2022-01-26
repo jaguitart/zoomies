@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { addOnePost } from "../../../store/pet_post";
 import FormDropdown from "../../FormsComponents/FormDropdown";
-import FormSelect from "../../FormsComponents/FormSelect";
 import FormInput from "../../FormsComponents/FormInput";
 import NavBar from "../../NavBar/NavBar";
 import FormAge from "../../FormsComponents/FormAge";
@@ -15,13 +14,13 @@ const NewPostForm = () => {
     const [clickedType, setClickedType] = useState('');
     const [clickedSex, setClickedSex] = useState('');
     const [clickedVaccionationStatus, setClickedVaccionationStatus] = useState('');
-    const [clickedAge, setClickedAge] = useState('');
+    const [clickedAge, setClickedAge] = useState(1);
     const [errors, setErrors] = useState([]);
     const [type, setType] = useState(1);
     const [sex, setSex] = useState(1);
     const [name, setName] = useState('');
     const [age, setAge] = useState(1);
-    const [color, setColor] = useState('');
+    const [color, setColor] = useState(1);
     const [breed, setBreed] = useState('');
     const [pic_url1, setPic_url1] = useState('');
     const [pic_url2, setPic_url2] = useState('');
@@ -87,14 +86,15 @@ const NewPostForm = () => {
         setAge(e.target.value)
         setClickedAge(e.target.value)
     }
-    
+
     const updateVaccination_status = e => {
         e.preventDefault()
         setClickedVaccionationStatus(+e.target.value !== 1 ? true : false);
         setVaccination_status(e.target.value)
     }
 
-    const updateColor = e => setColor(e.target.value)
+    const updateColor = value => setColor(value[0].id)
+
     const updateName = e => setName(e.target.value)
     const updateBreed = e => setBreed(e.target.value)
     const updatePic_url1 = e => setPic_url1(e.target.value)
@@ -128,7 +128,7 @@ const NewPostForm = () => {
                             <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
 
                             <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
-                            
+
                             <FormDropdown field='color' updateValue={updateColor} />
 
                             <FormInput field='name' updateValue={updateName} placeholder='Name' />
@@ -155,6 +155,7 @@ const NewPostForm = () => {
                             <button type='submit'>Post</button>
                         </form>
                     </div>
+                    <img id='logozoomiesvertical' alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
                 </div>
             </div>
         </>

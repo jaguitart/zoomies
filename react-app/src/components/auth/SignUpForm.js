@@ -60,6 +60,7 @@ const SignUpForm = () => {
   return (
     <>
       <div id='allsignup'>
+        {/* AGREGAR INFORMACION DE COMO LLENAR EL FORMULARIO */}
         <div className="mainsignup">
           <div id='movingimgdiv'>
             <div className='fadein'>

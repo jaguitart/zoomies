@@ -6,7 +6,8 @@ import { deleteOnePost } from "../../../store/pet_post";
 import { Modal } from "../../../context/Modal";
 import NewApplicationForm from "../../applications/NewApplication";
 import NavBar from "../../NavBar/NavBar";
-
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PetPost = ({ posts }) => {
   const { id } = useParams();
@@ -14,6 +15,11 @@ const PetPost = ({ posts }) => {
   const dispatch = useDispatch()
   const post = posts.find(post => +post.id === +id)
   const handleDelete = id => dispatch(deleteOnePost(id))
+  const user = useSelector(state => state.session.user);
+
+  if (!user) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <>

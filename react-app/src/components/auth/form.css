@@ -293,3 +293,16 @@ input {
 .signup .clickedbutton {
   background: linear-gradient(180deg, #FFC799 0%, #FFA199 100%), #FFFF99;
 }
+
+#selectdiv {
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  flex-direction: column;
+  width: 230px;
+}
+
+#selectdiv .colorselector {
+  height: 12px;
+  width: 220px;
+}
