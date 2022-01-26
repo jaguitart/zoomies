@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateOneApplication } from '../../../store/application'
 
 const SingleApplication = ({ application, setShowModal }) => {
   const dispatch = useDispatch()
-  // const [status, setStatus] = useState('Pending');
 
   const post = Object.values(useSelector(state => state.posts)).find(post => post.id === application.post_id)
   const user = Object.values(useSelector(state => state.users)).find(user => user.id === application.user_id)

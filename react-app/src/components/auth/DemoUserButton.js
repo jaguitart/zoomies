@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './form.css';
+
 
 const DemoUserButton = () => {
   const user = useSelector(state => state.session.user);
@@ -18,7 +20,7 @@ const DemoUserButton = () => {
     return <Redirect to='/pet-post' />;
   }
 
-  return <button onClick={handleDemo}>Demo User</button>;
+  return <button id='demobuttonuser' onClick={handleDemo}>User</button>;
 }
 
 

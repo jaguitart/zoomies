@@ -2,8 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './form.css';
 
-const DemoUserButton = () => {
+
+const DemoOrgButton = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch()
   const handleDemo = async (e) => {
@@ -18,8 +20,9 @@ const DemoUserButton = () => {
     return <Redirect to='/pet-post' />;
   }
 
-  return <button onClick={handleDemo}>Demo User</button>;
+  return <button id='demobuttonorg' onClick={handleDemo}>Organization</button>
+
 }
 
 
-export default DemoUserButton;
+export default DemoOrgButton;

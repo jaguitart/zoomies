@@ -27,7 +27,7 @@ const SingleApplication = ({ application }) => {
         <i>A1: {ans1}</i>
         <i>A2: {ans2}</i>
         <i>A3: {ans3}</i>
-        <i>STATUS: {status?"APPROVED":"REJECTED"}</i>
+        <i>STATUS: {status}</i>
       </div>
       {
         showApplicationModal && (

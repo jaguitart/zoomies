@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import '../../auth/form.css'
 
 const FormSelect = ({ field, updateValue, preselection }) => {
   const [data, setData] = useState([]);
@@ -17,7 +18,7 @@ const FormSelect = ({ field, updateValue, preselection }) => {
       {data &&
         data.map(singleData => (
           <b key={singleData.id}>
-            <input type="radio" value={singleData.id} checked={+preselection === +singleData?.id} name={field} onChange={updateValue} />{singleData[field === 'account_type' ? 'type' : field]}
+            <input id='radio' type="radio" value={singleData.id} checked={+preselection === +singleData?.id} name={field} onChange={updateValue} />{singleData[field === 'account_type' ? 'type' : field]}
           </b >
         ))
       }
