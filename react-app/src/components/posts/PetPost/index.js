@@ -8,14 +8,52 @@ import NewApplicationForm from "../../applications/NewApplication";
 import NavBar from "../../NavBar/NavBar";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import './style.css'
 
 const PetPost = ({ posts }) => {
   const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
-  const dispatch = useDispatch()
   const post = posts.find(post => +post.id === +id)
+  const [pictureSelected, setPictureSelected] = useState(post?.pic_url1)
+  const [pictureNext, setPictureNext] = useState(post?.pic_url2)
+  const [pictureLast, setPictureLast] = useState(post?.pic_url3)
+  const dispatch = useDispatch()
   const handleDelete = id => dispatch(deleteOnePost(id))
   const user = useSelector(state => state.session.user);
+
+  const updateImgLeft = () => {
+    if (pictureSelected === post?.pic_url1) {
+      setPictureSelected(post?.pic_url2)
+      setPictureNext(post?.pic_url3)
+      setPictureLast(post?.pic_url1)
+    } else if (pictureSelected === post?.pic_url2) {
+      setPictureSelected(post?.pic_url3)
+      setPictureNext(post?.pic_url1)
+      setPictureLast(post?.pic_url2)
+    } else {
+      setPictureSelected(post?.pic_url1)
+      setPictureNext(post?.pic_url2)
+      setPictureLast(post?.pic_url3)
+    }
+  }
+
+  const updateImgRight = () => {
+    if (pictureSelected === post?.pic_url1) {
+      setPictureSelected(post?.pic_url2)
+      setPictureNext(post?.pic_url1)
+      setPictureLast(post?.pic_url3)
+    } else if (pictureSelected === post?.pic_url2) {
+      setPictureSelected(post?.pic_url3)
+      setPictureNext(post?.pic_url2)
+      setPictureLast(post?.pic_url1)
+    } else {
+      setPictureSelected(post?.pic_url1)
+      setPictureNext(post?.pic_url3)
+      setPictureLast(post?.pic_url2)
+    }
+  }
+
 
   if (!user) {
     return <Redirect to='/' />;
@@ -24,12 +62,25 @@ const PetPost = ({ posts }) => {
   return (
     <>
       <NavBar />
-      <div>
-        <div>
-          <img src={post?.pic_url1} width="350px" max-height="350px" alt={post.name} />
-          <img src={post?.pic_url2} width="350px" max-height="350px" alt={post.name} />
-          <img src={post?.pic_url3} width="350px" max-height="350px" alt={post.name} />
+      <div className="allpetpost">
+        <div className="carousel-wrapper">
+          {post.pic_url3 && post.pic_url2 && (
+            <img className="backimages" onClick={updateImgRight} id="imgleft" src={pictureLast} alt={post.name} />
+          )}
+          {post.pic_url3 && post.pic_url2 && (
+            <MdOutlineArrowBackIosNew onClick={updateImgLeft} id="leftarrow" className="arrow" />
+          )}
+          <div className="carousel-item">
+            <img src={pictureSelected} alt={post.name} />
+          </div>
+          {post.pic_url3 && post.pic_url2 && (
+            <MdOutlineArrowForwardIos onClick={updateImgRight} id="rightarrow" className="arrow" />
+          )}
+          {post.pic_url3 && post.pic_url2 && (
+            <img className="backimages" onClick={updateImgRight} id="imgright" src={pictureNext} alt={post.name} />
+          )}
         </div>
+
         <div>
           <div>Type:{post?.type}</div>
           <div>Sex:{post?.sex}</div>
