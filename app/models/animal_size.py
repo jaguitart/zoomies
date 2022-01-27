@@ -14,5 +14,5 @@ class Animal_size(db.Model):
   def to_dict(self):
         return {
             'id': self.id,
-            'type': self.size,
+            'size': self.size,
         }

@@ -12,12 +12,12 @@ const FormDoubleButton = ({ field, updateValue, clicked }) => {
     }
     fetchData(field)
   }, [field]);
-
+  
 
   return (
     <div id='doublebutton'>
-      <button key={data[0]?.id} value={1} className={!clicked ? 'user' : ''} id='doublebuttonleft' name={field} onClick={updateValue}>{data[0]?.[field]}</button>
-      <button key={data[1]?.id} value={2} className={!clicked ? '' : 'org'} id='doublebuttonright' name={field} onClick={updateValue}>{data[1]?.[field]}</button>
+      <button key={data[0]?.id} value={1} className={clicked === 1 ? 'user' : ''} id='doublebuttonleft' name={field} onClick={updateValue}>{data[0]?.[field]}</button>
+      <button key={data[1]?.id} value={2} className={clicked === 2 ? 'org' : ''} id='doublebuttonright' name={field} onClick={updateValue}>{data[1]?.[field]}</button>
     </ div>
   )
 }

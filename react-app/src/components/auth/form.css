@@ -256,6 +256,12 @@ input {
   width: 51px;
 }
 
+#middlebutton {
+  border-radius: 0px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
 #rightbutton {
   border-radius: 0px;
   border-top-right-radius: 16px;
@@ -305,4 +311,10 @@ input {
 #selectdiv .colorselector {
   height: 12px;
   width: 220px;
+}
+
+.editform-editingdog{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }

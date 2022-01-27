@@ -19,7 +19,7 @@ const SinglePost = ({ post }) => {
         </div>
         <div className="posttextdiv">
           <div id="animalname">{post?.name}</div>
-          <div>{post?.age.age} <span id='animalnamedot'>•</span> size</div>
+          <div>{post?.age.age} <span id='animalnamedot'>•</span> {post?.size}</div>
         </div>
         {/* <NavLink to={`/pet-post/${post.id}/edit`}> */}
         {/* <button>Edit</button> */}

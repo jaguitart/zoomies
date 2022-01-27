@@ -13,8 +13,6 @@ const FormAge = ({ field, updateValue, clicked }) => {
     fetchData(field)
   }, [field]);
 
-  // className={!clicked ? 'user' : ''}
-
   return (
     <div id='selectionbuttons'>
       <button key={data[0]?.id} className={+clicked === 1?'clickedbutton':''} value={1} id='leftbutton' name={field} onClick={updateValue}>{data[0]?.age}</button>
