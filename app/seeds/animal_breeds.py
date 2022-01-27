@@ -3,7 +3,7 @@ from app.models import db, Animal_breed
 
 def seed_animal_breeds():
 
-    Dog1= Animal_breed(breed='Mixed breed', type='dog')
+    Dog1= Animal_breed(breed='Mixed breeds', type='dog')
     Dog2= Animal_breed(breed='Affenpinscher Hound', type='dog')
     Dog3= Animal_breed(breed='American Bulldog Terrier', type='dog')
     Dog4= Animal_breed(breed='American Pit Bull Terrier', type='dog')
@@ -34,8 +34,10 @@ def seed_animal_breeds():
     Dog29= Animal_breed(breed='Siberian Husky Terrier', type='dog')
     Dog30= Animal_breed(breed='Staffordshire Terrier', type='dog')
     Dog31= Animal_breed(breed='Yorkshire Terrier', type='dog')
+    Dog32= Animal_breed(breed='Mixed breed', type='dog')
+    Dog33= Animal_breed(breed='Not Listed', type='dog')
 
-    Cat1= Animal_breed(breed='Mixed breed', type='cat')
+    Cat1= Animal_breed(breed='Mixed breeds', type='cat')
     Cat2= Animal_breed(breed='Abyssinian cat', type='cat')
     Cat3= Animal_breed(breed='American Shorthair Mist', type='cat')
     Cat4= Animal_breed(breed='British Shorthair', type='cat')
@@ -49,6 +51,8 @@ def seed_animal_breeds():
     Cat12= Animal_breed(breed='Scottish Fold', type='cat')
     Cat13= Animal_breed(breed='Siamese Cats', type='cat')
     Cat14= Animal_breed(breed='Sphynx', type='cat')
+    Cat15= Animal_breed(breed='Mixed breed', type='cat')
+    Cat16= Animal_breed(breed='Not Listed', type='cat')
 
 
     db.session.add(Dog1)
@@ -82,6 +86,8 @@ def seed_animal_breeds():
     db.session.add(Dog29)
     db.session.add(Dog30)
     db.session.add(Dog31)
+    db.session.add(Dog32)
+    db.session.add(Dog33)
 
     db.session.add(Cat1)
     db.session.add(Cat2)
@@ -97,6 +103,8 @@ def seed_animal_breeds():
     db.session.add(Cat12)
     db.session.add(Cat13)
     db.session.add(Cat14)
+    db.session.add(Cat15)
+    db.session.add(Cat16)
 
     db.session.commit()
 

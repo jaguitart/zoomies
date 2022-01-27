@@ -209,3 +209,30 @@
   font-size: 35px;
   margin-right: 20px;
 }
+
+.petpost-edit-delete {
+  width: 55px;
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  border: 1px;
+  margin:auto;
+  background-color: #205cff;
+  font-size: 14px;
+  font-weight:500;
+  cursor: pointer;
+  z-index: 2;
+  margin-left: 3px;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  color: rgb(255, 255, 255);
+}
+
+#petpost-editbutton{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#petpost-deletebutton{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}

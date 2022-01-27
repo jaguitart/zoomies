@@ -110,6 +110,14 @@ const PetPost = ({ posts }) => {
               )}
             </div>
           )}
+          {isMyPost && (
+            <div id="pet-applybutton">
+              <NavLink to={`/pet-post/${post.id}/edit`}>
+                <button id="petpost-editbutton" className="petpost-edit-delete">Edit</button>
+              </NavLink>
+              <button id="petpost-deletebutton" className="petpost-edit-delete" onClick={() => handleDelete(post.id)}>Delete</button>
+            </div>
+          )}
           <div className="pet-info">
 
             <div className="pet-name">
@@ -134,15 +142,6 @@ const PetPost = ({ posts }) => {
             </div>
           </div>
         </div>
-        {isMyPost && (
-          <div>
-            <NavLink to={`/pet-post/${post.id}/edit`}>
-              <button>Edit</button>
-            </NavLink>
-
-            <button onClick={() => handleDelete(post.id)}>Delete</button>
-          </div>
-        )}
       </div>
     </>
   )

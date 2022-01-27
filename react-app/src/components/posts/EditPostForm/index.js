@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateOnePost } from "../../../store/pet_post";
 import FormInput from "../../FormsComponents/FormInput";
 import NavBar from "../../NavBar/NavBar";
 import FormAge from "../../FormsComponents/FormAge";
 import FormDoubleButton from "../../FormsComponents/FormDoubleButton";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import '../../auth/form.css'
 
 
@@ -96,9 +97,13 @@ const EditPostForm = () => {
       <NavBar />
       <div id='allsignup'>
         <div className="mainsignup">
+          <NavLink to={`/pet-post/${id}`}>
+            <div id="petedit-backdiv">
+              <MdOutlineArrowBackIosNew id='editpet-back' /><span id="petedit-backspan">Back</span>
+            </div>
+          </NavLink>
           <div className="signup" >
             <form onSubmit={onEdit}>
-
               <div className="errors">
                 {errors.map((error, ind) => (
                   <div key={ind}>{error}</div>
@@ -129,8 +134,7 @@ const EditPostForm = () => {
               <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' preselection={question2} />
 
               <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' preselection={question3} />
-
-              <button type='submit'>Re-Post</button>
+              <button id='' className="editpet-repostbutton" type='submit'>Re-Post</button>
             </form>
           </div>
           <img id='logozoomiesvertical' alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
