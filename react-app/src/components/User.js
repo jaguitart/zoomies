@@ -41,7 +41,7 @@ function User({ users, posts }) {
       <NavBar />
       <div>
         <div>
-          <img src={profile_owner?.profile_pic} alt={profile_owner.profile_ownername} width="75px" max-height='75px' />
+          <img src={profile_owner?.profile_pic} alt={profile_owner?.profile_ownername} width="75px" max-height='75px' />
         </div>
         <div>
           <strong>Username</strong> <i>{profile_owner.username}</i>

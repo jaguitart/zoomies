@@ -2,7 +2,7 @@ from app.models import db, Animal_breed
 
 
 def seed_animal_breeds():
-    Undefined= Animal_breed(breed='undefined')
+    Undefined= Animal_breed(breed='Mix')
 
     Dog1= Animal_breed(breed='d-Affenpinscher')
     Dog2= Animal_breed(breed='d-Afghan Hound')
