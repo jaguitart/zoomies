@@ -8,17 +8,19 @@ import FormInput from "../../FormsComponents/FormInput";
 import NavBar from "../../NavBar/NavBar";
 import FormAge from "../../FormsComponents/FormAge";
 import FormDoubleButton from "../../FormsComponents/FormDoubleButton";
-
+import FormSize from "../../FormsComponents/FormSize";
 
 const NewPostForm = () => {
     const history = useHistory();
-    const [clickedType, setClickedType] = useState('');
-    const [clickedSex, setClickedSex] = useState('');
-    const [clickedVaccionationStatus, setClickedVaccionationStatus] = useState('');
+    const [clickedType, setClickedType] = useState(1);
+    const [clickedSex, setClickedSex] = useState(1);
+    const [clickedSize, setClickedSize] = useState(1);
+    const [clickedVaccionationStatus, setClickedVaccionationStatus] = useState(1);
     const [clickedAge, setClickedAge] = useState(1);
     const [errors, setErrors] = useState([]);
     const [type, setType] = useState(1);
     const [sex, setSex] = useState(1);
+    const [size, setSize] = useState(1);
     const [name, setName] = useState('');
     const [age, setAge] = useState(1);
     const [color, setColor] = useState(1);
@@ -53,6 +55,7 @@ const NewPostForm = () => {
             sex,
             age,
             color,
+            size,
             breed,
             pic_url1,
             pic_url2,
@@ -72,14 +75,20 @@ const NewPostForm = () => {
 
     const updateType = e => {
         e.preventDefault()
-        setClickedType(+e.target.value !== 1 ? true : false);
+        setClickedType(+e.target.value);
         setType(e.target.value)
     }
 
     const updateSex = e => {
         e.preventDefault()
-        setClickedSex(+e.target.value !== 1 ? true : false);
+        setClickedSex(+e.target.value);
         setSex(e.target.value)
+    }
+
+    const updateSize = e => {
+        e.preventDefault()
+        setSize(e.target.value)
+        setClickedSize(e.target.value)
     }
 
     const updateAge = e => {
@@ -90,7 +99,7 @@ const NewPostForm = () => {
 
     const updateVaccination_status = e => {
         e.preventDefault()
-        setClickedVaccionationStatus(+e.target.value !== 1 ? true : false);
+        setClickedVaccionationStatus(+e.target.value);
         setVaccination_status(e.target.value)
     }
 
@@ -125,6 +134,8 @@ const NewPostForm = () => {
                             <FormDoubleButton clicked={clickedType} field='type' updateValue={updateType} preselection={type} />
 
                             <FormDoubleButton clicked={clickedSex} field='sex' updateValue={updateSex} preselection={sex} />
+                            
+                            <FormSize clicked={clickedSize} field='size' updateValue={updateSize} preselection={size} />
 
                             <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
 
@@ -135,8 +146,6 @@ const NewPostForm = () => {
                             <FormDropdownBreed  type={type} field='breed' updateValue={updateBreed} />
 
                             <FormInput field='name' updateValue={updateName} placeholder='Name' />
-
-                            <FormInput field='breed' updateValue={updateBreed} placeholder='Breed' />
 
                             <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' />
 

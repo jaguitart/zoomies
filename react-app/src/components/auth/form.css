@@ -256,6 +256,12 @@ input {
   width: 51px;
 }
 
+#middlebutton {
+  border-radius: 0px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
 #rightbutton {
   border-radius: 0px;
   border-top-right-radius: 16px;
@@ -287,6 +293,7 @@ input {
 }
 
 #createanewpettext {
+  position: static;
   margin-bottom: 15px;
 }
 
@@ -305,4 +312,40 @@ input {
 #selectdiv .colorselector {
   height: 12px;
   width: 220px;
+}
+
+.react-dropdown-select-dropdown {
+  height: 1500px;
+}
+
+.e1qjn9k90{
+  padding-top: 500px;
+}
+
+.editform-editingdog{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+#editpet-back {
+  position: relative;
+  left: 50px;
+  top: 25px;
+  font-size: 15px;
+  color: black;
+}
+
+#petedit-backdiv {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: black;
+}
+
+#petedit-backspan {
+  position: relative;
+  left: 73px;
+  top: 11px;
+  font-size: 12px;
 }

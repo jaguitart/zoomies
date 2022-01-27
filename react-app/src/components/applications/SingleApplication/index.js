@@ -5,6 +5,7 @@ import { deleteOneApplication } from "../../../store/application";
 import { Modal } from "../../../context/Modal"
 import EditApplicationForm from "../EditApplication/index"
 import Application from "../Application/index"
+import './style.css'
 
 
 const SingleApplication = ({ application }) => {
@@ -21,8 +22,8 @@ const SingleApplication = ({ application }) => {
 
 
   return (
-    <div>
-      <div onClick={() => setShowApplicationModal(!showApplicationModal)}>
+    <div id="allsingleapplicationdiv">
+      <div id="textapplicationdiv" onClick={() => setShowApplicationModal(!showApplicationModal)}>
         <i>USER ID: {application.user_id}</i>
         <i>POST ID: {application.post_id}</i>
         <i>A1: {ans1}</i>

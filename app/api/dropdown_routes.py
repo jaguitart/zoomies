@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Animal_breed, Animal_sex, Animal_vaccination_status, Animal_color, Animal_type, Animal_age, Account_type
+from app.models import db, Animal_breed, Animal_sex, Animal_vaccination_status, Animal_color, Animal_type, Animal_age, Account_type, Animal_size
 
 
 dropdown_routes = Blueprint('dropdown', __name__)
@@ -16,6 +16,12 @@ def get_all_breeds():
 def get_all_sexs():
     sexs = Animal_sex.query.all()
     return {'sex': [sex.to_dict() for sex in sexs]}
+
+# GET /api/dropdown/size
+@dropdown_routes.route('/size')
+def get_all_sizes():
+    sizes = Animal_size.query.all()
+    return {'size': [size.to_dict() for size in sizes]}
 
 # GET /api/dropdown/vaccination_status
 @dropdown_routes.route('/vaccination_status')

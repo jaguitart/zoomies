@@ -83,7 +83,8 @@
   margin-left: 12%;
   margin-right: 10%;
   margin-top: 10px;
-  border-bottom: 1px solid #004383;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #004383;
   border-radius: 3px;
   border-top: 5px solid #004383;
   display: flex;
@@ -91,6 +92,7 @@
   align-items: center;
   text-align: center;
   max-width: 1400px;
+  background: linear-gradient(180deg, #ffc7991a 85%, #ffc79998 100%), #ffc79921;
 }
 
 .pet-name{
@@ -138,9 +140,10 @@
   font-size: 15px;
 }
 .pet-description {
-  text-justify: distribute;
+  text-align:start;
+  word-spacing: 0;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding-right: 30px;
   padding-left: 30px;
 }
@@ -205,4 +208,31 @@
 #namedot{
   font-size: 35px;
   margin-right: 20px;
+}
+
+.petpost-edit-delete {
+  width: 55px;
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  border: 1px;
+  margin:auto;
+  background-color: #205cff;
+  font-size: 14px;
+  font-weight:500;
+  cursor: pointer;
+  z-index: 2;
+  margin-left: 3px;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  color: rgb(255, 255, 255);
+}
+
+#petpost-editbutton{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+#petpost-deletebutton{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }

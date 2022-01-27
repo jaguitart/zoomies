@@ -11,6 +11,7 @@ class NewPetPostForm(FlaskForm):
     name = StringField('Name')
     sex = StringField('Sex')
     age = StringField('Age')
+    size = StringField('size')
     color = StringField('Color')
     breed = StringField('Breed')
     pic_url1 = StringField('Pic_url1')

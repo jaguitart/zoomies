@@ -35,6 +35,7 @@ def new_post():
             name=form.data['name'],
             sex_id=form.data['sex'],
             age_id=form.data['age'],
+            size_id=form.data['size'],
             color_id=form.data['color'],
             breed_id=form.data['breed'],
             pic_url1=form.data['pic_url1'],
