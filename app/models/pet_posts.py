@@ -10,6 +10,7 @@ class Pet_Post(db.Model):
     type_id = db.Column(db.String(50), db.ForeignKey("animal_types.id"), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     sex_id = db.Column(db.String(50), db.ForeignKey("animal_sexs.id"), nullable=False)
+    size_id = db.Column(db.String(50), db.ForeignKey("animal_sizes.id"), nullable=False)
     age_id = db.Column(db.String(50), db.ForeignKey("animal_ages.id"), nullable=False)
     color_id = db.Column(db.String(50), db.ForeignKey("animal_colors.id"), nullable=False)
     breed_id = db.Column(db.String(50), db.ForeignKey("animal_breeds.id"))
@@ -27,6 +28,7 @@ class Pet_Post(db.Model):
     users = db.relationship("User", back_populates="pet_posts")
     types = db.relationship("Animal_type", back_populates="pet_posts")
     sexs = db.relationship("Animal_sex", back_populates="pet_posts")
+    sizes = db.relationship("Animal_size", back_populates="pet_posts")
     ages = db.relationship("Animal_age", back_populates="pet_posts")
     colors = db.relationship("Animal_color", back_populates="pet_posts")
     breeds = db.relationship("Animal_breed", back_populates="pet_posts")
@@ -42,6 +44,7 @@ class Pet_Post(db.Model):
             'type': self.types.type,
             'name': self.name,
             'sex': self.sexs.sex,
+            'size': self.sizes.size,
             'age': {'id':self.ages.id , 'age': self.ages.age},
             'color': self.colors.color,
             'breed': self.breeds.breed,

@@ -161,10 +161,11 @@
   font-family:'Times New Roman', Times, serif;
   font-weight: bolder;
   color: #353535;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .org-logo {
+  border: solid 2px #353535;
   height: 80px;
   width: 80px;
   border-radius: 50%;

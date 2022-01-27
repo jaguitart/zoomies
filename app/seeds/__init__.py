@@ -6,7 +6,7 @@ from .animal_ages import seed_animal_ages, undo_animal_ages
 from .animal_breeds import seed_animal_breeds, undo_animal_breeds
 from .animal_colors import seed_animal_colors, undo_animal_colors
 from .animal_sexs import seed_animal_sexs, undo_animal_sexs
-# from .animal_sizes import seed_animal_sizes, undo_animal_sizes
+from .animal_sizes import seed_animal_sizes, undo_animal_sizes
 from .animal_types import seed_animal_types, undo_animal_types
 from .animal_vaccination_status import seed_animal_vaccination_status, undo_animal_vaccination_status
 
@@ -24,7 +24,7 @@ def seed():
     seed_animal_breeds()
     seed_animal_colors()
     seed_animal_sexs()
-    # seed_animal_sizes()
+    seed_animal_sizes()
     seed_animal_types()
     seed_animal_vaccination_status()
     seed_pet_posts()
@@ -41,7 +41,7 @@ def undo():
     undo_animal_breeds()
     undo_animal_colors()
     undo_animal_sexs()
-    # undo_animal_sizes()
+    undo_animal_sizes()
     undo_animal_types()
     undo_animal_vaccination_status()
     # Add other undo functions here

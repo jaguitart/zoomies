@@ -121,7 +121,7 @@ const PetPost = ({ posts }) => {
             </div>
             <div className="pet-basicinfo">
               <div> ━━━ {post?.age.age} <span id="pet-dot">•</span> {post?.sex} <span id="pet-dot">•</span> {post?.color}  ━━━</div>
-              <div> size <span id="pet-dot">•</span> {post?.breed} </div>
+              <div> {post?.size} <span id="pet-dot">•</span> {post?.breed} </div>
               <div id="pet-vacstatus"><b>Vaccination Status</b>
                 <span id='space'>__</span>
                 {post?.vaccination_status.vaccination_status === 'Up to date' ?

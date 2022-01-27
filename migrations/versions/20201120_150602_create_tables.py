@@ -33,13 +33,13 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
-    # # SIZE
-    # op.create_table('animal_sizes',
-    # sa.Column('id', sa.Integer(), nullable=False),
-    # sa.Column('size', sa.String(50), nullable=False),
+    # SIZE
+    op.create_table('animal_sizes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('size', sa.String(50), nullable=False),
 
-    # sa.PrimaryKeyConstraint('id'),
-    # )
+    sa.PrimaryKeyConstraint('id'),
+    )
 
     # SEX
     op.create_table('animal_sexs',
@@ -65,7 +65,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
-    # COLOR MANY to MANY
+    # COLOR MANY to MANY NOT FOR NOW
     op.create_table('animal_colors',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('color', sa.String(50), nullable=False),
@@ -73,9 +73,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     )
 
-    # BREED MANY to MANY
+    # BREED MANY to MANY NOT FOR NOW
     op.create_table('animal_breeds',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('type', sa.String(50), nullable=False),
     sa.Column('breed', sa.String(100), nullable=False),
 
     sa.PrimaryKeyConstraint('id'),
@@ -107,6 +108,7 @@ def upgrade():
     sa.Column('type_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('sex_id', sa.Integer(), nullable=False),
+    sa.Column('size_id', sa.Integer(), nullable=False),
     sa.Column('age_id', sa.Integer(), nullable=False),
     sa.Column('color_id', sa.Integer(), nullable=False),
     sa.Column('breed_id', sa.Integer(), nullable=True),
@@ -125,6 +127,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.ForeignKeyConstraint(['type_id'], ['animal_types.id']),
     sa.ForeignKeyConstraint(['sex_id'], ['animal_sexs.id']),
+    sa.ForeignKeyConstraint(['size_id'], ['animal_sizes.id']),
     sa.ForeignKeyConstraint(['age_id'], ['animal_ages.id']),
     sa.ForeignKeyConstraint(['color_id'], ['animal_colors.id']),
     sa.ForeignKeyConstraint(['breed_id'], ['animal_breeds.id']),

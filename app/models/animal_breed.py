@@ -6,13 +6,19 @@ class Animal_breed(db.Model):
   
   
   id = db.Column(db.Integer, primary_key=True)
+  type = db.Column(db.String(50))
   breed = db.Column(db.String(100))
   
   pet_posts = db.relationship('Pet_Post', back_populates='breeds')
   
   
   def to_dict(self):
-        return {
+    if self.type == 'dog':
+      type = 1
+    else:
+      type = 2
+    return {
             'id': self.id,
-            'breed': self.breed,
+            'type':type,
+            'breed': self.breed
         }

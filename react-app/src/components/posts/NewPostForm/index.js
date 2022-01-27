@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { addOnePost } from "../../../store/pet_post";
 import FormDropdown from "../../FormsComponents/FormDropdown";
+import FormDropdownBreed from "../../FormsComponents/FormDropDownBreeds";
 import FormInput from "../../FormsComponents/FormInput";
 import NavBar from "../../NavBar/NavBar";
 import FormAge from "../../FormsComponents/FormAge";
@@ -94,9 +95,9 @@ const NewPostForm = () => {
     }
 
     const updateColor = value => setColor(value[0].id)
+    const updateBreed = value => setBreed(value[0].id)
 
     const updateName = e => setName(e.target.value)
-    const updateBreed = e => setBreed(e.target.value)
     const updatePic_url1 = e => setPic_url1(e.target.value)
     const updatePic_url2 = e => setPic_url2(e.target.value)
     const updatePic_url3 = e => setPic_url3(e.target.value)
@@ -130,6 +131,8 @@ const NewPostForm = () => {
                             <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
 
                             <FormDropdown field='color' updateValue={updateColor} />
+
+                            <FormDropdownBreed  type={type} field='breed' updateValue={updateBreed} />
 
                             <FormInput field='name' updateValue={updateName} placeholder='Name' />
 

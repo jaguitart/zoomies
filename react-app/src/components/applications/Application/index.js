@@ -5,17 +5,19 @@ import { updateOneApplication } from '../../../store/application'
 const SingleApplication = ({ application, setShowModal }) => {
   const dispatch = useDispatch()
 
+  const sessionUserId = useSelector(state => state.session.user).id
   const post = Object.values(useSelector(state => state.posts)).find(post => post.id === application.post_id)
   const user = Object.values(useSelector(state => state.users)).find(user => user.id === application.user_id)
-
+  const posts = Object.values(useSelector(state => state.posts)).filter(post =>post.user_id === sessionUserId)
+  
   const onStatus = async status => {
     const sendStatus = {
       id: application.id,
       user_id: application.user_id,
       post_id: application.post_id,
-      answer1:application.answer1,
-      answer2:application.answer2,
-      answer3:application.answer3,
+      answer1: application.answer1,
+      answer2: application.answer2,
+      answer3: application.answer3,
       status
     }
     let submited = await dispatch(updateOneApplication(sendStatus))
@@ -30,7 +32,7 @@ const SingleApplication = ({ application, setShowModal }) => {
         <img src={post?.logo} width="150px" max-height="150px" alt='logo' />
         <div>{post.username}</div>
         <div>
-        <img src={post?.pic_url1} width="350px" max-height="350px" alt={post.name} />
+          <img src={post?.pic_url1} width="350px" max-height="350px" alt={post.name} />
         </div>
         <div>{post.name}</div>
         <div>{user.username}</div>
@@ -38,12 +40,16 @@ const SingleApplication = ({ application, setShowModal }) => {
         <div>Q1: {post.question1}</div>
         <div>{application?.answer1}</div>
         <div>Q2: {post.question2}</div>
-        <div>{application?.answer1}</div>
+        <div>{application?.answer2}</div>
         <div>Q3: {post.question3}</div>
-        <div>{application?.answer1}</div>
+        <div>{application?.answer3}</div>
       </div>
-      <button onClick={() => onStatus(true)}>APPROVE</button>
-      <button onClick={() => onStatus(false)}>REJECT</button>
+      {posts.indexOf(post) >= 0 && (
+        <div>
+          <button onClick={() => onStatus(true)}>APPROVE</button>
+          <button onClick={() => onStatus(false)}>REJECT</button>
+        </div>
+      )}
     </div>
   )
 }

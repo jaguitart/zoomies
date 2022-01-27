@@ -9,7 +9,7 @@ dropdown_routes = Blueprint('dropdown', __name__)
 @dropdown_routes.route('/breed')
 def get_all_breeds():
     breeds = Animal_breed.query.all()
-    return {'breeds': [breed.to_dict() for breed in breeds]}
+    return {'breed': [breed.to_dict() for breed in breeds]}
 
 # GET /api/dropdown/sex
 @dropdown_routes.route('/sex')
