@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { IoPaw } from "react-icons/io5";
 import { BsPlusSquare, BsFillPersonFill } from "react-icons/bs";
@@ -14,6 +14,10 @@ const NavBar = () => {
   const user = useSelector(state => state.session.user ? state.session.user : false)
   const [arrow, setArrow] = useState('')
 
+
+  if (!user) {
+    return <Redirect to='/' />;
+  }
 
   return (
     <nav>
@@ -31,13 +35,14 @@ const NavBar = () => {
               <GiDogHouse className='icon' />
             </NavLink>
           </div>
+          
+            <div id='petposts' className='optionclass'>
+              <NavLink to='/pet-post' exact={true} activeClassName='active'>
+                <IoPaw className='icon' onClick={() => setArrow('arrow1')} />
+              </NavLink>
+            </div>
 
-          <div id='petposts' className='optionclass'>
-            <NavLink to='/pet-post' exact={true} activeClassName='active'>
-              <IoPaw className='icon' onClick={() => setArrow('arrow1')} />
-            </NavLink>
-          </div>
-          {user?.id && (
+          {user?.account_type?.id !== 1 && (
             <div id='newpost' className='optionclass'>
               <NavLink to='/new-pet-post' exact={true} activeClassName='active'>
                 <BsPlusSquare className='icon' onClick={() => setArrow('arrow2')} />

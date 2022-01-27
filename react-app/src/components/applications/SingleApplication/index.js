@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { NavLink } from "react-router-dom";
 import { deleteOneApplication } from "../../../store/application";
 import { Modal } from "../../../context/Modal"
@@ -12,6 +12,7 @@ const SingleApplication = ({ application }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showApplicationModal, setShowApplicationModal] = useState(false);
   const handleDelete = id => dispatch(deleteOneApplication(id))
+  const sessionUserId = useSelector(state => state.session.user).id
 
   let status = application.status === null ? 'Pending' : application.status
   let ans1 = application.answer1 !== null ? 'OK' : 'Pending'
@@ -36,16 +37,19 @@ const SingleApplication = ({ application }) => {
           </Modal>
         )
       }
-
-      <button onClick={() => setShowEditModal(!showEditModal)}>Edit</button>
-      {
-        showEditModal && (
-          <Modal onClose={() => setShowEditModal(!showEditModal)}>
-            <EditApplicationForm application={application} setShowModal={setShowEditModal} />
-          </Modal>
-        )
-      }
-      <button onClick={() => handleDelete(application.id)}>Delete</button>
+      {application.user_id === sessionUserId && (
+        <div>
+          <button onClick={() => setShowEditModal(!showEditModal)}>Edit</button>
+          {
+            showEditModal && (
+              <Modal onClose={() => setShowEditModal(!showEditModal)}>
+                <EditApplicationForm application={application} setShowModal={setShowEditModal} />
+              </Modal>
+            )
+          }
+          <button onClick={() => handleDelete(application.id)}>Delete</button>
+        </div>
+      )}
     </div >
   )
 }
