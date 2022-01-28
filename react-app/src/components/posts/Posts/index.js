@@ -16,7 +16,8 @@ const Posts = ({ posts }) => {
   return (
     <>
       <NavBar />
-      <div id="allposts">
+      {/* <h1>Find your fur-ever friend</h1> */}
+      <div className="allposts">
         {posts.map(post =>
           <div key={post.id}>
             <SinglePost post={post} />

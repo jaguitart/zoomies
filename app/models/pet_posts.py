@@ -40,7 +40,7 @@ class Pet_Post(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'logo': self.users.logo,
+            'profile_pic': self.users.profile_pic,
             'type': self.types.type,
             'name': self.name,
             'sex': self.sexs.sex,

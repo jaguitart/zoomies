@@ -2,7 +2,6 @@ import React from "react";
 import NavBar from "../NavBar/NavBar";
 import { FaLinkedin, FaGithubSquare } from 'react-icons/fa';
 import './style.css'
-import Posts from "../posts/Posts";
 
 
 const About = ({ posts, applications, users }) => {
@@ -36,18 +35,18 @@ const About = ({ posts, applications, users }) => {
         </div>
         <div className="home-web-info-position">
           <div className="home-web-info">
-            <b id="home-text1" className="home-text-circles">Adoptable pets</b>
-            <b id="home-text2" className="home-text-circles">Homes found</b>
-            <b id="home-text3" className="home-text-circles">Partners</b>
             <div className="home-onecolorband" />
             <div className="home-circles" id="circle1">
               <span className="home-text-span">{posts.length}</span>
+              <img id="adoptablepets" alt='adoptablepets' src="https://i.imgur.com/SH3C7Kd.png" />
             </div>
             <div className="home-circles" id="circle2">
               <span className="home-text-span">{applications.filter(application => application.status).length}</span>
+              <img id="homesfound" alt='homesfound' src="https://i.imgur.com/r8Hpbrv.png" />
             </div>
             <div className="home-circles" id="circle3">
               <span className="home-text-span">{users.filter(user => user.account_type.id === 2).length}</span>
+              <img id="partners" alt='partners' src="https://i.imgur.com/D0H7ES6.png" />
             </div>
           </div>
         </div>

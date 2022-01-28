@@ -4,7 +4,7 @@ import { NavLink, Redirect } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { IoPaw } from "react-icons/io5";
 import { BsPlusSquare, BsFillPersonFill, BsInfoSquare } from "react-icons/bs";
-import { GrOrganization } from "react-icons/gr";
+import { GiDogHouse } from "react-icons/gi";
 import './NavBar.css';
 
 
@@ -26,14 +26,14 @@ const NavBar = () => {
     <nav>
       <div className='navBarDiv'>
         <div className='navLogo'>
-          <NavLink to='/pet-post' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} activeClassName='active'>
             <img id='logo' src='https://i.imgur.com/VU7sSY7.png' alt='logo' />
           </NavLink>
         </div>
         <div className='navBarOptions'>
 
           <div id='petposts' className='optionclass' onMouseEnter={() => setPointToLineFinder('pointtoline')} onMouseLeave={() => setPointToLineFinder('')}>
-            <NavLink to='/pet-post' exact={true} activeClassName='active'>
+            <NavLink to='/' exact={true} activeClassName='active'>
               <IoPaw className='icon' />
             </NavLink>
             <span>Adopt</span>
@@ -53,7 +53,7 @@ const NavBar = () => {
           {user?.id && (
             <div id='profile' className='optionclass' onMouseEnter={() => setPointToLineProfile('pointtoline')} onMouseLeave={() => setPointToLineProfile('')}>
               <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
-                {user.account_type.id === 1 ? <BsFillPersonFill className='icon' /> : <GrOrganization className='icon' />}
+                {user.account_type.id === 1 ? <BsFillPersonFill className='icon' /> : <GiDogHouse className='icon' />}
               </NavLink>
               <span className='navBar-span'>Profile</span>
               <div className={`point ${pointToLineProfile}`}></div>

@@ -23,7 +23,7 @@ const PetPost = ({ posts }) => {
   const dispatch = useDispatch()
   const handleDelete = id => {
     dispatch(deleteOnePost(id))
-    history.push(`/pet-post`)
+    history.push(`/`)
 
   }
   const user = useSelector(state => state.session.user);
@@ -65,7 +65,7 @@ const PetPost = ({ posts }) => {
   }
 
   const updateShowModal = () => setShowModal(true)
-
+  console.log(posts);
 
   if (!user) {
     return <Redirect to='/login' />;
@@ -95,8 +95,8 @@ const PetPost = ({ posts }) => {
 
         <div className="pet-card">
           <div id="pet-demoinfo">
-            {post.logo && (
-              <img className="org-logo" alt='sideimg1' src={post?.logo} />
+            {post.profile_pic && (
+              <img className="org-logo" alt='sideimg1' src={post?.profile_pic} />
             )}
             <div id="pet-demoname">{post?.username}</div>
           </div>

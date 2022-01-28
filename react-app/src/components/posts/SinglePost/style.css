@@ -5,6 +5,11 @@
   height: 280px;
 }
 
+.resize {
+  width: 132px;
+  height: 168px;
+}
+
 .individualImage:hover {
   opacity: 0.8;
 }

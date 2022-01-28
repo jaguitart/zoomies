@@ -38,7 +38,7 @@ const NewApplicationForm = ({ post }) => {
     let submited = await dispatch(addOneApplication(newApplication))
     if (submited) {
       //REVISAR A DONDE REDIRECCIONAR
-      history.push(`/pet-post`)
+      history.push(`/`)
     }
   }
 

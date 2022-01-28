@@ -41,7 +41,7 @@ const SignUpForm = () => {
   const updatePassword = (e) => { setPassword(e.target.value) };
   const updateRepeatPassword = (e) => { setRepeatPassword(e.target.value) };
   const updateProfile_pic = (e) => { setProfile_pic(e.target.value) };
-  const updateLogo = (e) => { setLogo(e.target.value) };
+  // const updateLogo = (e) => { setLogo(e.target.value) };
 
   const updateAccountTypeId = (e) => {
     setAccount_type_id(e.target.value)
@@ -52,7 +52,7 @@ const SignUpForm = () => {
 
 
   if (user) {
-    return <Redirect to='/pet-post' />;
+    return <Redirect to='/' />;
   }
 
 
@@ -106,17 +106,17 @@ const SignUpForm = () => {
               <div>
                 <FormInput field='password' updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
               </div>
-              {!organizationFields && (
-                <div>
-                  <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder='Profile Picture URL' preselection={profile_pic} />
-                </div>
-              )}
-
+              {/* {!organizationFields && ( */}
+              <div>
+                <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder={!organizationFields ? 'Profile Picture URL' : 'Logo URL'} preselection={profile_pic} />
+              </div>
+              {/* )} */}
+              {/* 
               {organizationFields && (
                 <div>
-                  <FormInput field='logo' updateValue={updateLogo} placeholder='Logo' preselection={logo} />
+                  <FormInput field='logo' updateValue={updateLogo} placeholder='Logo URL' preselection={logo} />
                 </div>
-              )}
+              )} */}
 
               <div>
                 <textarea placeholder='Tell us about yourself...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />

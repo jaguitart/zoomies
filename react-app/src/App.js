@@ -53,6 +53,9 @@ function App() {
         <Route path='/pet-post/:id' exact={true}>
           <PetPost posts={posts} />
         </Route>
+        <Route path='/' exact={true}>
+          <Posts posts={posts} />
+        </Route>
         <Route path='/pet-post' exact={true}>
           <Posts posts={posts} />
         </Route>

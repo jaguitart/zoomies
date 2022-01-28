@@ -1,1 +1,121 @@
 /* TODO Add site wide styles */
+.user-allprofile {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px solid purple;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.user-usercard {
+  width: 320px;
+
+  /* min-height: 200px; */
+  border: 1px solid #004383;
+  border-top-left-radius: 17px;
+  border-bottom-right-radius: 17px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 1.5%;
+}
+
+#user-postsandappdiv {
+  margin-left: 3%;
+}
+
+#user-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-left: 5px;
+}
+
+#allpostsonprofile {
+  border: 1px solid green;
+  min-width: 50%;
+  margin: 0px;
+  padding: 0px;
+
+}
+
+#user-icon {
+  position: relative;
+  font-size: 20px;
+  cursor: auto;
+  margin: 0px;
+  top:  10px;
+  color: rgb(85, 85, 85);
+  color: rgb(85, 85, 85);
+  /* background-color: rebeccapurple; */
+}
+
+#user-smallicon {
+  cursor: auto;
+  margin: 0px;
+  color: rgb(85, 85, 85);
+  font-size: 15px;
+  margin-left: 10px;
+  /* margin-right: 10px; */
+}
+
+#user-dot{
+  margin-left: 10px;
+  font-size: larger;
+  /* margin-right: 10px; */
+}
+
+#user-numericinfo {
+  margin-right: 15px;
+}
+
+#user-number {
+  position: relative;
+  bottom: 2px;
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: bolder;
+  color: rgb(85, 85, 85);
+}
+
+#user-profilepic {
+  margin-top: 25px;
+  margin-left: 110px;
+  border-radius: 50%;
+  border: 4px solid #a1a1a1 ;
+}
+
+#user-textinfo{
+  margin-top: 15px;
+  width: 250px;
+  text-align: center;
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-bottom: 20px;
+  color: rgb(45, 45, 45);
+  
+}
+
+#user-username{
+  color: rgb(44, 44, 44);
+  font-size: 20px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.resize {
+  width: 132px;
+  height: 168px;
+  margin: 0px;
+}
+
+
+.user-background {
+  height: 105px;
+  background-image: -webkit-linear-gradient(288deg, #004383 50%, transparent 50%); 
+  border-top-left-radius: 15px;
+}
+
+
+/* /////////////////// */

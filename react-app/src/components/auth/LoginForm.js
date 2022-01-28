@@ -32,7 +32,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/pet-post' />;
+    return <Redirect to='/' />;
   }
 
   return (
