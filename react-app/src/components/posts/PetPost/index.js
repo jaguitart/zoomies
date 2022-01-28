@@ -68,7 +68,7 @@ const PetPost = ({ posts }) => {
 
 
   if (!user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/login' />;
   }
 
   return (

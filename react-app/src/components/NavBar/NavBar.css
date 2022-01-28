@@ -17,7 +17,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   border-bottom: #004383 solid 4px;
   border-top: #004383 solid 15px;
   justify-content: space-between;
-  min-height: 50px;
+  min-height: 70px;
 }
 
 .navLogo{
@@ -26,7 +26,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 #logo {
   min-width: 200px;
-  height: 60px;
+  height: 65px;
   margin-left: 15px;
 }
 
@@ -36,6 +36,8 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 
 .optionclass {
   display: flex;
+  font-weight: bolder;
+  flex-direction: column;
   /* border:green solid 1px; */
   min-width: 65px;
   height: 100%;
@@ -51,30 +53,17 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   cursor: pointer;
 }
 
-.arrow-up {
-  position:fixed;
-  width: 10; 
-  height: 10; 
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #004383;
+/* <div class="point"></div> */
+.point {
+  width: 6px;
+  height: 3px;
+  background: #FFA199;
+  border-radius: 3px;
+  transition: width 0.2s ease;
   opacity: 0;
 }
 
-#arrow1{
-  margin-left: 17px;
-  margin-top: 51px;
-  opacity: 1;  
-}
-
-#arrow2{
-  margin-left: 97px;
-  margin-top: 51px;  
-  opacity: 1;  
-}
-
-#arrow3{
-  margin-left: 177px;
-  margin-top: 51px;  
-  opacity: 1;  
+.pointtoline {
+  width: 50px;
+  opacity: 1;
 }

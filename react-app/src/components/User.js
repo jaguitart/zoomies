@@ -31,7 +31,7 @@ function User({ users, posts }) {
 
 
   if (!user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/login' />;
   }
 
 

@@ -10,7 +10,7 @@ const Posts = ({ posts }) => {
   const user = useSelector(state => state.session.user);
 
   if (!user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/login' />;
   }
 
   return (

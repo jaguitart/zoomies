@@ -52,7 +52,7 @@ const SignUpForm = () => {
 
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/pet-post' />;
   }
 
 
@@ -119,7 +119,7 @@ const SignUpForm = () => {
               )}
 
               <div>
-                <textarea placeholder='Tell us about you...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+                <textarea placeholder='Tell us about yourself...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
               </div>
 
               <button type='submit'>Sign Up</button>
