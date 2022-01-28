@@ -297,6 +297,12 @@ input {
   margin-bottom: 15px;
 }
 
+#vaccionationstatustext {
+  position: static;
+  margin-bottom: 0px;
+  font-size: 13px;
+}
+
 .signup .clickedbutton {
   background: linear-gradient(180deg, #FFC799 0%, #FFA199 100%), #FFFF99;
 }

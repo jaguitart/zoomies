@@ -134,34 +134,34 @@ const NewPostForm = () => {
                             <FormDoubleButton clicked={clickedType} field='type' updateValue={updateType} preselection={type} />
 
                             <FormDoubleButton clicked={clickedSex} field='sex' updateValue={updateSex} preselection={sex} />
-                            
+
                             <FormSize clicked={clickedSize} field='size' updateValue={updateSize} preselection={size} />
 
                             <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
-
+                            <p id='vaccionationstatustext'>Vaccionation Status:</p>
                             <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
 
                             <FormDropdown field='color' updateValue={updateColor} />
 
-                            <FormDropdownBreed  type={type} field='breed' updateValue={updateBreed} />
+                            <FormDropdownBreed type={type} field='breed' updateValue={updateBreed} />
 
-                            <FormInput field='name' updateValue={updateName} placeholder='Name' />
+                            <FormInput field='name' updateValue={updateName} placeholder='Pet name' required={true} />
 
-                            <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' />
+                            <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture URL (cover)' required={true} />
 
-                            <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' />
+                            <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture URL (optional)' />
 
-                            <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' />
+                            <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture URL (optional)' />
 
                             <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
 
                             <FormInput field='bio' updateValue={updateBio} placeholder='Bio' />
 
-                            <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' />
+                            <FormInput field='question1' updateValue={updateQuestion1} placeholder='1.Make a question to the applicant' required={true} />
 
-                            <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' />
+                            <FormInput field='question2' updateValue={updateQuestion2} placeholder='2.Make a question to the applicant' required={true} />
 
-                            <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' />
+                            <FormInput field='question3' updateValue={updateQuestion3} placeholder='3.Make a question to the applicant' required={true} />
 
 
                             <button type='submit'>Post</button>
