@@ -36,7 +36,6 @@ class Pet_Post(db.Model):
     applications = db.relationship('Application', back_populates='pet_posts')
 
     def to_dict(self):
-
         return {
             'id': self.id,
             'user_id': self.user_id,
@@ -58,5 +57,6 @@ class Pet_Post(db.Model):
             'question2': self.question2,
             'question3': self.question3,
             'username': self.users.username,
+            'applications': [{'id':application.id, 'status':application.status, 'post_id':application.post_id} for application in self.applications if application.post_id == self.id],
             'created_at': self.created_at,
         }

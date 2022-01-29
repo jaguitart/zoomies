@@ -17,9 +17,9 @@ const PetPost = ({ posts }) => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const post = posts.find(post => +post.id === +id)
+  const [pictureLast, setPictureLast] = useState(post?.pic_url3)
   const [pictureSelected, setPictureSelected] = useState(post?.pic_url1)
   const [pictureNext, setPictureNext] = useState(post?.pic_url2)
-  const [pictureLast, setPictureLast] = useState(post?.pic_url3)
   const dispatch = useDispatch()
   const handleDelete = id => {
     dispatch(deleteOnePost(id))
@@ -34,38 +34,37 @@ const PetPost = ({ posts }) => {
 
   const updateImgLeft = () => {
     if (pictureSelected === post?.pic_url1) {
+      setPictureLast(post?.pic_url1)
       setPictureSelected(post?.pic_url2)
       setPictureNext(post?.pic_url3)
-      setPictureLast(post?.pic_url1)
     } else if (pictureSelected === post?.pic_url2) {
+      setPictureLast(post?.pic_url2)
       setPictureSelected(post?.pic_url3)
       setPictureNext(post?.pic_url1)
-      setPictureLast(post?.pic_url2)
-    } else {
+    } else if (pictureSelected === post?.pic_url3){
+      setPictureLast(post?.pic_url3)
       setPictureSelected(post?.pic_url1)
       setPictureNext(post?.pic_url2)
-      setPictureLast(post?.pic_url3)
     }
   }
 
   const updateImgRight = () => {
     if (pictureSelected === post?.pic_url1) {
-      setPictureSelected(post?.pic_url2)
-      setPictureNext(post?.pic_url1)
-      setPictureLast(post?.pic_url3)
-    } else if (pictureSelected === post?.pic_url2) {
-      setPictureSelected(post?.pic_url3)
-      setPictureNext(post?.pic_url2)
-      setPictureLast(post?.pic_url1)
-    } else {
-      setPictureSelected(post?.pic_url1)
-      setPictureNext(post?.pic_url3)
       setPictureLast(post?.pic_url2)
+      setPictureSelected(post?.pic_url3)
+      setPictureNext(post?.pic_url1)
+    } else if (pictureSelected === post?.pic_url2) {
+      setPictureLast(post?.pic_url3)
+      setPictureSelected(post?.pic_url1)
+      setPictureNext(post?.pic_url2)
+    } else if (pictureSelected === post?.pic_url3) {
+      setPictureLast(post?.pic_url1)
+      setPictureSelected(post?.pic_url2)
+      setPictureNext(post?.pic_url3)
     }
   }
 
   const updateShowModal = () => setShowModal(true)
-  console.log(posts);
 
   if (!user) {
     return <Redirect to='/login' />;

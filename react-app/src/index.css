@@ -2,16 +2,13 @@
 .user-allprofile {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
   min-width: 360px;
   align-items: flex-start;
-  /* justify-content: space-around; */
+  flex-wrap: wrap;
 }
 
 .user-usercard {
   width: 320px;
-  /* max-height: 500px; */
   border: 1px solid #004383;
   border-top-left-radius: 17px;
   border-bottom-right-radius: 17px;
@@ -21,14 +18,18 @@
 }
 
 #user-postsandappdiv {
-  margin-left: 3%;
+  margin-left: 0%;
+  max-width: 50%;
+  flex-grow: 1;
 }
 
 #user-posts {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-left: 5px;
+  min-width: 350px;
+  max-width: 800px;
+  gap: 25px;
+  margin-left: 11%;
 }
 
 #allpostsonprofile {
@@ -129,3 +130,37 @@
   top: -15px;
   left: 12%;
 }
+
+/* /////////////////// */
+.user-reviewedapplications {
+  width: 400px;
+  position: relative;
+  margin-left: 4%;
+  /* border: red 1px solid; */
+}
+
+.user-rejectedapplications {
+  border: 1px solid red;
+  margin-bottom: 20px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.user-approvedapplications {
+  border: 1px solid green;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.user-applicationssidebar{
+  position: relative;
+  left: 45px;
+}
+
+.user-pendingapplicationstext {
+  position: relative;
+  left: 120px;
+}
+

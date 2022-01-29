@@ -27,9 +27,26 @@ function App() {
     })();
   }, [dispatch]);
 
-  const applications = Object.values(useSelector(state => state.applications))
-  const posts = Object.values(useSelector(state => state.posts))
   const users = Object.values(useSelector(state => state.users))
+  const applications = Object.values(useSelector(state => state.applications))
+
+  const approvedApplicationsOnPosts = applications.filter(application => !application.status).map(application => application.post_id)
+
+  const posts = Object.values(useSelector(state => state.posts)).filter((post) => approvedApplicationsOnPosts.map(application => application === post.id))
+
+  let filteredpost = [];
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    for (let j = 0; j < approvedApplicationsOnPosts.length; j++) {
+      const application = approvedApplicationsOnPosts[j];
+      if (application === post.id && [filteredpost.indexOf(post) < 0]) {
+        filteredpost.push(post)
+      }
+    }
+  }
+  let postsToShow = Array.from(new Set(filteredpost))
+
+
 
   if (!loaded) {
     return null;
@@ -54,10 +71,10 @@ function App() {
           <PetPost posts={posts} />
         </Route>
         <Route path='/' exact={true}>
-          <Posts posts={posts} />
+          <Posts posts={postsToShow} />
         </Route>
         <Route path='/pet-post' exact={true}>
-          <Posts posts={posts} />
+          <Posts posts={postsToShow} />
         </Route>
         <Route path='/users/:userId' exact={true} >
           <User users={users} posts={posts} />

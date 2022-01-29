@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-wrap: wrap;
   justify-content: center;
   height: 45px;
   padding-top: 20px;
   padding-left: 20px;
   border-top: #004383 1px solid;
   margin-bottom: 5px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
+
 
 #textapplicationdiv{
   cursor: pointer;
@@ -17,15 +21,23 @@
 #application-namedot {
   position: relative;
   font-size: 25px;
-  top: 13px;
-  left: -12px;
+  top: 14px;
+  left: -5px;
+  color: rgb(46, 46, 46);
+}
+
+#checkedapplications-namedot {
+  position: relative;
+  font-size: 25px;
+  top: 3px;
+  left: -5px;
   color: rgb(46, 46, 46);
 }
 
 .application-infodiv {
   position: relative;
   top: -30px;
-  left: 50px;
+  left: 60px;
 }
 
 #application-petname, #application-username {
@@ -46,4 +58,8 @@
   width: 20px;
   height: auto;
   margin-right: 20px;
+}
+
+.checked-applications-imganddot{
+  top: 10px;
 }

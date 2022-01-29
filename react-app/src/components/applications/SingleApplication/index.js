@@ -18,8 +18,6 @@ const SingleApplication = ({ application }) => {
   const post = Object.values(useSelector(state => state.posts)).find(post => post.id === application.post_id);
   const user = Object.values(useSelector(state => state.users)).find(user => user.id === application.user_id);
 
-  const isStatus = application.status ? 'APROVED' : 'REJECTED'
-  let status = application.status === null ? 'Pending' : isStatus
   let ans1 = application.answer1 !== '' ? true : false
   let ans2 = application.answer2 !== '' ? true : false
   let ans3 = application.answer3 !== '' ? true : false
@@ -41,13 +39,14 @@ const SingleApplication = ({ application }) => {
           </div>
           <div>
             <b>Completed: </b>
-            <span>Q1: {ans1?<AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
-            <span>Q2: {ans2?<AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
-            <span>Q3: {ans3?<AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
-            <span id="user-created_at">{application.created_at.slice(0,17)}</span>
+            <span>Q1: {ans1 ? <AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
+            <span>Q2: {ans2 ? <AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
+            <span>Q3: {ans3 ? <AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
+            <span id="user-created_at">{application.created_at.slice(0, 17)}</span>
           </div>
         </div>
       </div>
+
       {showApplicationModal && (
         <Modal onClose={() => setShowApplicationModal(!showApplicationModal)}>
           <Application application={application} setShowModal={setShowApplicationModal} />
