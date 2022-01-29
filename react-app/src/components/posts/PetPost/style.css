@@ -8,7 +8,7 @@
   width:auto;
   margin:0 auto;
   padding: 2%;
-  background-color: rgba(161, 161, 161, 0.274);
+  background-color: rgba(20, 20, 20, 0.801);
   z-index: 0;
 }
 
@@ -79,20 +79,21 @@
 }
 
 .pet-card{
-  background-color: #ffc79921;
   margin-left: 12%;
   margin-right: 10%;
   margin-top: 10px;
   margin-bottom: 30px;
   border-bottom: 2px solid #004383;
-  border-radius: 3px;
-  border-top: 5px solid #004383;
+  border-top-right-radius: 55px;
+  border-bottom-right-radius: 55px;
+  border-bottom-left-radius: 55px;
+  border: 1px solid #004383;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   max-width: 1400px;
-  background: linear-gradient(180deg, #ffc7991a 85%, #ffc79998 100%), #ffc79921;
+  background-color: rgba(171, 171, 235, 0.062);
 }
 
 .pet-name{

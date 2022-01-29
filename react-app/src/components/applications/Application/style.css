@@ -1,0 +1,115 @@
+.application-allinfodiv {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin: 30px;
+  margin-left: 40px;
+  margin-right: 40px;
+  min-height: auto;
+}
+
+.application-applicationinfodiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.application-petimg{
+  width: 140px;
+  height: 160px;
+  object-fit: cover;
+    background: #ffffff;
+    display: inline-block;
+    padding: 15px 15px 60px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+    position: relative;
+}
+.application-organdpetinfo{
+  position: relative;
+  top: -50px;
+}
+
+.application-petinfodiv{
+  text-align: center;
+}
+
+.application-orgusername {
+  font-size: 12px;
+  font-weight: bolder;
+  color: rgb(32, 32, 32);
+}
+
+.application-orgusername #application-fromtext {
+  font-size: 10px;
+  color:rgb(77, 77, 77);
+}
+
+
+.application-orgbuttonsdiv {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.application-questionsanswersdiv {
+  display: flex;
+  flex-direction: column;
+  align-items:stretch;
+  justify-content: center;
+  gap: 5px;
+}
+
+#aplication-questionstitle {
+  margin-top: 0px;
+}
+
+.application-answer {
+  margin-bottom: 15px;
+}
+
+.application-name-username {
+  color: rgb(80, 80, 80);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-weight: bolder;
+}
+
+.application-name-username span {
+  color: rgb(43, 43, 43);
+}
+
+.application-applicantinfodiv {
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.application-userbio {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.application-allinfodiv button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px;
+  color: white;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  border-radius: 16px;
+  background-color: #205cff;
+  width: 180px;
+  height: auto;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}

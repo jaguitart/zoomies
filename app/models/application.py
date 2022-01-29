@@ -28,5 +28,6 @@ class Application(db.Model):
             "answer1": self.answer1,
             "answer2": self.answer2,
             "answer3": self.answer3,
-            "status": self.status
+            "status": self.status,
+            'created_at': self.created_at
         }

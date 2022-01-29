@@ -40,6 +40,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'account_type': {'id':self.account_types.id, 'type':self.account_types.type},
+            'name': self.name,
             'username': self.username,
             'email': self.email,
             'bio': self.bio,

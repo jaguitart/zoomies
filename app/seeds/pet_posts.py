@@ -16,10 +16,10 @@ def seed_pet_posts():
       pic_url3='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/54073913/3/?bust=1641934115&width=720',
       characteristics='Good for a home with kids',
       vaccination_status_id=1,
-      bio='Eugene, Alfred, and Carl are ready to begin the search for their forever homes! These 5-month-old boys are Pug, Terrier, possible Poodle mixes? Their estimated DOB is 7/21/21. They were surrendered to us when they were about 12 weeks old. They are all between 3 and 7lbs currently. Yes, they are small. We don’t think they’ll be more than 10lbs when they mature but make no guarantee on their breed or size. Eugene is the biggest and most outgoing puppy. He loves to play with his littermates and the other dogs in his foster home. Alfred is the most reserved puppy initially but is a little spitfire once he’s comfortable. Carl is the smallest and also can be slightly reserved but likes to follow his foster mom around. All will need continued socialization. The ideal homes for these boys would be adult only and where there is someone home a majority of the time. They are still working on house training and crate training. When applying, please be aware that they are going to require regular professional groomings. Upon adoption they will be neutered, utd on vaccinations, dewormed, microchipped, on Bravecto and sent home with a 6 month supply of Tri-Heart. They are being fostered in Olivehurst CA.',
+      bio='Eugene and Carl are ready to begin the search for their forever homes! These 5-month-old boys are Pug, Terrier, possible Poodle mixes? Their estimated DOB is 7/21/21. They were surrendered to us when they were about 12 weeks old. They are all between 3 and 7lbs currently. Yes, they are small. We don’t think they’ll be more than 10lbs when they mature but make no guarantee on their breed or size. Eugene is the biggest and most outgoing puppy. He loves to play with his littermates and the other dogs in his foster home. Alfred is the most reserved puppy initially but is a little spitfire once he’s comfortable. Carl is the smallest and also can be slightly reserved but likes to follow his foster mom around. All will need continued socialization. The ideal homes for these boys would be adult only and where there is someone home a majority of the time. They are still working on house training and crate training. When applying, please be aware that they are going to require regular professional groomings. Upon adoption they will be neutered, utd on vaccinations, dewormed, microchipped, on Bravecto and sent home with a 6 month supply of Tri-Heart. They are being fostered in Olivehurst CA.',
       question1='Do you currently have dogs or other pets?',
-      question2='Where will the dog/cat be kept during the day? At night?',
-      question3='Why do they think this is the right time in their lives to adopt a dog/cat?',
+      question2='Where will the dog be kept during the day? At night?',
+      question3='Why do they think this is the right time in their lives to adopt a dog?',
       )
 
     Dog2 = Pet_Post(
@@ -56,8 +56,8 @@ def seed_pet_posts():
       pic_url3='https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/49842155/3/?bust=1605849424&width=720',
       characteristics='Calm Playful',
       vaccination_status_id=1,
-      bio="Snowie was born on July 14, 2010 with a crooked short tail. Her mom was feral (wild) and she abandoned Snowie and her brother when they were around 8 weeks old. They were taken in and raised indoors by a loving family until circumstances changed and they were surrendered to 2nd Chance Rescue Kitties. What we know about Snowie - she had her teeth removed years ago due to dental disease and is doing great. We found out that she is diabetic in August 2020 and started insulin treatment. She needs it twice a day and is very easy to inject. We just put some treats in front of her and while she is munching, give her the shot. She doesn't put up any resistance or fuss. She is doing great with her current dosage.",
-      question1='Why do you think this is the right time in their lives to adopt a dog?',
+      bio="Millie was born on July 14, 2010 with a crooked short tail. Her mom was feral (wild) and she abandoned Snowie and her brother when they were around 8 weeks old. They were taken in and raised indoors by a loving family until circumstances changed and they were surrendered to 2nd Chance Rescue Kitties. What we know about Snowie - she had her teeth removed years ago due to dental disease and is doing great. We found out that she is diabetic in August 2020 and started insulin treatment. She needs it twice a day and is very easy to inject. We just put some treats in front of her and while she is munching, give her the shot. She doesn't put up any resistance or fuss. She is doing great with her current dosage.",
+      question1='Why do you think this is the right time in their lives to adopt a cat?',
       question2='What are your daily activities, schedule, and hobbies?' ,
       question3='How many other people share the same household with you?',
       )
@@ -78,8 +78,8 @@ def seed_pet_posts():
       vaccination_status_id=2,
       bio='Bruce is a goofy guy who likes to lounge on a bed or couch. He loves being part of a pet family, wanting to be friends with the other pets. He tries to rub his head on the kitties in his foster home but he is so big, he knocks them over!',
       question1='Do you agree to a castration and vaccine commitment, if the pet being adopted has not been fixed or had all of their essential shots yet?',
-      question2='Why do they think this is the right time in their lives to adopt a dog?',
-      question3='How will you provide for the dog if you have to go out of town?',
+      question2='Why do they think this is the right time in their lives to adopt a cat?',
+      question3='How will you provide for the cat if you have to go out of town?',
       )
 
 

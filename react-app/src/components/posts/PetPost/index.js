@@ -17,13 +17,13 @@ const PetPost = ({ posts }) => {
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
   const post = posts.find(post => +post.id === +id)
+  const [pictureLast, setPictureLast] = useState(post?.pic_url3)
   const [pictureSelected, setPictureSelected] = useState(post?.pic_url1)
   const [pictureNext, setPictureNext] = useState(post?.pic_url2)
-  const [pictureLast, setPictureLast] = useState(post?.pic_url3)
   const dispatch = useDispatch()
   const handleDelete = id => {
     dispatch(deleteOnePost(id))
-    history.push(`/pet-post`)
+    history.push(`/`)
 
   }
   const user = useSelector(state => state.session.user);
@@ -34,41 +34,40 @@ const PetPost = ({ posts }) => {
 
   const updateImgLeft = () => {
     if (pictureSelected === post?.pic_url1) {
+      setPictureLast(post?.pic_url1)
       setPictureSelected(post?.pic_url2)
       setPictureNext(post?.pic_url3)
-      setPictureLast(post?.pic_url1)
     } else if (pictureSelected === post?.pic_url2) {
+      setPictureLast(post?.pic_url2)
       setPictureSelected(post?.pic_url3)
       setPictureNext(post?.pic_url1)
-      setPictureLast(post?.pic_url2)
-    } else {
+    } else if (pictureSelected === post?.pic_url3){
+      setPictureLast(post?.pic_url3)
       setPictureSelected(post?.pic_url1)
       setPictureNext(post?.pic_url2)
-      setPictureLast(post?.pic_url3)
     }
   }
 
   const updateImgRight = () => {
     if (pictureSelected === post?.pic_url1) {
-      setPictureSelected(post?.pic_url2)
-      setPictureNext(post?.pic_url1)
-      setPictureLast(post?.pic_url3)
-    } else if (pictureSelected === post?.pic_url2) {
-      setPictureSelected(post?.pic_url3)
-      setPictureNext(post?.pic_url2)
-      setPictureLast(post?.pic_url1)
-    } else {
-      setPictureSelected(post?.pic_url1)
-      setPictureNext(post?.pic_url3)
       setPictureLast(post?.pic_url2)
+      setPictureSelected(post?.pic_url3)
+      setPictureNext(post?.pic_url1)
+    } else if (pictureSelected === post?.pic_url2) {
+      setPictureLast(post?.pic_url3)
+      setPictureSelected(post?.pic_url1)
+      setPictureNext(post?.pic_url2)
+    } else if (pictureSelected === post?.pic_url3) {
+      setPictureLast(post?.pic_url1)
+      setPictureSelected(post?.pic_url2)
+      setPictureNext(post?.pic_url3)
     }
   }
 
   const updateShowModal = () => setShowModal(true)
 
-
   if (!user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/login' />;
   }
 
   return (
@@ -95,8 +94,8 @@ const PetPost = ({ posts }) => {
 
         <div className="pet-card">
           <div id="pet-demoinfo">
-            {post.logo && (
-              <img className="org-logo" alt='sideimg1' src={post?.logo} />
+            {post.profile_pic && (
+              <img className="org-logo" alt='sideimg1' src={post?.profile_pic} />
             )}
             <div id="pet-demoname">{post?.username}</div>
           </div>

@@ -18,11 +18,11 @@ const FormDropdownBreed = ({ type, field, updateValue }) => {
   return (
     <div id="selectdiv">
       {+type === 1 && (
-        <Select options={data.filter(breed => +breed.type === 1)} className="colorselector" labelField={field} color='#004383' dropdownHandle={false} placeholder={`Select a ${field}`} searchable={false} valueField='id' onChange={updateValue} />
+        <Select options={data.filter(breed => +breed.type === 1)} className="colorselector" labelField={field} color='#004383' dropdownHandle={false} placeholder={`Select the pet ${field}`} searchable={false} valueField='id' onChange={updateValue} />
       )}
 
       {+type === 2 && (
-        <Select options={data.filter(breed => +breed.type === 2).sort()} className="colorselector" labelField={field} color='#004383' dropdownHandle={false} placeholder={`Select a ${field}`} searchable={false} valueField='id' onChange={updateValue} />
+        <Select options={data.filter(breed => +breed.type === 2).sort()} className="colorselector" labelField={field} color='#004383' dropdownHandle={false} placeholder={`Select the pet ${field}`} searchable={false} valueField='id' onChange={updateValue} />
       )}
     </div >
   )

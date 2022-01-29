@@ -4,17 +4,16 @@ import { NavLink } from "react-router-dom";
 // import { deleteOnePost } from "../../../store/pet_post";
 import './style.css'
 
-const SinglePost = ({ post }) => {
+const SinglePost = ({ post, resize }) => {
   // const dispatch = useDispatch()
 
   // const handleDelete = id => dispatch(deleteOnePost(id))
 
-
   return (
       <div id="cardcomplete" >
         <div >
-          <NavLink to={`pet-post/${post.id}`}>
-            <img className="individualImage" src={post?.pic_url1} alt={post.name} />
+          <NavLink to={`../pet-post/${post.id}`}>
+            <img className={`individualImage ${resize}`} src={post?.pic_url1} alt={post.name} />
           </NavLink>
         </div>
         <div className="posttextdiv">
