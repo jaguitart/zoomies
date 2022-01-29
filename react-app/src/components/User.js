@@ -7,6 +7,8 @@ import SinglePost from './posts/SinglePost';
 import { GiDogHouse } from "react-icons/gi";
 import { MdPets } from "react-icons/md";
 import { FaRegHandshake } from "react-icons/fa";
+import { BsFillPersonFill } from "react-icons/bs";
+
 
 function User({ users, posts }) {
   const { userId } = useParams();
@@ -52,28 +54,34 @@ function User({ users, posts }) {
           <div className='user-background'>
             <img id='user-profilepic' src={profile_owner?.profile_pic} alt={profile_owner?.profile_ownername} width="75px" max-height='75px' />
           </div>
+
           <div id='user-textinfo'>
-            <GiDogHouse id='user-icon' className='icon' />
+            {accountType === 2?<GiDogHouse id='user-icon' className='icon' />:<BsFillPersonFill id='user-icon' className='icon' />}
+
             <p id='user-username'>{profile_owner.username}</p>
-            <div id='user-numericinfo'>
-              <MdPets id='user-smallicon' className='icon' />
-              <span id='user-number'>{visiblePosts.length}</span>
-              <span id='user-dot'>•</span>
-              <FaRegHandshake id='user-smallicon' className='icon' />
-              <span id='user-number'>{visibleApplications.length}</span>
-            </div>
+            {accountType === 2 && (
+              <div id='user-numericinfo'>
+                <MdPets id='user-smallicon' className='icon' />
+                <span id='user-number'>{visiblePosts.length}</span>
+                <span id='user-dot'>•</span>
+                <FaRegHandshake id='user-smallicon' className='icon' />
+                <span id='user-number'>{visibleApplications.length}</span>
+              </div>
+            )}
             <p>{profile_owner.bio}</p>
           </div>
         </div>
 
         <div id='user-postsandappdiv'>
-          <div id='user-posts'>
-            {visiblePosts.map(post =>
-              <div key={post.id}>
-                <SinglePost post={post} resize='resize' />
-              </div>
-            )}
-          </div>
+          {accountType === 2 && (
+            <div id='user-posts'>
+              {visiblePosts.map(post =>
+                <div key={post.id}>
+                  <SinglePost post={post} resize='resize' />
+                </div>
+              )}
+            </div>
+          )}
 
           <div>
             {visibleApplications.map(application => (
