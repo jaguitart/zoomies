@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import SingleApplication from './applications/SingleApplication';
 import NavBar from './NavBar/NavBar';
@@ -9,13 +9,23 @@ import { MdPets } from "react-icons/md";
 import { FaRegHandshake } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import CheckedApplications from './applications/CheckedApplications';
+import { getUsers } from '../store/user';
 
 function User({ users, posts }) {
+  const dispatch = useDispatch();
   const { userId } = useParams();
   const profile_owner = users.find(owner => +owner.id === +userId)
   const applications = Object.values(useSelector(state => state.applications ? state.applications : undefined));
   const user = useSelector(state => state.session.user ? state.session.user : undefined)
   const accountType = user?.account_type.id
+
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getUsers());
+    })();
+  }, [dispatch]);
+
 
   let visibleApplications;
   let visiblePosts;
@@ -68,7 +78,7 @@ function User({ users, posts }) {
                 <span id='user-number'>{visibleApplications.filter(application => application.status).length}</span>
               </div>
             )}
-            <p>{profile_owner.bio}</p>
+            <p>{profile_owner?.bio}</p>
           </div>
         </div>
 
@@ -84,13 +94,13 @@ function User({ users, posts }) {
           )}
 
           <div>
-          {accountType === 2 && (
-            <h3 className='user-pendingapplicationstext'>Pending Applications</h3>
-          )}
+            {accountType === 2 && (
+              <h3 className='user-pendingapplicationstext'>Pending Applications</h3>
+            )}
 
-          {accountType === 1 && (
-            <h3 className='user-pendingapplicationstext'>Your applications</h3>
-          )}
+            {accountType === 1 && (
+              <h3 className='user-pendingapplicationstext'>Your applications</h3>
+            )}
 
             {visibleApplications
               .filter(noReviewed => noReviewed.status === null)

@@ -170,10 +170,6 @@ input {
   height: 250px;
 }
 
-.passwordinput {
-  -webkit-text-security: disc;
-}
-
 #logozoomiesvertical{
   /* margin-right: 200px; */
   height: 500px;

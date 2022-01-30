@@ -67,7 +67,7 @@ function App() {
           <User users={users} posts={posts} />
         </Route>
         <Route path='/about' exact={true} >
-          <About posts={posts} applications={applications} users={users} />
+          <About posts={reposts} applications={applications} users={users} />
         </Route>
       </Switch>
     </BrowserRouter>

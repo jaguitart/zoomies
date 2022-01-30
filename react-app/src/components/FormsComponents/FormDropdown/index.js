@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-dropdown-select";
 
-const FormDropdown = ({ field, updateValue}) => {
+const FormDropdown = ({ field, updateValue, required}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const FormDropdown = ({ field, updateValue}) => {
 
   return (
     <div id="selectdiv">
-      <Select options={data} className="colorselector" labelField={field} color='#004383' dropdownHandle={false} placeholder={`Select the pet ${field}`} searchable={false} valueField='id' onChange={updateValue} />
+      <Select options={data} className="colorselector" required={required} labelField={field} color='#004383' dropdownHandle={false} placeholder={`Select the pet ${field}`} searchable={false} valueField='id' onChange={updateValue} />
     </div >
   )
 }
