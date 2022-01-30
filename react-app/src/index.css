@@ -80,6 +80,7 @@
 }
 
 #user-profilepic {
+  /* height: 80px; */
   margin-top: 25px;
   margin-left: 120px;
   border-radius: 50%;
@@ -125,11 +126,6 @@
   margin-right: 25px;
 }
 
-#user-created_at {
-  position: relative;
-  top: -15px;
-  left: 12%;
-}
 
 /* /////////////////// */
 .user-reviewedapplications {

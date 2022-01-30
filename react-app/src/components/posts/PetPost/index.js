@@ -12,7 +12,7 @@ import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import './style.css'
 
-const PetPost = ({ posts }) => {
+const PetPost = ({ posts, applications }) => {
   const { id } = useParams();
   const history = useHistory();
   const [showModal, setShowModal] = useState(false);
@@ -27,9 +27,14 @@ const PetPost = ({ posts }) => {
 
   }
   const user = useSelector(state => state.session.user);
-
-
   const isMyPost = (post?.user_id === user?.id)
+
+  const postsIdWithMyApplications = applications
+    .filter(application => application.user_id === user.id)
+    .map(application => application.post_id)
+
+  const didIApplyToThis = postsIdWithMyApplications.includes(post.id)
+  console.log(didIApplyToThis);
 
 
   const updateImgLeft = () => {
@@ -41,7 +46,7 @@ const PetPost = ({ posts }) => {
       setPictureLast(post?.pic_url2)
       setPictureSelected(post?.pic_url3)
       setPictureNext(post?.pic_url1)
-    } else if (pictureSelected === post?.pic_url3){
+    } else if (pictureSelected === post?.pic_url3) {
       setPictureLast(post?.pic_url3)
       setPictureSelected(post?.pic_url1)
       setPictureNext(post?.pic_url2)
@@ -63,6 +68,8 @@ const PetPost = ({ posts }) => {
       setPictureNext(post?.pic_url3)
     }
   }
+
+
 
   const updateShowModal = () => setShowModal(true)
 
@@ -101,7 +108,14 @@ const PetPost = ({ posts }) => {
           </div>
           {+user.account_type.id === 1 && (
             <div id="pet-applybutton">
-              <button id="applynowbutton" onClick={updateShowModal}>Apply Now</button>
+              {!didIApplyToThis && (
+                <button id="applynowbutton" onClick={updateShowModal}>Apply Now</button>
+              )}
+              {didIApplyToThis && (
+                <NavLink to={`/users/${user.id}`} >
+                  <button id="appliedbutton">Applied</button>
+                </NavLink>
+              )}
               {showModal && (
                 <Modal onClose={() => setShowModal(!showModal)}>
                   <NewApplicationForm id='applicationForm' post={post} />

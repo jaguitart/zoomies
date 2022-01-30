@@ -193,7 +193,24 @@
   background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
   border-radius: 16px;
   background-color: #205cff;
-  min-width: 60;
+  width: 90px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#appliedbutton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px;
+  margin:auto;
+  color: white;
+  background: linear-gradient(180deg, #FFA199 0%, #f75142 100%), #f75142;
+  border-radius: 16px;
+  background-color: #f75142;
+  width: 90px;
   padding: 10px;
   font-size: 14px;
   cursor: pointer;

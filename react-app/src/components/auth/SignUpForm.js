@@ -26,11 +26,15 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(account_type_id, username, name, email, bio, password, profile_pic, logo));
       if (data) {
         setErrors(data)
       }
+    }
+    else if (password !== repeatPassword) {
+      setErrors(['Passwords does not match'])
     }
   };
 
@@ -84,7 +88,7 @@ const SignUpForm = () => {
                 <p>{`Creating an ${+account_type_id === 1 ? "User" : "Organization"} account`}</p>
               )}
               <div>
-                <FormInput requiered='true' field='username' updateValue={updateUsername} placeholder='Username' preselection={username} />
+                <FormInput requiered='true' field='username' required={true} updateValue={updateUsername} placeholder='Username' preselection={username} />
               </div>
               {!organizationFields && (
                 <div>
@@ -93,22 +97,22 @@ const SignUpForm = () => {
               )}
 
               <div>
-                <FormInput field='email' updateValue={updateEmail} placeholder='Email' preselection={email} />
+                <FormInput field='email' required={true} updateValue={updateEmail} placeholder='Email' preselection={email} />
               </div>
 
               <div>
               </div>
 
               <div>
-                <FormInput field='password' updateValue={updatePassword} placeholder='Password' preselection={password} />
+                <FormInput field='password' required={true} updateValue={updatePassword} placeholder='Password' preselection={password} />
               </div>
 
               <div>
-                <FormInput field='password' updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
+                <FormInput field='password' required={true} updateValue={updateRepeatPassword} placeholder='Repeat Password' preselection={repeatPassword} />
               </div>
               {/* {!organizationFields && ( */}
               <div>
-                <FormInput field='profile_pic' updateValue={updateProfile_pic} placeholder={!organizationFields ? 'Profile Picture URL' : 'Logo URL'} preselection={profile_pic} />
+                <FormInput field='profile_pic' required={true} updateValue={updateProfile_pic} placeholder={!organizationFields ? 'Profile Picture URL' : 'Logo URL'} preselection={profile_pic} />
               </div>
               {/* )} */}
               {/* 
@@ -119,7 +123,7 @@ const SignUpForm = () => {
               )} */}
 
               <div>
-                <textarea placeholder='Tell us about yourself...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+                <textarea required={true} placeholder='Tell us about yourself...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
               </div>
 
               <button type='submit'>Sign Up</button>

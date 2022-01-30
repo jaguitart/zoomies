@@ -42,10 +42,23 @@ const SingleApplication = ({ application }) => {
             <span>Q1: {ans1 ? <AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
             <span>Q2: {ans2 ? <AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
             <span>Q3: {ans3 ? <AiFillCheckCircle className="user-checkcross" id="check" /> : <AiFillCloseCircle className="user-checkcross" id="cross" />}</span>
-            <span id="user-created_at">{application.created_at.slice(0, 17)}</span>
           </div>
         </div>
       </div>
+      <span id="user-created_at">{application.created_at.slice(0, 17)}</span>
+      {application.user_id === sessionUserId && (
+        <div id='application-doublebutton'>
+          <button id="application-doublebuttonleft" onClick={() => setShowEditModal(!showEditModal)}>Edit</button>
+          {
+            showEditModal && (
+              <Modal onClose={() => setShowEditModal(!showEditModal)}>
+                <EditApplicationForm post={post} application={application} setShowModal={setShowEditModal} />
+              </Modal>
+            )
+          }
+          <button id="application-doublebuttonright" onClick={() => handleDelete(application.id)}>Delete</button>
+        </div>
+      )}
 
       {showApplicationModal && (
         <Modal onClose={() => setShowApplicationModal(!showApplicationModal)}>
@@ -53,19 +66,6 @@ const SingleApplication = ({ application }) => {
         </Modal>
       )
       }
-      {application.user_id === sessionUserId && (
-        <div>
-          <button onClick={() => setShowEditModal(!showEditModal)}>Edit</button>
-          {
-            showEditModal && (
-              <Modal onClose={() => setShowEditModal(!showEditModal)}>
-                <EditApplicationForm application={application} setShowModal={setShowEditModal} />
-              </Modal>
-            )
-          }
-          <button onClick={() => handleDelete(application.id)}>Delete</button>
-        </div>
-      )}
     </div >
   )
 }

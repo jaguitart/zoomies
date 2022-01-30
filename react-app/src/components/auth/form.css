@@ -142,17 +142,6 @@ input {
   color: #004383;
 }
 
-/* #radio {
-  all: unset;
-  outline: none;
-  border:none;
-  background-image:none;
-  background-color:transparent;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;  
-} */
-
 .signup .org {
   background: linear-gradient(180deg, #FFC799 0%, #FFA199 100%), #FFFF99;
 }
@@ -179,10 +168,6 @@ input {
 .bigbio {
   width:400px;
   height: 250px;
-}
-
-.passwordinput {
-  -webkit-text-security: disc;
 }
 
 #logozoomiesvertical{

@@ -141,9 +141,9 @@ const NewPostForm = () => {
                             <p id='vaccionationstatustext'>Vaccionation Status:</p>
                             <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
 
-                            <FormDropdown field='color' updateValue={updateColor} />
+                            <FormDropdown field='color' updateValue={updateColor} required={true}/>
 
-                            <FormDropdownBreed type={type} field='breed' updateValue={updateBreed} />
+                            <FormDropdownBreed type={type} field='breed' updateValue={updateBreed} required={true} />
 
                             <FormInput field='name' updateValue={updateName} placeholder='Pet name' required={true} />
 

@@ -4,7 +4,7 @@ import { updateOneApplication } from '../../../store/application'
 import FormInput from "../../FormsComponents/FormInput";
 
 
-const EditApplicationForm = ({ application, setShowModal }) => {
+const EditApplicationForm = ({ post, application, setShowModal }) => {
   // const history = useHistory();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
@@ -46,7 +46,8 @@ const EditApplicationForm = ({ application, setShowModal }) => {
   const updateAnswer3 = e => setAnswer3(e.target.value)
 
   return (
-    <>
+    <div id="newapplication-alldiv">
+      <img id='newapplication-logozoomiesvertical' className="newapplication-verticallogo" alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
       <form onSubmit={onEdit}>
         <div>
           <div>
@@ -54,17 +55,19 @@ const EditApplicationForm = ({ application, setShowModal }) => {
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div>
-            <FormInput field='answer1' updateValue={updateAnswer1} placeholder='Answer' preselection={answer1} />
-
-            <FormInput field='answer2' updateValue={updateAnswer2} placeholder='Answer' preselection={answer2} />
-
-            <FormInput field='answer3' updateValue={updateAnswer3} placeholder='Answer' preselection={answer3} />
+          <div className="newapplication-textdiv">
+            <h2 id="newapplication-tittle"> Edit your application for {post.name}</h2>
+            <p id="newapplication-question">{post?.question1}</p>
+            <FormInput extraclass='newapplication-input' field='answer1' updateValue={updateAnswer1} placeholder='Answer' preselection={answer1} />
+            <p id="newapplication-question">{post?.question2}</p>
+            <FormInput extraclass='newapplication-input' field='answer2' updateValue={updateAnswer2} placeholder='Answer' preselection={answer2} />
+            <p id="newapplication-question">{post?.question3}</p>
+            <FormInput extraclass='newapplication-input' field='answer3' updateValue={updateAnswer3} placeholder='Answer' preselection={answer3} />
+            <button className="newapplication-button" type='submit'>Update Application</button>
           </div>
-          <button type='submit'>Update Application</button>
         </div>
-      </form>
-    </>
+      </form >
+    </div >
   )
 }
 

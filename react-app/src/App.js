@@ -55,7 +55,7 @@ function App() {
           <EditPostForm posts={posts} />
         </Route>
         <Route path='/pet-post/:id' exact={true}>
-          <PetPost posts={posts} />
+          <PetPost posts={posts} applications={applications} />
         </Route>
         <Route path='/' exact={true}>
           <Posts posts={reposts} />
@@ -67,7 +67,7 @@ function App() {
           <User users={users} posts={posts} />
         </Route>
         <Route path='/about' exact={true} >
-          <About posts={posts} applications={applications} users={users} />
+          <About posts={reposts} applications={applications} users={users} />
         </Route>
       </Switch>
     </BrowserRouter>
