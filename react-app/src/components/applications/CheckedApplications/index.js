@@ -10,7 +10,7 @@ const CheckedApplications = ({ application }) => {
   const user = Object.values(useSelector(state => state.users)).find(user => user.id === application.user_id);
 
   return (
-    <div id="allsingleapplicationdiv">
+    <div className="allsingleapplicationdiv" id="applicationchecked-newborder">
       <div id="textapplicationdiv" onClick={() => setShowApplicationModal(!showApplicationModal)}>
         {post?.type === 'Dog' ?
           <img className="application-dog-cat-img checked-applications-imganddot" alt='dog' src={application.status?'https://i.imgur.com/pr7MDh7.png':'https://i.imgur.com/gZ9FEPM.png'} /> :

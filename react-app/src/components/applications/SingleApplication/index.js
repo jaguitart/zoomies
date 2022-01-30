@@ -24,7 +24,7 @@ const SingleApplication = ({ application }) => {
 
 
   return (
-    <div id="allsingleapplicationdiv">
+    <div className="allsingleapplicationdiv">
       <div id="textapplicationdiv" onClick={() => setShowApplicationModal(!showApplicationModal)}>
         {post?.type === 'Dog' ?
           <img className="application-dog-cat-img" alt='dog' src='https://i.imgur.com/ZvCSDV3.png' /> :
