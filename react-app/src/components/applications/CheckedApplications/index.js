@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteOneApplication } from "../../../store/application";
+import { useSelector } from 'react-redux';
 import { Modal } from "../../../context/Modal"
 import Application from "../Application/index"
 
 const CheckedApplications = ({ application }) => {
-  const dispatch = useDispatch()
   const [showApplicationModal, setShowApplicationModal] = useState(false);
-  const handleDelete = id => dispatch(deleteOneApplication(id))
-  const sessionUserId = useSelector(state => state.session.user).id
 
   const post = Object.values(useSelector(state => state.posts)).find(post => post.id === application.post_id);
   const user = Object.values(useSelector(state => state.users)).find(user => user.id === application.user_id);

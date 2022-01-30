@@ -158,6 +158,7 @@ def downgrade():
     op.drop_table('users')
     op.drop_table('account_types')
     op.drop_table('animal_sizes')
+    op.drop_table('animal_types')
     op.drop_table('animal_sexs')
     op.drop_table('animal_ages')
     op.drop_table('animal_colors')

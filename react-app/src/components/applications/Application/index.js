@@ -12,7 +12,7 @@ const SingleApplication = ({ application, setShowModal }) => {
   const user = Object.values(useSelector(state => state.users)).find(user => user.id === application.user_id)
   const posts = Object.values(useSelector(state => state.posts)).filter(post => post.user_id === sessionUserId)
 
-  const onStatus = async status => {
+  const onStatus = status => {
     if (status === null) {
       status = null
     }
@@ -25,7 +25,7 @@ const SingleApplication = ({ application, setShowModal }) => {
       answer3: application.answer3,
       status
     }
-    let submited = await dispatch(updateOneApplication(sendStatus))
+    let submited = dispatch(updateOneApplication(sendStatus))
     if (submited) {
       setShowModal(false)
     }
