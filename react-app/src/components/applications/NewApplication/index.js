@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { addOneApplication } from "../../../store/application";
 import FormInput from "../../FormsComponents/FormInput";
-
+import './style.css'
 
 const NewApplicationForm = ({ post }) => {
   const [errors, setErrors] = useState([]);
@@ -38,32 +38,34 @@ const NewApplicationForm = ({ post }) => {
     let submited = await dispatch(addOneApplication(newApplication))
     if (submited) {
       //REVISAR A DONDE REDIRECCIONAR
-      history.push(`/`)
+      history.push(`/users/${user.id}`)
     }
   }
 
   return (
-    <form onSubmit={submit} >
-      <div>
+    <div id="newapplication-alldiv">
+      <img id='newapplication-logozoomiesvertical' className="newapplication-verticallogo" alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
+      <form onSubmit={submit} >
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div className="newapplication-textdiv">
+            <h2 id="newapplication-tittle"> Hi {user.username}, please fill this applications for {post.name}</h2>
+            <br />
+            <p id="newapplication-question">{post?.question1}</p>
+            <FormInput extraclass='newapplication-input' field='answer1' updateValue={updateAnswer1} placeholder='Answer' />
+            <p id="newapplication-question">{post?.question2}</p>
+            <FormInput extraclass='newapplication-input' field='answer2' updateValue={updateAnswer2} placeholder='Answer' />
+            <p id="newapplication-question">{post?.question3}</p>
+            <FormInput extraclass='newapplication-input' field='answer3' updateValue={updateAnswer3} placeholder='Answer' />
+            <button className="newapplication-button" type='submit'>Send Application</button>
+          </div>
         </div>
-        <div>
-          <p>Q1:{post?.question1}</p>
-          <FormInput field='answer1' updateValue={updateAnswer1} placeholder='Answer' />
-
-          <p>Q2:{post?.question2}</p>
-          <FormInput field='answer2' updateValue={updateAnswer2} placeholder='Answer' />
-
-          <p>Q3:{post?.question3}</p>
-          <FormInput field='answer3' updateValue={updateAnswer3} placeholder='Answer' />
-
-          <button type='submit'>Send Application</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }
 

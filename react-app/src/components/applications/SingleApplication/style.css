@@ -1,11 +1,12 @@
 #allsingleapplicationdiv{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  justify-content: center;
-  height: 45px;
-  padding-top: 20px;
+  /* justify-content: center; */
+  min-height: 45px;
+  min-width: 370px;
+  /* padding-top: 20px; */
   padding-left: 20px;
   border-top: #004383 1px solid;
   margin-bottom: 5px;
@@ -16,6 +17,10 @@
 
 #textapplicationdiv{
   cursor: pointer;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+  margin-bottom:0px;
 }
 
 #application-namedot {
@@ -62,4 +67,49 @@
 
 .checked-applications-imganddot{
   top: 10px;
+}
+
+#application-doublebutton {
+  /* position: relative; */
+  margin-top: 18px;
+  margin-left: 8%;
+}
+
+#application-doublebuttonleft {
+  height: 25px;
+  width: 60px;
+  border-radius: 0px;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  margin-right: 1px;
+  cursor:pointer;
+  border: 1px;
+  color: white;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  background-color: #205cff;
+  height: auto;
+  padding: 8px;
+  font-size: 14px;
+}
+
+#application-doublebuttonright {
+  height: 25px;
+  width: 60px;
+  border-radius: 0px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-left: 1px;
+  cursor:pointer;
+  border: 1px;
+  color: white;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  background-color: #205cff;
+  height: auto;
+  padding: 8px;
+  font-size: 14px;
+}
+
+#user-created_at {
+  margin-left: 10%;
+  margin-top: 3%;
 }

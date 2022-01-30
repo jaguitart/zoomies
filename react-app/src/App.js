@@ -55,7 +55,7 @@ function App() {
           <EditPostForm posts={posts} />
         </Route>
         <Route path='/pet-post/:id' exact={true}>
-          <PetPost posts={posts} />
+          <PetPost posts={posts} applications={applications} />
         </Route>
         <Route path='/' exact={true}>
           <Posts posts={reposts} />

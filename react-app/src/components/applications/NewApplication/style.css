@@ -1,0 +1,53 @@
+#newapplication-alldiv {
+  display: flex;
+}
+
+#newapplication-question {
+  margin-top: 30px;
+  margin-bottom: 5px;
+  margin-left: 15%;
+  /* margin-right: 12%; */
+  font-weight: bold;
+}
+
+.newapplication-textdiv {
+  margin-right: 4%;
+}
+
+.newapplication-button {
+  margin-top: 15%;
+  margin-left: 35%;
+}
+
+.newapplication-input {
+  width: 50%;
+  min-width: 200px;
+  margin-left: 15%;
+}
+
+#newapplication-logozoomiesvertical{
+  height: 500px;
+  margin-left: 3%;
+}
+
+#newapplication-tittle {
+  margin-left: 10%;
+  margin-top: 6%;
+}
+
+.newapplication-button {
+  position: relative;
+  height: 25px;
+  min-width: 180px;
+  border-radius: 0px;
+  border-radius: 16px;
+  cursor:pointer;
+  border: 1px;
+  color: white;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  background-color: #205cff;
+  height: auto;
+  padding: 12px;
+  font-size: 14px;
+  margin-left: 27%;
+}
