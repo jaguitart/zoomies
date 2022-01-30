@@ -30,11 +30,10 @@ const PetPost = ({ posts, applications }) => {
   const isMyPost = (post?.user_id === user?.id)
 
   const postsIdWithMyApplications = applications
-    .filter(application => application.user_id === user.id)
+    .filter(application => application.user_id === user?.id)
     .map(application => application.post_id)
 
   const didIApplyToThis = postsIdWithMyApplications.includes(post.id)
-  console.log(didIApplyToThis);
 
 
   const updateImgLeft = () => {
