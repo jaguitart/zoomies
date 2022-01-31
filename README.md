@@ -4,24 +4,24 @@ Zoomies is an online, searchable database of animals who need homes. Where Ogani
 
 Link to live site: [Zoomies](https://aa-zoomies.herokuapp.com/)
 
-[Database Schema](https://github.com/jaguitart/zoomies/wiki/Database-Schema)
-[Features](https://github.com/jaguitart/zoomies/wiki/Features)
+- [Database Schema](https://github.com/jaguitart/zoomies/wiki/Database-Schema)
+- [Features](https://github.com/jaguitart/zoomies/wiki/Features)
 
 
 ![ZoomiesLogin](https://github.com/jaguitart/zoomies/blob/main/react-app/public/readme-img/login.png?raw=true)
 
 ## At A Glance
 Zoomies is a full stack web application with two kinds of users, that allows 
-logged users-organizations to:
+### logged users-organizations to:
  - Post a photos and information about a pet
  - Edit a those posts
  - Delete a their posts
  - Review applications sent by regular users
- logged regular users to:
- -Send applications for an specific pet
- -Edit their applications
- -Delete their applications
- -Check the status of their sent applications
+ ### logged regular users to:
+ - Send applications for an specific pet
+ - Edit their applications
+ - Delete their applications
+ - Check the status of their sent applications
  
 
 ## Application Architecture
