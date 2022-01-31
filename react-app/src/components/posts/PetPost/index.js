@@ -143,7 +143,7 @@ const PetPost = ({ posts, applications }) => {
             <div className="pet-basicinfo">
               <div> ━━━ {post?.age.age} <span id="pet-dot">•</span> {post?.sex} <span id="pet-dot">•</span> {post?.color}  ━━━</div>
               <div> {post?.size} <span id="pet-dot">•</span> {post?.breed} </div>
-              <div id="pet-vacstatus"><b>Vaccination Status</b>
+              <div id="pet-vacstatus"><span>Vaccination Status</span>
                 <span id='space'>__</span>
                 {post?.vaccination_status.vaccination_status === 'Up to date' ?
                   <AiFillCheckCircle className="petvacicon" id="check" /> : <AiFillCloseCircle className="petvacicon" id="cross" />}

@@ -8,7 +8,7 @@ def seed_users():
         username= 'Demo_User',
         name='Demo User',
         email='user@demo.io',
-        bio="I'm a Demo User",
+        bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique augue viverra luctus sodales. Phasellus iaculis finibus sollicitudin. Aenean mattis odio ut ex porttitor finibus id eget risus. Proin placerat mauris vel congue hendrerit. Phasellus ut diam sagittis, viverra neque cursus, hendrerit mi. Nam volutpat, arcu non pretium mattis, mauris justo sagittis enim, quis congue dolor ipsum id sem. Cras venenatis justo eget elementum tristique. Curabitur quis leo ut purus luctus posuere. Donec a mi et felis ultrices commodo a et arcu. Donec fringilla mauris vel facilisis malesuada.",
         password='password',
         profile_pic='https://dineoncampus.com/img/staff-placeholder.jpg',
         # logo='',
@@ -20,10 +20,10 @@ def seed_users():
         username= 'Demo_Org',
         name='Demo Organization',
         email='org@demo.io',
-        bio="I'm a Demo Org",
+        bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique augue viverra luctus sodales. Phasellus iaculis finibus sollicitudin. Aenean mattis odio ut ex porttitor finibus id eget risus. Proin placerat mauris vel congue hendrerit. Phasellus ut diam sagittis, viverra neque cursus, hendrerit mi. Nam volutpat, arcu non pretium mattis, mauris justo sagittis enim, quis congue dolor ipsum id sem. Cras venenatis justo eget elementum tristique. Curabitur quis leo ut purus luctus posuere. Donec a mi et felis ultrices commodo a et arcu. Donec fringilla mauris vel facilisis malesuada.",
         password='password',
-        profile_pic='https://dineoncampus.com/img/staff-placeholder.jpg',
-        logo='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoQb3FSmQ-eNUntpOFN_Wy9crw4WIZHD3fKhyoygjwN6AKdWjeASfEEui5Uiu_YHYFdZo&usqp=CAU',
+        profile_pic='https://i.imgur.com/xYK7gAR.jpg',
+        # logo='',
         # lat='',
         # lng=''
     )

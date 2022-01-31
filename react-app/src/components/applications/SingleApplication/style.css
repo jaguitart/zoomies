@@ -1,4 +1,4 @@
-#allsingleapplicationdiv{
+.allsingleapplicationdiv{
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -12,6 +12,11 @@
   margin-bottom: 5px;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+#applicationchecked-newborder {
+  min-width: 300px;
+  width: 300px;
 }
 
 

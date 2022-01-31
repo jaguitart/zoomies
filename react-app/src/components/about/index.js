@@ -6,13 +6,13 @@ import './style.css'
 
 const About = ({ posts, applications, users }) => {
 
-  const textuser1 = "Our mission is match lovable kittens and puppies with caring owners to create a lifelong bond unlike any other. Browse our pet posts profiles to find the perfect zoomie for your lifestyle."
+  const textuser1 = "Our mission is match lovable kittens and puppies with caring owners to create a lifelong bond unlike any other. Browse our pet profiles to find the perfect zoomie for your lifestyle."
   const textuser2 = "When you are ready, apply for your favorite pet using the apply now button that you will see in every post!"
   const textuser3 = " We believe you'll have a wonderful experience in selecting your new family member whose quirky curiosity will put a smile on your face time and again."
 
-  const textorg1 = 'If you are an at organization, rescue or shelter looking to find responsible potential owners, Zoomies is for you. Post your available cat or dog for adoption and let us bring loving parents to you.'
+  const textorg1 = 'If you are a rescue or shelter looking to find responsible potential owners, Zoomies is for you. Post your available cats and dogs for adoption and let us bring loving parents to you.'
   const textorg2 = 'We will pounce on the time consuming and expensive task of finding great parents for your special rescue pets.'
-  const textorg3 = 'Rest assured, you will have more time to care for your special pets instead of spending it fretting over how to find quality loving parents. To start the first step is creating an Organization account an start posting!'
+  const textorg3 = ' Rest assured, you will have more time to care for your special pets instead of spending it fretting over how to find quality loving parents. To get started, create an Organization account and start posting!'
 
   return (
     <div>

@@ -286,6 +286,7 @@ input {
   position: static;
   margin-bottom: 0px;
   font-size: 13px;
+  font-weight: lighter;
 }
 
 .signup .clickedbutton {
