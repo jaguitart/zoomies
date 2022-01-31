@@ -12,12 +12,12 @@ Link to live site: [Zoomies](https://aa-zoomies.herokuapp.com/)
 
 ## At A Glance
 Zoomies is a full stack web application with two kinds of users, that allows 
-### logged users-organizations to:
+### logged users-organizations can:
  - Post a photos and information about a pet
  - Edit a those posts
  - Delete a their posts
  - Review applications sent by regular users
- ### logged regular users to:
+ ### logged regular users can:
  - Send applications for an specific pet
  - Edit their applications
  - Delete their applications
