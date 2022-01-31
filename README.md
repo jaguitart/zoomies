@@ -1,134 +1,53 @@
-# Flask React Project
+# Zoomies
 
-This is the starter for the Flask React project.
+Zoomies is an online, searchable database of animals who need homes. Where Oganizations can create accounts and use the plataform to increase the effectiveness of pet adoption and Users can search, look and apply for the adoption of one of those pups and kitts!
 
-## Getting started
+Link to live site: [Zoomies](https://aa-zoomies.herokuapp.com/)
 
-1. Clone this repository (only this branch)
+[Database Schema](https://github.com/jaguitart/zoomies/wiki/Database-Schema)
+[Features](https://github.com/jaguitart/zoomies/wiki/Features)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
 
-2. Install dependencies
+![ZoomiesLogin](https://github.com/jaguitart/zoomies/blob/main/react-app/public/readme-img/login.png?raw=true)
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+## At A Glance
+Zoomies is a full stack web application with two kinds of users, that allows 
+logged users-organizations to:
+ - Post a photos and information about a pet
+ - Edit a those posts
+ - Delete a their posts
+ - Review applications sent by regular users
+ logged regular users to:
+ -Send applications for an specific pet
+ -Edit their applications
+ -Delete their applications
+ -Check the status of their sent applications
+ 
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+## Application Architecture
+Zoomies is built with a React/Redux frontend and an Python/Flask backend. PostgreSQL/SQLalchemy is also used as a database. Docker and Heroku for the live server.
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## Tech-Stack
+Javascript
+React JS
+Redux
+Flask
+SQLalchemy
+PostgreSQl
+Docker
+Heroku
 
-   ```bash
-   pipenv shell
-   ```
 
-   ```bash
-   flask db upgrade
-   ```
+## Key Features
+### User Authorization
+User authorization. When users log in, the password they provide is rehashed and checked against the original password.
+Sign up form:
+![Splash Page](https://github.com/jaguitart/zoomies/blob/main/react-app/public/readme-img/singup.png?raw=true)
 
-   ```bash
-   flask seed all
-   ```
+### Post/Edit/Delete a Pet-Post
+An authorized organization-user can post photos and information about the pet that can then be seen by any logged in user. Only the authorized user may then edit or delete the posted photos.
+![Create a Pet-Post](https://github.com/jaguitart/zoomies/blob/main/react-app/public/readme-img/pet-post.png?raw=true)
 
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a aa-zoomies
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a aa-zoomies
-      ```
-
-10. set up your database   
-
-      ```bash
-      heroku run -a aa-zoomies flask db upgrade
-      heroku run -a aa-zoomies flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+### Post/Edit/Delete a Application
+An authorized regular user may send applications to an specific pet post posted by any organization. Only the authorized regular user can then delete or edit the application before this is reviewed by the pet-post owner. Organization-users are able to aprove or reject this applications, if they approved their post inmediatly gets unavailable for the rest of the users.
+![Create an Application](https://github.com/jaguitart/zoomies/blob/main/react-app/public/readme-img/applications.png?raw=true)
