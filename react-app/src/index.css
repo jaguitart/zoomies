@@ -9,7 +9,7 @@
 
 .user-usercard {
   width: 320px;
-  border: 1px solid #004383;
+  border: 2px solid #004383;
   border-top-left-radius: 17px;
   border-bottom-right-radius: 17px;
   margin-left: 40px;
@@ -113,9 +113,10 @@
 
 
 .user-background {
-  height: 105px;
-  background-image: -webkit-linear-gradient(288deg, #004383 50%, transparent 50%); 
+  height: 65px;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383; 
   border-top-left-radius: 15px;
+  margin-bottom: 50px;
 }
 
 .user-checkcross {
@@ -132,18 +133,17 @@
   width: 400px;
   position: relative;
   margin-left: 4%;
-  /* border: red 1px solid; */
 }
 
 .user-rejectedapplications {
-  border: 1px solid red;
+  border: 2px solid red;
   margin-bottom: 20px;
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
 .user-approvedapplications {
-  border: 1px solid green;
+  border: 2px solid green;
   margin-bottom: 20px;
   margin-top: 20px;
   border-top-left-radius: 15px;

@@ -16,15 +16,21 @@ const Posts = ({ posts }) => {
   return (
     <>
       <NavBar />
-      <div className='posts-banner'>
-        <img id='posts-banner' src='https://i.imgur.com/MDRTdYk.png' alt='a' />
-        <div>
-          <div></div>
-          <div>Find a dog</div>
-          <div>Find a cat</div>
+      <div className='posts-bannerdiv'>
+        <img id='posts-bannerimg' src='https://i.imgur.com/MDRTdYk.png' alt='banner image' />
+        <div className="posts-banner-text">
+          <div className="posts-text1 arrowRight">Hi {user.username}</div>
+          <div className="posts-text2">
+            <img id='posts-pet-dog' src='https://i.imgur.com/3NzqSS5.png' alt='dog' />
+            <span>Find a dog</span>
+          </div>
+          <div className="posts-text3">
+            <img id='posts-pet-cat' src='https://i.imgur.com/WgJneSn.png' alt='cat' />
+            <span>Find a cat</span>
+            </div>
         </div>
       </div>
-        {/* <img id='posts-logo' src='https://i.imgur.com/FzFFmrv.png' alt='a' /> */}
+      {/* <img id='posts-logo' src='https://i.imgur.com/FzFFmrv.png' alt='a' /> */}
 
       <h1>Find your pet-friend</h1>
       <div className="allposts">
