@@ -15,5 +15,21 @@
 }
 
 h1 {
-  margin-left: 15%;
+  margin-left: 40%;
 }
+
+#posts-banner {
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+  object-fit: cover;
+
+}
+
+/* #posts-logo {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  left: 48%;
+  bottom: 300px;
+} */

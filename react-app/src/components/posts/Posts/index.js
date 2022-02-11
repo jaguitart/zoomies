@@ -16,6 +16,16 @@ const Posts = ({ posts }) => {
   return (
     <>
       <NavBar />
+      <div className='posts-banner'>
+        <img id='posts-banner' src='https://i.imgur.com/MDRTdYk.png' alt='a' />
+        <div>
+          <div></div>
+          <div>Find a dog</div>
+          <div>Find a cat</div>
+        </div>
+      </div>
+        {/* <img id='posts-logo' src='https://i.imgur.com/FzFFmrv.png' alt='a' /> */}
+
       <h1>Find your pet-friend</h1>
       <div className="allposts">
         {posts.map(post =>
