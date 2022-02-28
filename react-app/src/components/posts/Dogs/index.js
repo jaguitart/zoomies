@@ -2,32 +2,25 @@ import React from "react";
 import SinglePost from "../SinglePost";
 import '../Posts/style.css'
 import NavBar from "../../NavBar/NavBar";
-import { NavLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
-const Posts = ({ posts }) => {
+const Dogs = ({ posts }) => {
   const user = useSelector(state => state.session.user);
 
   if (!user) {
     return <Redirect to='/login' />;
   }
 
-  let randomPets = [];
-  const postsQ = posts.length >= 5 ? 5:posts.length
-  while (randomPets.length < postsQ) {
-    let r = Math.floor(Math.random() * posts.length) + 1;
-    if (randomPets.indexOf(r) === -1) randomPets.push(r);
-  }
+  const cats = posts.filter(post => post.type === 'Dog')
 
-  const randomBanner = Math.random() < 0.5
-  console.log(randomBanner);
 
   return (
     <>
       <NavBar />
-      <div className='posts-bannerdiv'>
-        {randomBanner?<img id='posts-bannerimg' src='https://i.imgur.com/MDRTdYk.png' alt='banner' />:<img id='posts-bannerimg' src='https://i.imgur.com/czrlTcY.png' alt='banner' />}       
+      {/* <div className='posts-bannerdiv'>
+        <img id='posts-bannerimg' src='https://i.imgur.com/MDRTdYk.png' alt='banner image' />
         <div className="posts-banner-text">
           <div className="posts-text1 arrowRight">Hi {user.username}</div>
           <NavLink to='/dogs' className="posts-text2">
@@ -43,14 +36,10 @@ const Posts = ({ posts }) => {
             </div>
           </NavLink>
         </div>
-      </div>
-      <br/>
-      <br/>
-      <h1>Picked just for you</h1>
+      </div> */}
+      <h1>Find your dog-friend</h1>
       <div className="allposts">
-        {posts
-        .filter(post => randomPets.includes(post.id))
-        .map(post =>
+        {cats.map(post =>
           <div key={post.id}>
             <SinglePost post={post} />
           </div>
@@ -61,4 +50,4 @@ const Posts = ({ posts }) => {
 }
 
 
-export default Posts
+export default Dogs

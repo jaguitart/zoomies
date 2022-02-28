@@ -36,7 +36,7 @@ const NavBar = () => {
             <NavLink to='/' exact={true} activeClassName='active'>
               <IoPaw className='icon' />
             </NavLink>
-            <span>Adopt</span>
+            <span>Home</span>
             <div className={`point ${pointToLineFinder}`}></div>
           </div>
 

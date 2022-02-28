@@ -15,5 +15,112 @@
 }
 
 h1 {
-  margin-left: 15%;
+  margin-left: 40%;
 }
+
+
+.posts-bannerdiv {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: center;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+#posts-bannerimg {
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+  object-fit: cover;
+  grid-area: 1 / 1 / 3 / 6;
+}
+
+.posts-banner-text {
+  /* margin-top: 70px; */
+  margin-top: 13%;
+  height: 80px;
+  min-width: 400px;
+  width: 85%;
+  border-radius: 8px;
+  grid-area: 2 / 2 / 3 / 5; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.posts-text1 {
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: #004383;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(238, 238, 238);
+}
+
+.posts-text2 {
+  grid-area: 1 / 2 / 2 / 3;
+  background-color: #0586C3;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: rgb(238, 238, 238);
+}
+
+.posts-text3 {
+  grid-area: 1 / 3 / 2 / 4;
+  background-color: #0586C3;
+  border-left: #004383 solid 1px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: rgb(238, 238, 238);
+}
+
+.arrowRight{
+  position:relative;
+ }
+ 
+  .arrowRight:before, .arrowRight:after {
+  border-bottom: 40px solid transparent;
+  border-top: 40px solid transparent;
+  top:-1px;
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;   
+  }
+  .arrowRight:after {
+  border-left: 20px solid #004383;
+  right: -20px;
+  z-index: 2;
+  }
+
+  #posts-pet-cat {
+    width: 20px;
+    margin-right: 20px;
+  }
+
+  #posts-pet-dog {
+    width: 25px;
+    margin-right: 20px;
+  }

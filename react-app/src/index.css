@@ -10,8 +10,7 @@
 .user-usercard {
   width: 320px;
   border: 1px solid #004383;
-  border-top-left-radius: 17px;
-  border-bottom-right-radius: 17px;
+  border-radius: 8px;
   margin-left: 40px;
   margin-right: 40px;
   margin-top: 20px;
@@ -48,7 +47,6 @@
   top:  10px;
   color: rgb(85, 85, 85);
   color: rgb(85, 85, 85);
-  /* background-color: rebeccapurple; */
 }
 
 #user-smallicon {
@@ -57,13 +55,11 @@
   color: rgb(85, 85, 85);
   font-size: 15px;
   margin-left: 10px;
-  /* margin-right: 10px; */
 }
 
 #user-dot{
   margin-left: 10px;
   font-size: larger;
-  /* margin-right: 10px; */
 }
 
 #user-numericinfo {
@@ -80,7 +76,6 @@
 }
 
 #user-profilepic {
-  /* height: 80px; */
   margin-top: 25px;
   margin-left: 120px;
   border-radius: 50%;
@@ -113,9 +108,10 @@
 
 
 .user-background {
-  height: 105px;
-  background-image: -webkit-linear-gradient(288deg, #004383 50%, transparent 50%); 
-  border-top-left-radius: 15px;
+  height: 65px;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383; 
+  border-radius: 6px 6px 0px 0px;
+  margin-bottom: 50px;
 }
 
 .user-checkcross {
@@ -132,22 +128,21 @@
   width: 400px;
   position: relative;
   margin-left: 4%;
-  /* border: red 1px solid; */
 }
 
 .user-rejectedapplications {
   border: 1px solid red;
   margin-bottom: 20px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  /* border-top-left-radius: 15px; */
+  /* border-bottom-right-radius: 15px; */
 }
 
 .user-approvedapplications {
   border: 1px solid green;
   margin-bottom: 20px;
   margin-top: 20px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  /* border-top-left-radius: 15px; */
+  /* border-bottom-right-radius: 15px; */
 }
 
 .user-applicationssidebar{
