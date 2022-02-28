@@ -83,16 +83,6 @@ function User({ users, posts }) {
         </div>
 
         <div id='user-postsandappdiv'>
-          {accountType === 2 && (
-            <div id='user-posts'>
-              {visiblePosts.map(post =>
-                <div key={post.id}>
-                  <SinglePost post={post} resize='resize' />
-                </div>
-              )}
-            </div>
-          )}
-
           <div>
             {accountType === 2 && (
               <h3 className='user-pendingapplicationstext'>Pending Applications</h3>
@@ -109,6 +99,19 @@ function User({ users, posts }) {
                   <SingleApplication application={application} />
                 </div>
               ))}
+
+            {accountType === 2 && (
+              <>
+                <h3 className='user-pendingapplicationstext'>Your posts</h3>
+                <div id='user-posts'>
+                  {visiblePosts.map(post =>
+                    <div key={post.id}>
+                      <SinglePost post={post} resize='resize' />
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
           </div>
         </div>
 
