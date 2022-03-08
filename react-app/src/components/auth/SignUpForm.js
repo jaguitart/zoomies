@@ -52,7 +52,10 @@ const SignUpForm = () => {
     setOrganizationFields(+e.target.value !== 1 ? true : false)
     setClicked(+e.target.value !== 1 ? true : false)
   };
-  const bioSizeChanger = () => { setSBioSize(!biosize) };
+  const bioSizeChangerTrue = (e) => { 
+    setSBioSize(true) };
+  const bioSizeChangerFalse = (e) => { 
+    setSBioSize(false) };
 
 
   if (user) {
@@ -63,7 +66,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div id='allsignup'>
+      <div id='allsignup' onClickCapture={bioSizeChangerFalse}>
         {/* AGREGAR INFORMACION DE COMO LLENAR EL FORMULARIO */}
         <div className="mainsignup">
           <div id='movingimgdiv'>
@@ -123,7 +126,7 @@ const SignUpForm = () => {
               )} */}
 
               <div>
-                <textarea required={true} placeholder='Tell us about yourself...' onClick={bioSizeChanger} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+                <textarea required={true} placeholder='Tell us about yourself...' onClick={bioSizeChangerTrue} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
               </div>
 
               <button type='submit'>Sign Up</button>

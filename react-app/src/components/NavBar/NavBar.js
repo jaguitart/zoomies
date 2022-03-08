@@ -32,32 +32,32 @@ const NavBar = () => {
         </div>
         <div className='navBarOptions'>
 
-          <div id='petposts' className='optionclass' onMouseEnter={() => setPointToLineFinder('pointtoline')} onMouseLeave={() => setPointToLineFinder('')}>
-            <NavLink to='/' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} activeClassName='active'>
+            <div id='petposts' className='optionclass' onMouseEnter={() => setPointToLineFinder('pointtoline')} onMouseLeave={() => setPointToLineFinder('')}>
               <IoPaw className='icon' />
-            </NavLink>
-            <span>Home</span>
-            <div className={`point ${pointToLineFinder}`}></div>
-          </div>
+              <span>Home</span>
+              <div className={`point ${pointToLineFinder}`}></div>
+            </div>
+          </NavLink>
 
           {user?.account_type?.id !== 1 && (
-            <div id='newpost' className='optionclass' onMouseEnter={() => setPointToLineAdd('pointtoline')} onMouseLeave={() => setPointToLineAdd('')}>
-              <NavLink to='/new-pet-post' exact={true} activeClassName='active'>
+            <NavLink to='/new-pet-post' exact={true} activeClassName='active'>
+              <div id='newpost' className='optionclass' onMouseEnter={() => setPointToLineAdd('pointtoline')} onMouseLeave={() => setPointToLineAdd('')}>
                 <BsPlusSquare className='icon' />
-              </NavLink>
-              <span>Add</span>
-              <div className={`point ${pointToLineAdd}`}></div>
-            </div>
+                <span>Add</span>
+                <div className={`point ${pointToLineAdd}`}></div>
+              </div>
+            </NavLink>
           )}
 
           {user?.id && (
-            <div id='profile' className='optionclass' onMouseEnter={() => setPointToLineProfile('pointtoline')} onMouseLeave={() => setPointToLineProfile('')}>
-              <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+            <NavLink to={`/users/${user?.id}`} exact={true} activeClassName='active'>
+              <div id='profile' className='optionclass' onMouseEnter={() => setPointToLineProfile('pointtoline')} onMouseLeave={() => setPointToLineProfile('')}>
                 {user.account_type.id === 1 ? <BsFillPersonFill className='icon' /> : <GiDogHouse className='icon' />}
-              </NavLink>
-              <span className='navBar-span'>Profile</span>
-              <div className={`point ${pointToLineProfile}`}></div>
-            </div>
+                <span className='navBar-span'>Profile</span>
+                <div className={`point ${pointToLineProfile}`}></div>
+              </div>
+            </NavLink>
           )}
 
           {user?.id && (
@@ -68,13 +68,13 @@ const NavBar = () => {
             </div>
           )}
 
-          <div id='home' className='optionclass' onMouseEnter={() => setPointToLineAbout('pointtoline')} onMouseLeave={() => setPointToLineAbout('')}>
-            <NavLink to='/about' exact={true} activeClassName='active'>
+          <NavLink to='/about' exact={true} activeClassName='active'>
+            <div id='home' className='optionclass' onMouseEnter={() => setPointToLineAbout('pointtoline')} onMouseLeave={() => setPointToLineAbout('')}>
               <BsInfoSquare className='icon' />
-            </NavLink>
-            <span>About</span>
-            <div className={`point ${pointToLineAbout}`}></div>
-          </div>
+              <span>About</span>
+              <div className={`point ${pointToLineAbout}`}></div>
+            </div>
+          </NavLink>
 
         </div>
       </div>
@@ -83,16 +83,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-
-// {!user?.id && (
-//   <div>
-//     <NavLink to='/login' exact={true} activeClassName='active'>
-//       Login
-//     </NavLink>
-
-//     <NavLink to='/sign-up' exact={true} activeClassName='active'>
-//       Sign Up
-//     </NavLink>
-//   </div>
-// )}

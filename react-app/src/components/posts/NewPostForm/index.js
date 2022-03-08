@@ -35,6 +35,16 @@ const NewPostForm = () => {
     const [question2, setQuestion2] = useState('');
     const [question3, setQuestion3] = useState('');
 
+    const [formPage, setFormPage] = useState(1);
+
+    const nextStep = () => {
+        setFormPage(formPage + 1)
+    }
+
+    const backStep = () => {
+        setFormPage(formPage - 1)
+    }
+
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
 
@@ -122,49 +132,81 @@ const NewPostForm = () => {
             <NavBar />
             <div id='allsignup'>
                 <div className="mainsignup">
-                    <div className="signup" >
+                    <div id='signup-form-container' className="signup" >
                         <form onSubmit={submit}>
                             <div>
                                 {errors.map((error, ind) => (
                                     <div key={ind}>{error}</div>
                                 ))}
                             </div>
-                            <p id="createanewpettext">Create new Pet post</p>
+                            <p id="createanewpettext">Create new Pet post {formPage}/3</p>
+                            {formPage === 1 && (
+                                <>
+                                    <p id='vaccionationstatustext'>Type of pet:</p>
+                                    <FormDoubleButton clicked={clickedType} field='type' updateValue={updateType} preselection={type} />
 
-                            <FormDoubleButton clicked={clickedType} field='type' updateValue={updateType} preselection={type} />
+                                    <p id='vaccionationstatustext'>Pet sex:</p>
+                                    <FormDoubleButton clicked={clickedSex} field='sex' updateValue={updateSex} preselection={sex} />
 
-                            <FormDoubleButton clicked={clickedSex} field='sex' updateValue={updateSex} preselection={sex} />
+                                    <p id='vaccionationstatustext'>Size:</p>
+                                    <FormSize clicked={clickedSize} field='size' updateValue={updateSize} preselection={size} />
 
-                            <FormSize clicked={clickedSize} field='size' updateValue={updateSize} preselection={size} />
+                                    <p id='vaccionationstatustext'>Age:</p>
+                                    <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
 
-                            <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
-                            <p id='vaccionationstatustext'>Vaccionation Status:</p>
-                            <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
+                                    <p id='vaccionationstatustext'>Vaccionation Status:</p>
+                                    <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
 
-                            <FormDropdown field='color' updateValue={updateColor} required={true}/>
+                                    <p id='vaccionationstatustext'>Fur color:</p>
+                                    <FormDropdown field='color' updateValue={updateColor} required={true} />
 
-                            <FormDropdownBreed type={type} field='breed' updateValue={updateBreed} required={true} />
+                                    <p id='vaccionationstatustext'>Breed:</p>
+                                    <FormDropdownBreed type={type} field='breed' updateValue={updateBreed} required={true} />
 
-                            <FormInput field='name' updateValue={updateName} placeholder='Pet name' required={true} />
+                                    <button id='single-nextback' onClick={nextStep}>Next</button>
+                                </>
+                            )}
+                            {formPage === 2 && (
+                                <>
+                                    <p id='vaccionationstatustext'>Pet Name:</p>
+                                    <FormInput field='name' updateValue={updateName} placeholder='Pet name' required={true} />
 
-                            <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture URL (cover)' required={true} />
+                                    <p id='add-images' >Add some pictures:</p>
+                                    <p id='vaccionationstatustext'>Picture 1</p>
+                                    <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture URL (cover)' required={true} />
+                                    <p id='vaccionationstatustext'>Picture 2</p>
+                                    <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture URL (optional)' />
+                                    <p id='vaccionationstatustext'>Picture 3</p>
+                                    <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture URL (optional)' />
+                                    <p id='vaccionationstatustext'>Give us some characteristics of the pet:</p>
+                                    <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
+                                    <br />
+                                    <div id="doublebutton" className="single-nextback">
+                                        <button id='doublebuttonleft' onClick={backStep}>Back</button>
+                                        <button id='doublebuttonright' onClick={nextStep}>Next</button>
+                                    </div>
+                                </>
+                            )}
+                            {formPage === 3 && (
+                                <>
+                                    <p id='vaccionationstatustext'>Pet bio:</p>
+                                    <FormInput id='add' field='bio' updateValue={updateBio} placeholder='Bio' />
 
-                            <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture URL (optional)' />
+                                    <p id='add-images'>Question 1:</p>
+                                    <p id='vaccionationstatustext'>Question 1:</p>
+                                    <FormInput field='question1' updateValue={updateQuestion1} placeholder='1.Make a question to the applicant' required={true} />
 
-                            <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture URL (optional)' />
+                                    <p id='vaccionationstatustext'>Question 2:</p>
+                                    <FormInput field='question2' updateValue={updateQuestion2} placeholder='2.Make a question to the applicant' required={true} />
 
-                            <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
-
-                            <FormInput field='bio' updateValue={updateBio} placeholder='Bio' />
-
-                            <FormInput field='question1' updateValue={updateQuestion1} placeholder='1.Make a question to the applicant' required={true} />
-
-                            <FormInput field='question2' updateValue={updateQuestion2} placeholder='2.Make a question to the applicant' required={true} />
-
-                            <FormInput field='question3' updateValue={updateQuestion3} placeholder='3.Make a question to the applicant' required={true} />
-
-
-                            <button type='submit'>Post</button>
+                                    <p id='vaccionationstatustext'>Question 3:</p>
+                                    <FormInput field='question3' updateValue={updateQuestion3} placeholder='3.Make a question to the applicant' required={true} />
+                                    <br />
+                                    <button id='single-nextback' onClick={backStep}>Back</button>
+                                    <br />
+                                    <button id='signup-postbutton' type='submit'>Post</button>
+                                </>
+                            )}
                         </form>
                     </div>
                     <img id='logozoomiesvertical' alt='splash' src="https://i.imgur.com/qDk29Iy.png" />
