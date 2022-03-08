@@ -5,24 +5,24 @@ from app.models import db, User
 def seed_users():
     demo_user = User(
         account_type_id= 1,
-        username= 'Demo_User',
-        name='Demo User',
+        username= 'Boo',
+        name='Mary Gibbs',
         email='user@demo.io',
-        bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique augue viverra luctus sodales. Phasellus iaculis finibus sollicitudin. Aenean mattis odio ut ex porttitor finibus id eget risus. Proin placerat mauris vel congue hendrerit. Phasellus ut diam sagittis, viverra neque cursus, hendrerit mi. Nam volutpat, arcu non pretium mattis, mauris justo sagittis enim, quis congue dolor ipsum id sem. Cras venenatis justo eget elementum tristique. Curabitur quis leo ut purus luctus posuere. Donec a mi et felis ultrices commodo a et arcu. Donec fringilla mauris vel facilisis malesuada.",
+        bio="I am a young girl who is not scared of any monsters except occasionally Randall. I am looking to adopt my own 4-legs/fluffy monster!",
         password='password',
-        profile_pic='https://dineoncampus.com/img/staff-placeholder.jpg',
+        profile_pic='https://static.wikia.nocookie.net/monstersincmovies/images/4/47/Boo-0.jpg/revision/latest/scale-to-width-down/1200?cb=20161105200356',
         # logo='',
         # lat='',
         # lng=''
     )
     demo_organization = User(
         account_type_id=2,
-        username= 'Demo_Org',
-        name='Demo Organization',
+        username= 'Monsters',
+        name="Monsters, Inc.",
         email='org@demo.io',
-        bio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique augue viverra luctus sodales. Phasellus iaculis finibus sollicitudin. Aenean mattis odio ut ex porttitor finibus id eget risus. Proin placerat mauris vel congue hendrerit. Phasellus ut diam sagittis, viverra neque cursus, hendrerit mi. Nam volutpat, arcu non pretium mattis, mauris justo sagittis enim, quis congue dolor ipsum id sem. Cras venenatis justo eget elementum tristique. Curabitur quis leo ut purus luctus posuere. Donec a mi et felis ultrices commodo a et arcu. Donec fringilla mauris vel facilisis malesuada.",
+        bio="Monsters, Inc.'s main duty is to provide all citizens in Monstropolis with energy. We accomplish this by crossing into the Human World through the closets of children's bedrooms and giving them laughter and love in the shape of cats and dogs.",
         password='password',
-        profile_pic='https://i.imgur.com/xYK7gAR.jpg',
+        profile_pic='https://i.pinimg.com/736x/f0/03/a4/f003a480fb3fa2f3ffcb1952b886f728.jpg',
         # logo='',
         # lat='',
         # lng=''
