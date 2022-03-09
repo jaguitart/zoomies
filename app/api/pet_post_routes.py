@@ -68,6 +68,18 @@ def new_post():
 @post_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def update_post(id):
+    #     if "pic_url1" not in request.files:
+    #     return {"errors": "image required"}, 400
+    # image = request.files["pic_url1"]
+
+    # image.filename = get_unique_filename(image.filename)
+    # upload = upload_file_to_s3(image)
+
+    # if "url" not in upload:
+    #     return upload, 400
+    # imgURL = upload["url"]
+
+
     form = NewPetPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
