@@ -39,15 +39,32 @@ export const getAllPosts = () => async dispatch => {
 }
 
 export const addOnePost = post => async dispatch => {
+    const imgForm = new FormData()
+    imgForm.append('user_id', post.user_id);
+    imgForm.append('type', post.type);
+    imgForm.append('name', post.name);
+    imgForm.append('sex', post.sex);
+    imgForm.append('age', post.age);
+    imgForm.append('color', post.color);
+    imgForm.append('size', post.size);
+    imgForm.append('breed', post.breed);
+    imgForm.append('pic_url1', post.pic_url1);
+    imgForm.append('pic_url2', post.pic_url2);
+    imgForm.append('pic_url3', post.pic_url3);
+    imgForm.append('characteristics', post.characteristics);
+    imgForm.append('vaccination_status', post.vaccination_status);
+    imgForm.append('bio', post.bio);
+    imgForm.append('question1', post.question1);
+    imgForm.append('question2', post.question2);
+    imgForm.append('question3', post.question3);
+
     const res = await fetch('/api/posts/', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(post)
+        'Content-Type': 'multipart/form-data',
+        body: imgForm
     })
     if (res.ok) {
-        const data = await res.json();
+        const data = await res;
         dispatch(addPost(data))
         return data
     }
@@ -95,12 +112,12 @@ export default function reducer(state = initialState, action) {
         case ADD_POST:
             newState = {
                 ...state,
-                [action.payload.post.id]: action.payload.post
+                [action.payload.id]: action.payload
             }
             return newState
 
         case UPDATE_POST:
-            state[action.payload.post.id] = action.payload.post;
+            state[action.payload.id] = action.payload;
             newState = { ...state };
             return newState
 

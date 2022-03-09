@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { deleteOnePost } from "../../../store/pet_post";
+import { deleteOnePost, getAllPosts } from "../../../store/pet_post";
 import { Modal } from "../../../context/Modal";
 import NewApplicationForm from "../../applications/NewApplication";
 import NavBar from "../../NavBar/NavBar";
@@ -34,7 +34,6 @@ const PetPost = ({ posts, applications }) => {
     .map(application => application.post_id)
 
   const didIApplyToThis = postsIdWithMyApplications.includes(post.id)
-  console.log(didIApplyToThis);
 
 
   const updateImgLeft = () => {
@@ -69,9 +68,13 @@ const PetPost = ({ posts, applications }) => {
     }
   }
 
-
-
   const updateShowModal = () => setShowModal(true)
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getAllPosts());
+    })();
+  }, [dispatch]);
 
   if (!user) {
     return <Redirect to='/login' />;

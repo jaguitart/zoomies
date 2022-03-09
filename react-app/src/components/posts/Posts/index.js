@@ -21,7 +21,6 @@ const Posts = ({ posts }) => {
   }
 
   const randomBanner = Math.random() < 0.5
-  console.log(randomBanner);
 
   return (
     <>

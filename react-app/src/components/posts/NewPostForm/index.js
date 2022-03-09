@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { addOnePost } from "../../../store/pet_post";
+import { addOnePost, getAllPosts } from "../../../store/pet_post";
 import FormDropdown from "../../FormsComponents/FormDropdown";
 import FormDropdownBreed from "../../FormsComponents/FormDropDownBreeds";
 import FormInput from "../../FormsComponents/FormInput";
+import FormImageAWS from "../../FormsComponents/FormImageAWS";
 import NavBar from "../../NavBar/NavBar";
 import FormAge from "../../FormsComponents/FormAge";
 import FormDoubleButton from "../../FormsComponents/FormDoubleButton";
@@ -25,7 +26,7 @@ const NewPostForm = () => {
     const [age, setAge] = useState(1);
     const [color, setColor] = useState(1);
     const [breed, setBreed] = useState('');
-    const [pic_url1, setPic_url1] = useState('');
+    const [pic_url1, setPic_url1] = useState(null);
     const [pic_url2, setPic_url2] = useState('');
     const [pic_url3, setPic_url3] = useState('');
     const [characteristics, setCharacteristics] = useState('');
@@ -73,8 +74,9 @@ const NewPostForm = () => {
             question3
         }
         let submited = await dispatch(addOnePost(newPost))
+        await dispatch(getAllPosts())
         if (submited) {
-            history.push(`/`)
+            history.push(`/users/${user.id}`)
         }
     }
 
@@ -112,7 +114,10 @@ const NewPostForm = () => {
     const updateBreed = value => setBreed(value[0].id)
 
     const updateName = e => setName(e.target.value)
-    const updatePic_url1 = e => setPic_url1(e.target.value)
+    const updatePic_url1 = e => {
+        const file = e.target.files[0];
+        if (file) setPic_url1(file);
+    }
     const updatePic_url2 = e => setPic_url2(e.target.value)
     const updatePic_url3 = e => setPic_url3(e.target.value)
     const updateCharacteristics = e => setCharacteristics(e.target.value)
@@ -171,7 +176,17 @@ const NewPostForm = () => {
 
                                     <p id='add-images' >Add some pictures:</p>
                                     <p id='vaccionationstatustext'>Picture 1</p>
-                                    <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture URL (cover)' required={true} />
+                                    {/* <FormImageAWS field='pic_url1' updateValue={updatePic_url1} required={true} /> */}
+                                    <div>
+                                        <label htmlFor='Image' />
+                                        <input
+                                            name='Image'
+                                            type='file'
+                                            accept="image/*"
+                                            onChange={updatePic_url1}
+                                        />
+                                    </div>
+
                                     <p id='vaccionationstatustext'>Picture 2</p>
                                     <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture URL (optional)' />
                                     <p id='vaccionationstatustext'>Picture 3</p>

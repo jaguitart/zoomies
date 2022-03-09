@@ -15,8 +15,6 @@ const Cats = ({ posts }) => {
 
   const cats = posts.filter(post => post.type === 'Cat')
 
-  console.log(cats);
-  console.log(posts[0].type);
 
   return (
     <>

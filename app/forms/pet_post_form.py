@@ -7,6 +7,7 @@ from app.models import Pet_Post
 
 class NewPetPostForm(FlaskForm):
 
+    user_id = StringField('User_Id')
     type = StringField('Type')
     name = StringField('Name')
     sex = StringField('Sex')
@@ -14,7 +15,7 @@ class NewPetPostForm(FlaskForm):
     size = StringField('size')
     color = StringField('Color')
     breed = StringField('Breed')
-    pic_url1 = StringField('Pic_url1')
+    # pic_url1 = StringField('Pic_url1')
     pic_url2 = StringField('Pic_url2')
     pic_url3 = StringField('Pic_url3')
     characteristics = StringField('Characteristics')

@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from app.models import db, Pet_Post, Application
 from flask_login import login_required, current_user
 from app.forms import NewPetPostForm, NewApplicationForm
-
+from app.AWS.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 post_routes = Blueprint('posts', __name__)
 
@@ -25,12 +25,22 @@ def get_all_posts():
 @post_routes.route('/', methods=["POST"])
 @login_required
 def new_post():
-    data = request.json
+    if "pic_url1" not in request.files:
+        return {"errors": "image required"}, 400
+    image = request.files["pic_url1"]
+
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        return upload, 400
+    imgURL = upload["url"]
+
     form = NewPetPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         post = Pet_Post(
-            user_id=data['user_id'],
+            user_id=form.data['user_id'],
             type_id=form.data['type'],
             name=form.data['name'],
             sex_id=form.data['sex'],
@@ -38,7 +48,7 @@ def new_post():
             size_id=form.data['size'],
             color_id=form.data['color'],
             breed_id=form.data['breed'],
-            pic_url1=form.data['pic_url1'],
+            pic_url1=imgURL,
             pic_url2=form.data['pic_url2'],
             pic_url3=form.data['pic_url3'],
             characteristics=form.data['characteristics'],
