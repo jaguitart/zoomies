@@ -52,10 +52,8 @@ const SignUpForm = () => {
     setOrganizationFields(+e.target.value !== 1 ? true : false)
     setClicked(+e.target.value !== 1 ? true : false)
   };
-  const bioSizeChangerTrue = (e) => { 
-    setSBioSize(true) };
-  const bioSizeChangerFalse = (e) => { 
-    setSBioSize(false) };
+  const bioSizeChangerTrue = () => setSBioSize(true);
+  const bioSizeChangerFalse = () => setSBioSize(false);
 
 
   if (user) {

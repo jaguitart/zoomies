@@ -277,18 +277,18 @@ input {
 }
 
 #single-nextback {
-  margin-left: 1px;
+  margin-left: auto;
   height: 25px;
   border-radius: 16px;
-  position: absolute;
-  bottom: 24%;  
+  position: relative;
+  bottom: 34%;  
 }
 
 .single-nextback {
   margin-left: 1px;
   height: 25px;
   border-radius: 16px;
-  position: absolute;
+  position: relative;
   bottom: 24%;  
 }
 
@@ -297,6 +297,7 @@ input {
 }
 
 #createanewpettext {
+  font-size: 20px;
   position: static;
   margin-bottom: 15px;
 }
@@ -366,4 +367,8 @@ input {
   left: 73px;
   top: 11px;
   font-size: 12px;
+}
+
+textarea {
+ overflow: hidden; 
 }

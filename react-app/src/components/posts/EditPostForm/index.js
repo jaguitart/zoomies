@@ -91,17 +91,28 @@ const EditPostForm = () => {
   const updateQuestion2 = e => setQuestion2(e.target.value)
   const updateQuestion3 = e => setQuestion3(e.target.value)
 
+  const [formPage, setFormPage] = useState(1);
+
+  const nextStep = () => setFormPage(formPage + 1)
+  const backStep = () => setFormPage(formPage - 1)
+
+  const [biosize, setSBioSize] = useState(false);
+  const bioSizeChangerTrue = () => setSBioSize(true);
+  const bioSizeChangerFalse = () => setSBioSize(false);
+
 
   return (
     <>
       <NavBar />
-      <div id='allsignup'>
+      <div id='allsignup' onClickCapture={bioSizeChangerFalse}>
         <div className="mainsignup">
-          <NavLink to={`/pet-post/${id}`}>
-            <div id="petedit-backdiv">
-              <MdOutlineArrowBackIosNew id='editpet-back' /><span id="petedit-backspan">Back</span>
-            </div>
-          </NavLink>
+          {formPage === 1 && (
+            <NavLink to={`/pet-post/${id}`}>
+              <div id="petedit-backdiv">
+                <MdOutlineArrowBackIosNew id='editpet-back' /><span id="petedit-backspan">Back</span>
+              </div>
+            </NavLink>
+          )}
           <div className="signup" >
             <form onSubmit={onEdit}>
               <div className="errors">
@@ -110,31 +121,56 @@ const EditPostForm = () => {
                 ))}
               </div>
 
-              <div>
-                <p id="createanewpettext">Edit {oldData?.name}</p>
-                <img className="editform-editingdog" alt='editing dog' src={pic_url1} />
-              </div>
+              {formPage === 1 && (
+                <>
+                  <div>
+                    <p id="createanewpettext">Edit {oldData?.name}</p>
+                    <img className="editform-editingdog" alt='editing dog' src={pic_url1} />
+                  </div>
+                  <p id='vaccionationstatustext'>Age:</p>
+                  <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
 
-              <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
+                  <p id='vaccionationstatustext'>Vaccionation Status:</p>
+                  <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
 
-              <FormDoubleButton clicked={clickedVaccionationStatus} field='vaccination_status' updateValue={updateVaccination_status} preselection={vaccination_status} />
+                  <p id='add-images' >Edit pet pictures:</p>
+                  <p id='vaccionationstatustext'>Picture 1</p>
+                  <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' preselection={pic_url1} />
 
-              <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' preselection={pic_url1} />
+                  <p id='vaccionationstatustext'>Picture 2</p>
+                  <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' preselection={pic_url2} />
 
-              <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' preselection={pic_url2} />
+                  <p id='vaccionationstatustext'>Picture 3</p>
+                  <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' preselection={pic_url3} />
+                  <br />
+                  <button id='single-nextback' onClick={nextStep}>Next</button>
+                </>
+              )}
+              {formPage === 2 && (
+                <>
+                  <p id="createanewpettext">Edit {oldData?.name}</p>
+                  <p id='vaccionationstatustext'>Edit characteristics of the pet:</p>
+                  <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' preselection={characteristics} />
+                  <p id='vaccionationstatustext'>Pet bio:</p>
+                  <div>
+                    <textarea required={true} placeholder='Tell us about yourself...' onClick={bioSizeChangerTrue} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+                  </div>
 
-              <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' preselection={pic_url3} />
+                  <p id='add-images' >Edit questions:</p>
+                  <p id='vaccionationstatustext'>Question 1</p>
+                  <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' preselection={question1} />
 
-              <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' preselection={characteristics} />
+                  <p id='vaccionationstatustext'>Question 2</p>
+                  <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' preselection={question2} />
 
-              <FormInput field='bio' updateValue={updateBio} placeholder='Bio' preselection={bio} />
-
-              <FormInput field='question1' updateValue={updateQuestion1} placeholder='Question' preselection={question1} />
-
-              <FormInput field='question2' updateValue={updateQuestion2} placeholder='Question' preselection={question2} />
-
-              <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' preselection={question3} />
-              <button id='' className="editpet-repostbutton" type='submit'>Re-Post</button>
+                  <p id='vaccionationstatustext'>Question 3</p>
+                  <FormInput field='question3' updateValue={updateQuestion3} placeholder='Question' preselection={question3} />
+                  <br />
+                  <button id='single-nextback' onClick={backStep}>Back</button>
+                  <br />
+                  <button id='' className="editpet-repostbutton" type='submit'>Re-Post</button>
+                </>
+              )}
             </form>
           </div>
           <img id='logozoomiesvertical' alt='splash' src="https://i.imgur.com/qDk29Iy.png" />

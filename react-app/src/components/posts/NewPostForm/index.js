@@ -37,13 +37,8 @@ const NewPostForm = () => {
 
     const [formPage, setFormPage] = useState(1);
 
-    const nextStep = () => {
-        setFormPage(formPage + 1)
-    }
-
-    const backStep = () => {
-        setFormPage(formPage - 1)
-    }
+    const nextStep = () => setFormPage(formPage + 1)
+    const backStep = () => setFormPage(formPage - 1)
 
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
@@ -126,11 +121,14 @@ const NewPostForm = () => {
     const updateQuestion2 = e => setQuestion2(e.target.value)
     const updateQuestion3 = e => setQuestion3(e.target.value)
 
+    const [biosize, setSBioSize] = useState(false);
+    const bioSizeChangerTrue = () => setSBioSize(true);
+    const bioSizeChangerFalse = () => setSBioSize(false);
 
     return (
         <>
             <NavBar />
-            <div id='allsignup'>
+            <div id='allsignup' onClickCapture={bioSizeChangerFalse}>
                 <div className="mainsignup">
                     <div id='signup-form-container' className="signup" >
                         <form onSubmit={submit}>
@@ -190,9 +188,11 @@ const NewPostForm = () => {
                             {formPage === 3 && (
                                 <>
                                     <p id='vaccionationstatustext'>Pet bio:</p>
-                                    <FormInput id='add' field='bio' updateValue={updateBio} placeholder='Bio' />
+                                    <div>
+                                        <textarea required={true} placeholder='Tell us about yourself...' onClick={bioSizeChangerTrue} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+                                    </div>
 
-                                    <p id='add-images'>Question 1:</p>
+                                    <p id='add-images'>Personalize your application <br /> templete with three questions:</p>
                                     <p id='vaccionationstatustext'>Question 1:</p>
                                     <FormInput field='question1' updateValue={updateQuestion1} placeholder='1.Make a question to the applicant' required={true} />
 
