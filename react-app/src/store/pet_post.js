@@ -71,15 +71,26 @@ export const addOnePost = post => async dispatch => {
 }
 
 export const updateOnePost = post => async dispatch => {
+    const imgForm = new FormData()
+    imgForm.append('age', post.age);
+    imgForm.append('pic_url1', post.pic_url1);
+    imgForm.append('pic_url2', post.pic_url2);
+    imgForm.append('pic_url3', post.pic_url3);
+    imgForm.append('characteristics', post.characteristics);
+    imgForm.append('vaccination_status', post.vaccination_status);
+    imgForm.append('bio', post.bio);
+    imgForm.append('question1', post.question1);
+    imgForm.append('question2', post.question2);
+    imgForm.append('question3', post.question3);
+
     const res = await fetch(`/api/posts/${post.id}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(post)
+        'Content-Type': 'multipart/form-data',
+        body: imgForm
     })
+
     if (res.ok) {
-        const data = await res.json();
+        const data = await res;
         dispatch(updatePost(data))
         return data
     }

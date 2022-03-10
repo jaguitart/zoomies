@@ -25,10 +25,13 @@ const NewPostForm = () => {
     const [name, setName] = useState('');
     const [age, setAge] = useState(1);
     const [color, setColor] = useState(1);
-    const [breed, setBreed] = useState('');
-    const [pic_url1, setPic_url1] = useState(null);
+    const [breed, setBreed] = useState(1);
+    const [pic_url1, setPic_url1] = useState('');
+    const [file_pic_url1, setFile_pic_url1] = useState('');
     const [pic_url2, setPic_url2] = useState('');
+    const [file_pic_url2, setFile_pic_url2] = useState('');
     const [pic_url3, setPic_url3] = useState('');
+    const [file_pic_url3, setFile_pic_url3] = useState('');
     const [characteristics, setCharacteristics] = useState('');
     const [vaccination_status, setVaccination_status] = useState(1);
     const [bio, setBio] = useState('');
@@ -38,20 +41,58 @@ const NewPostForm = () => {
 
     const [formPage, setFormPage] = useState(1);
 
-    const nextStep = () => setFormPage(formPage + 1)
+    const validate1 = () => {
+        let errores = []
+        if (!type) errores.push('TYPE')
+        else if (!sex) errores.push('SEX')
+        else if (!size) errores.push('SIZE')
+        else if (!age) errores.push('AGE')
+        else if (!vaccination_status) errores.push('VACCINATION')
+        else if (!breed) errores.push('BREED')
+        else if (!color) errores.push('COLOR')
+        setErrors(errors)
+    }
+    const validate2 = () => {
+        let errores = []
+        if (!name) errores.push('NAME')
+        if (!pic_url1) errores.push('URL1')
+        if (!characteristics) errores.push('CHARS')
+        setErrors(errores)
+    }
+    const validate3 = () => {
+        let errores = []
+        if (!bio) errores.push('BIO')
+        if (!question1) errores.push('Q1')
+        if (!question2) errores.push('Q2')
+        if (!question3) errores.push('Q3')
+        setErrors(errores)
+    }
+
+    const nextStep = () => {
+        if (formPage === 1) {
+            validate1()
+            if (errors.length === 0) setFormPage(formPage + 1)
+        } else if (formPage === 2) {
+            validate2()
+            if (errors.length === 0) {
+                setFormPage(formPage + 1)
+                if (pic_url1) setFile_pic_url1('OKfile');
+                if (pic_url2) setFile_pic_url2('OKfile');
+                if (pic_url3) setFile_pic_url3('OKfile');
+            }
+        } else if (formPage === 3) {
+            validate3()
+        }
+        // setFormPage(formPage + 1)
+    }
     const backStep = () => setFormPage(formPage - 1)
 
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
 
-    const validate = () => {
-        // const errors = [];
-    }
-
-
     const submit = async (e) => {
         e.preventDefault();
-        const errors = validate();
+        const errors = validate1();
 
         if (errors) return setErrors(errors);
         const newPost = {
@@ -109,17 +150,21 @@ const NewPostForm = () => {
         setClickedVaccionationStatus(+e.target.value);
         setVaccination_status(e.target.value)
     }
-
     const updateColor = value => setColor(value[0].id)
     const updateBreed = value => setBreed(value[0].id)
-
     const updateName = e => setName(e.target.value)
     const updatePic_url1 = e => {
         const file = e.target.files[0];
         if (file) setPic_url1(file);
     }
-    const updatePic_url2 = e => setPic_url2(e.target.value)
-    const updatePic_url3 = e => setPic_url3(e.target.value)
+    const updatePic_url2 = e => {
+        const file = e.target.files[0];
+        if (file) setPic_url2(file);
+    }
+    const updatePic_url3 = e => {
+        const file = e.target.files[0];
+        if (file) setPic_url3(file);
+    }
     const updateCharacteristics = e => setCharacteristics(e.target.value)
     const updateBio = e => setBio(e.target.value)
     const updateQuestion1 = e => setQuestion1(e.target.value)
@@ -137,11 +182,6 @@ const NewPostForm = () => {
                 <div className="mainsignup">
                     <div id='signup-form-container' className="signup" >
                         <form onSubmit={submit}>
-                            <div>
-                                {errors.map((error, ind) => (
-                                    <div key={ind}>{error}</div>
-                                ))}
-                            </div>
                             <p id="createanewpettext">Create new Pet post {formPage}/3</p>
                             {formPage === 1 && (
                                 <>
@@ -172,31 +212,21 @@ const NewPostForm = () => {
                             {formPage === 2 && (
                                 <>
                                     <p id='vaccionationstatustext'>Pet Name:</p>
-                                    <FormInput field='name' updateValue={updateName} placeholder='Pet name' required={true} />
+                                    <FormInput field='name' preselection={name} updateValue={updateName} placeholder='Pet name' required={true} />
 
                                     <p id='add-images' >Add some pictures:</p>
                                     <p id='vaccionationstatustext'>Picture 1</p>
-                                    {/* <FormImageAWS field='pic_url1' updateValue={updatePic_url1} required={true} /> */}
-                                    <div>
-                                        <label htmlFor='Image' />
-                                        <input
-                                            name='Image'
-                                            type='file'
-                                            accept="image/*"
-                                            onChange={updatePic_url1}
-                                        />
-                                    </div>
-
+                                    <FormImageAWS field='pic_url1' extraclass={file_pic_url1} updateValue={updatePic_url1} required={true} />
                                     <p id='vaccionationstatustext'>Picture 2</p>
-                                    <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture URL (optional)' />
+                                    <FormImageAWS field='pic_url2' extraclass={file_pic_url2} updateValue={updatePic_url2} />
                                     <p id='vaccionationstatustext'>Picture 3</p>
-                                    <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture URL (optional)' />
+                                    <FormImageAWS field='pic_url3' extraclass={file_pic_url3} updateValue={updatePic_url3} />
                                     <p id='vaccionationstatustext'>Give us some characteristics of the pet:</p>
-                                    <FormInput field='characteristics' updateValue={updateCharacteristics} placeholder='Characteristics' />
+                                    <FormInput field='characteristics' preselection={characteristics} updateValue={updateCharacteristics} placeholder='Characteristics' required={true} />
                                     <br />
                                     <div id="doublebutton" className="single-nextback">
                                         <button id='doublebuttonleft' onClick={backStep}>Back</button>
-                                        <button id='doublebuttonright' onClick={nextStep}>Next</button>
+                                        <button id='doublebuttonright' onClickCapture={nextStep}>Next</button>
                                     </div>
                                 </>
                             )}
@@ -204,18 +234,18 @@ const NewPostForm = () => {
                                 <>
                                     <p id='vaccionationstatustext'>Pet bio:</p>
                                     <div>
-                                        <textarea required={true} placeholder='Tell us about yourself...' onClick={bioSizeChangerTrue} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} value={bio} />
+                                        <textarea required={true} value={bio} placeholder='Tell us about yourself...' onClick={bioSizeChangerTrue} className={biosize ? 'bigbio' : ''} id='biotextarea' type='text' name='bio' onChange={updateBio} />
                                     </div>
 
                                     <p id='add-images'>Personalize your application <br /> templete with three questions:</p>
                                     <p id='vaccionationstatustext'>Question 1:</p>
-                                    <FormInput field='question1' updateValue={updateQuestion1} placeholder='1.Make a question to the applicant' required={true} />
+                                    <FormInput field='question1' preselection={question1} updateValue={updateQuestion1} placeholder='1.Make a question to the applicant' required={true} />
 
                                     <p id='vaccionationstatustext'>Question 2:</p>
-                                    <FormInput field='question2' updateValue={updateQuestion2} placeholder='2.Make a question to the applicant' required={true} />
+                                    <FormInput field='question2' preselection={question2} updateValue={updateQuestion2} placeholder='2.Make a question to the applicant' required={true} />
 
                                     <p id='vaccionationstatustext'>Question 3:</p>
-                                    <FormInput field='question3' updateValue={updateQuestion3} placeholder='3.Make a question to the applicant' required={true} />
+                                    <FormInput field='question3' preselection={question3} updateValue={updateQuestion3} placeholder='3.Make a question to the applicant' required={true} />
                                     <br />
                                     <button id='single-nextback' onClick={backStep}>Back</button>
                                     <br />

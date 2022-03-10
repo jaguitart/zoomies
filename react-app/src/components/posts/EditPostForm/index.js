@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { updateOnePost } from "../../../store/pet_post";
+import { updateOnePost, getAllPosts } from "../../../store/pet_post";
 import FormInput from "../../FormsComponents/FormInput";
 import NavBar from "../../NavBar/NavBar";
 import FormAge from "../../FormsComponents/FormAge";
 import FormDoubleButton from "../../FormsComponents/FormDoubleButton";
+import FormImageAWS from "../../FormsComponents/FormImageAWS";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import '../../auth/form.css'
 
@@ -32,9 +33,13 @@ const EditPostForm = () => {
   const [clickedAge, setClickedAge] = useState(age);
   const [vaccination_status, setVaccination_status] = useState(oldVaccination_status.id);
   const [clickedVaccionationStatus, setClickedVaccionationStatus] = useState(vaccination_status);
-  const [pic_url1, setPic_url1] = useState(oldPic1);
+  const [pic_url1, setPic_url1] = useState('');
+  const [prev_pic_url1, setPrev_pic_url1] = useState(oldPic1);
+  const [file_pic_url1, setFile_pic_url1] = useState('');
   const [pic_url2, setPic_url2] = useState(oldPic2);
+  const [file_pic_url2, setFile_pic_url2] = useState('');
   const [pic_url3, setPic_url3] = useState(oldPic3);
+  const [file_pic_url3, setFile_pic_url3] = useState('');
   const [characteristics, setCharacteristics] = useState(oldCharacteristics);
   const [bio, setBio] = useState(oldBio);
   const [question1, setQuestion1] = useState(oldQ1);
@@ -64,6 +69,7 @@ const EditPostForm = () => {
       question3
     }
     let submited = await dispatch(updateOnePost(editPost))
+    await dispatch(getAllPosts())
     if (submited) {
       history.push(`/pet-post/${id}`)
     }
@@ -82,9 +88,26 @@ const EditPostForm = () => {
     setVaccination_status(e.target.value)
   }
 
-  const updatePic_url1 = e => setPic_url1(e.target.value)
-  const updatePic_url2 = e => setPic_url2(e.target.value)
-  const updatePic_url3 = e => setPic_url3(e.target.value)
+  const updatePic_url1 = e => {
+    const file = e.target.files[0];
+    if (file) {
+      setPic_url1(file);
+      const src_pic_url1 = URL.createObjectURL(file)
+      setPrev_pic_url1(src_pic_url1)
+    }
+  }
+  const updatePic_url2 = e => {
+    const file = e.target.files[0];
+    if (file) {
+      setPic_url2(file);
+    }
+  }
+  const updatePic_url3 = e => {
+    const file = e.target.files[0];
+    if (file) {
+      setPic_url3(file);
+    }
+  }
   const updateCharacteristics = e => setCharacteristics(e.target.value)
   const updateBio = e => setBio(e.target.value)
   const updateQuestion1 = e => setQuestion1(e.target.value)
@@ -93,8 +116,39 @@ const EditPostForm = () => {
 
   const [formPage, setFormPage] = useState(1);
 
-  const nextStep = () => setFormPage(formPage + 1)
-  const backStep = () => setFormPage(formPage - 1)
+  const validate1 = () => {
+    let errores = []
+    if (!age) errores.push('AGE')
+    if (!pic_url1) errores.push('URL1')
+    else if (!vaccination_status) errores.push('VACCINATION')
+    setErrors(errors)
+  }
+
+  const validate2 = () => {
+    let errores = []
+    if (!characteristics) errores.push('CHARS')
+    if (!bio) errores.push('BIO')
+    if (!question1) errores.push('Q1')
+    if (!question2) errores.push('Q2')
+    if (!question3) errores.push('Q3')
+    setErrors(errores)
+  }
+
+  const nextStep = () => {
+    if (formPage === 1) {
+      validate1()
+      if (errors.length === 0) setFormPage(formPage + 1)
+      if (pic_url1) setFile_pic_url1('OKfile');
+      if (pic_url2) setFile_pic_url2('OKfile');
+      if (pic_url3) setFile_pic_url3('OKfile');
+    } else if (formPage === 2) {
+      validate2()
+      if (errors.length === 0) setFormPage(formPage + 1)
+    }
+  }
+  const backStep = () => {
+    setFormPage(formPage - 1)
+  }
 
   const [biosize, setSBioSize] = useState(false);
   const bioSizeChangerTrue = () => setSBioSize(true);
@@ -125,7 +179,7 @@ const EditPostForm = () => {
                 <>
                   <div>
                     <p id="createanewpettext">Edit {oldData?.name}</p>
-                    <img className="editform-editingdog" alt='editing dog' src={pic_url1} />
+                    <img className="editform-editingdog" alt='editing dog' src={prev_pic_url1} />
                   </div>
                   <p id='vaccionationstatustext'>Age:</p>
                   <FormAge field='age' clicked={clickedAge} updateValue={updateAge} preselection={age} />
@@ -135,13 +189,13 @@ const EditPostForm = () => {
 
                   <p id='add-images' >Edit pet pictures:</p>
                   <p id='vaccionationstatustext'>Picture 1</p>
-                  <FormInput field='pic_url1' updateValue={updatePic_url1} placeholder='Picture' preselection={pic_url1} />
+                  <FormImageAWS field='pic_url1' updateValue={updatePic_url1} extraclass={file_pic_url1} required={true} placeholder='Picture' />
 
                   <p id='vaccionationstatustext'>Picture 2</p>
-                  <FormInput field='pic_url2' updateValue={updatePic_url2} placeholder='Picture' preselection={pic_url2} />
+                  <FormImageAWS field='pic_url2' updateValue={updatePic_url2} extraclass={file_pic_url2} placeholder='Picture' />
 
                   <p id='vaccionationstatustext'>Picture 3</p>
-                  <FormInput field='pic_url3' updateValue={updatePic_url3} placeholder='Picture' preselection={pic_url3} />
+                  <FormImageAWS field='pic_url3' updateValue={updatePic_url3} extraclass={file_pic_url3} placeholder='Picture' />
                   <br />
                   <button id='single-nextback' onClick={nextStep}>Next</button>
                 </>

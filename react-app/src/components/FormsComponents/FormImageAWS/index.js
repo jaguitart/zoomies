@@ -1,15 +1,17 @@
 import React from "react";
 
-const FormImageAWS = ({ field, updateValue, preselection }) => {
+const FormImageAWS = ({ field, updateValue, extraclass, required }) => {
 
   return (
     <div>
-      <label htmlFor={field} />
       <input
+        id={extraclass}
         name={field}
         type='file'
         accept="image/*"
         onChange={updateValue}
+        required={required}
+        style={{ content: 'OK' }}
       />
     </div>
   )

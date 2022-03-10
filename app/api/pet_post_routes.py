@@ -27,14 +27,30 @@ def get_all_posts():
 def new_post():
     if "pic_url1" not in request.files:
         return {"errors": "image required"}, 400
-    image = request.files["pic_url1"]
+    image1 = request.files["pic_url1"]
+    image1.filename = get_unique_filename(image1.filename)
+    upload1 = upload_file_to_s3(image1)
+    if "url" not in upload1:
+        return upload1, 400
+    imgURL1 = upload1["url"]
 
-    image.filename = get_unique_filename(image.filename)
-    upload = upload_file_to_s3(image)
+    imgURL2 = ''
+    if "pic_url2" in request.files:
+        image2 = request.files["pic_url2"]
+        image2.filename = get_unique_filename(image2.filename)
+        upload2 = upload_file_to_s3(image2)
+        if "url" not in upload2:
+            return upload2, 400
+        imgURL2 = upload2["url"]
 
-    if "url" not in upload:
-        return upload, 400
-    imgURL = upload["url"]
+    imgURL3 = ''
+    if "pic_url3" in request.files:
+        image3 = request.files["pic_url3"]
+        image3.filename = get_unique_filename(image3.filename)
+        upload3 = upload_file_to_s3(image3)
+        if "url" not in upload3:
+            return upload3, 400
+        imgURL3 = upload3["url"]
 
     form = NewPetPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -48,9 +64,9 @@ def new_post():
             size_id=form.data['size'],
             color_id=form.data['color'],
             breed_id=form.data['breed'],
-            pic_url1=imgURL,
-            pic_url2=form.data['pic_url2'],
-            pic_url3=form.data['pic_url3'],
+            pic_url1=imgURL1,
+            pic_url2=imgURL2,
+            pic_url3=imgURL3,
             characteristics=form.data['characteristics'],
             vaccination_status_id=form.data['vaccination_status'],
             bio=form.data['bio'],
@@ -68,27 +84,42 @@ def new_post():
 @post_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def update_post(id):
-    #     if "pic_url1" not in request.files:
-    #     return {"errors": "image required"}, 400
-    # image = request.files["pic_url1"]
-
-    # image.filename = get_unique_filename(image.filename)
-    # upload = upload_file_to_s3(image)
-
-    # if "url" not in upload:
-    #     return upload, 400
-    # imgURL = upload["url"]
-
+    post = Pet_Post.query.get(id)
+    if "pic_url1" in request.files:
+        image = request.files["pic_url1"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        if "url" not in upload:
+            return upload, 400
+        imgURL = upload["url"]
+        post.pic_url1 = imgURL
+        db.session.commit()
+    if "pic_url2" in request.files:
+        image = request.files["pic_url2"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        if "url" not in upload:
+            return upload, 400
+        imgURL = upload["url"]
+        post.pic_url1 = imgURL
+        db.session.commit()
+    if "pic_url3" in request.files:
+        image = request.files["pic_url3"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        if "url" not in upload:
+            return upload, 400
+        imgURL = upload["url"]
+        post.pic_url1 = imgURL
+        db.session.commit()
 
     form = NewPetPostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        post = Pet_Post.query.get(id)
         post.age_id = form.data['age'],
-        post.pic_url1 = form.data['pic_url1'],
-        post.pic_url2 = form.data['pic_url2'],
-        post.pic_url3 = form.data['pic_url3'],
+        # post.pic_url2 = form.data['pic_url2'],
+        # post.pic_url3 = form.data['pic_url3'],
         post.characteristics = form.data['characteristics'],
         post.vaccination_status_id = form.data['vaccination_status'],
         post.bio = form.data['bio'],

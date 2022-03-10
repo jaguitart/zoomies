@@ -77,6 +77,47 @@ input {
   float: inline-end;
 }
 
+input[type=file]::file-selector-button {
+  border: 1px;
+  padding: .2em .4em;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #0586C3 0%, #004383 100%), #004383;
+  color: white;
+  font-size: 14px;
+  height: auto;
+  width: 95px;
+  padding: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type=file] {
+  border: 1px solid #004383;
+  background-color: rgb(245, 245, 245);
+  white-space: 5px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  height: 45px;
+  padding: 10px 15px;
+  width: 250px;
+  margin-bottom:5px;
+  float: inline-end;
+}
+
+#OKfile[type=file] {
+  color: transparent !important;
+}
+#OKfile::after {
+position: relative;
+left: -70px;
+content: "OK";
+color: black;
+/* margin-right: 70px;  */
+}
+
 .signup a {
   color: #0095f6;
   color: rgba(var(--fe0,0,55,107),1);
