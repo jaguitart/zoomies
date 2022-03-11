@@ -63,7 +63,7 @@ const NavBar = () => {
           {user?.id && (
             <div id='logout' className='optionclass' onMouseEnter={() => setPointToLineLogout('pointtoline')} onMouseLeave={() => setPointToLineLogout('')}>
               <LogoutButton />
-              <span>Logout</span>
+              <span id='navbar-logouttext'>Logout</span>
               <div className={`point ${pointToLineLogut}`}></div>
             </div>
           )}

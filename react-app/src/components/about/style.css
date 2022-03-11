@@ -85,7 +85,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:start;
   position:absolute;
   margin-left: 5%;
   width: 100px;

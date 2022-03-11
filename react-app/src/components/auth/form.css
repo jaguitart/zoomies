@@ -249,7 +249,7 @@ color: black;
 }
 
 .f2 {
-  -webkit-animation-delay: -5s;
+  animation-delay: -5s;
   background-color: yellow;
 }
 

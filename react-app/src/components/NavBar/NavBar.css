@@ -67,3 +67,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   width: 50px;
   opacity: 1;
 }
+
+#navbar-logouttext {
+  cursor: pointer;
+}
