@@ -18,7 +18,9 @@ const NewPostForm = () => {
     const [clickedSize, setClickedSize] = useState(1);
     const [clickedVaccionationStatus, setClickedVaccionationStatus] = useState(1);
     const [clickedAge, setClickedAge] = useState(1);
-    const [errors, setErrors] = useState([]);
+    const [errors1, setErrors1] = useState([]);
+    const [errors2, setErrors2] = useState([]);
+    const [errors3, setErrors3] = useState([1]);
     const [type, setType] = useState(1);
     const [sex, setSex] = useState(1);
     const [size, setSize] = useState(1);
@@ -50,14 +52,15 @@ const NewPostForm = () => {
         else if (!vaccination_status) errores.push('VACCINATION')
         else if (!breed) errores.push('BREED')
         else if (!color) errores.push('COLOR')
-        setErrors(errors)
+        setErrors1(errores)
+        console.log(errores);
     }
     const validate2 = () => {
         let errores = []
-        if (!name) errores.push('NAME')
-        if (!pic_url1) errores.push('URL1')
-        if (!characteristics) errores.push('CHARS')
-        setErrors(errores)
+        if (!name) errores.push('Please provide a Name')
+        if (!pic_url1) errores.push('Please upload picture1')
+        if (!characteristics) errores.push('Please provide some characteristics')
+        setErrors2(errores)
     }
     const validate3 = () => {
         let errores = []
@@ -65,27 +68,35 @@ const NewPostForm = () => {
         if (!question1) errores.push('Q1')
         if (!question2) errores.push('Q2')
         if (!question3) errores.push('Q3')
-        setErrors(errores)
+        setErrors3(errores)
     }
 
-    const nextStep = () => {
+    const nextStep = (e) => {
+        console.log(formPage)
+        e.preventDefault()
         if (formPage === 1) {
             validate1()
-            if (errors.length === 0) setFormPage(formPage + 1)
-        } else if (formPage === 2) {
+            if (errors1.length === 0) setFormPage(formPage + 1)
+            setErrors2([''])
+        }
+        if (formPage === 2) {
             validate2()
-            if (errors.length === 0) {
+            if (errors2.length === 0) {
                 setFormPage(formPage + 1)
                 if (pic_url1) setFile_pic_url1('OKfile');
                 if (pic_url2) setFile_pic_url2('OKfile');
                 if (pic_url3) setFile_pic_url3('OKfile');
             }
-        } else if (formPage === 3) {
+            console.log('***', errors2);
+        }
+        if (formPage === 3) {
             validate3()
         }
-        // setFormPage(formPage + 1)
     }
-    const backStep = () => setFormPage(formPage - 1)
+    const backStep = (e) => {
+        e.preventDefault()
+        setFormPage(formPage - 1)
+    }
 
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
@@ -94,7 +105,7 @@ const NewPostForm = () => {
         e.preventDefault();
         const errors = validate1();
 
-        if (errors) return setErrors(errors);
+        if (errors) return setErrors3(errors);
         const newPost = {
             user_id: user.id,
             type,
@@ -206,20 +217,22 @@ const NewPostForm = () => {
                                     <p id='vaccionationstatustext'>Breed:</p>
                                     <FormDropdownBreed type={type} field='breed' updateValue={updateBreed} required={true} />
 
-                                    <button id='single-nextback' onClick={nextStep}>Next</button>
+                                    <button id='single-nextback' onClickCapture={nextStep}>Next</button>
                                 </>
                             )}
                             {formPage === 2 && (
                                 <>
+                                    {(errors2.map((error, idx) => <i key={error} className='loginErrors'>{error}<br/></i>))}
+
                                     <p id='vaccionationstatustext'>Pet Name:</p>
                                     <FormInput field='name' preselection={name} updateValue={updateName} placeholder='Pet name' required={true} />
 
                                     <p id='add-images' >Add some pictures:</p>
                                     <p id='vaccionationstatustext'>Picture 1</p>
                                     <FormImageAWS field='pic_url1' extraclass={file_pic_url1} updateValue={updatePic_url1} required={true} />
-                                    <p id='vaccionationstatustext'>Picture 2</p>
+                                    <p id='vaccionationstatustext'>Picture 2 (optional)</p>
                                     <FormImageAWS field='pic_url2' extraclass={file_pic_url2} updateValue={updatePic_url2} />
-                                    <p id='vaccionationstatustext'>Picture 3</p>
+                                    <p id='vaccionationstatustext'>Picture 3 (optional)</p>
                                     <FormImageAWS field='pic_url3' extraclass={file_pic_url3} updateValue={updatePic_url3} />
                                     <p id='vaccionationstatustext'>Give us some characteristics of the pet:</p>
                                     <FormInput field='characteristics' preselection={characteristics} updateValue={updateCharacteristics} placeholder='Characteristics' required={true} />
