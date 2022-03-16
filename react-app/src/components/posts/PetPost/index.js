@@ -21,13 +21,13 @@ const PetPost = ({ posts, applications }) => {
   const [pictureSelected, setPictureSelected] = useState(post?.pic_url1)
   const [pictureNext, setPictureNext] = useState(post?.pic_url2)
   const dispatch = useDispatch()
-  const handleDelete = id => {
-    dispatch(deleteOnePost(id))
-    history.push(`/`)
-
-  }
   const user = useSelector(state => state.session.user);
   const isMyPost = (post?.user_id === user?.id)
+  const handleDelete = id => {
+    dispatch(deleteOnePost(id))
+    history.push(`/users/${user.id}`)
+
+  }
 
   const postsIdWithMyApplications = applications
     .filter(application => application.user_id === user?.id)
